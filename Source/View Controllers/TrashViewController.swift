@@ -20,10 +20,10 @@ class TrashViewController: UITableViewController {
         tableViewUI()
     }
     
-  private func registerDelegates() {
-    interface.delegate = self
-    tableView.dataSource = self
-    tableView.delegate = self
+    private func registerDelegates() {
+        interface.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
     //MARK:- USER INTERFACE METHODS
