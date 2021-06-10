@@ -7,16 +7,16 @@
 
 import UIKit
 
-protocol UIHelperDelegate {
-    func addTapped(_ helper: UIHelper)
-    func selectTapped(_ helper: UIHelper)
-    func moreTapped(_ helper: UIHelper)
-    func trashTapped(_ helper: UIHelper)
-    func doneTapped(_ helper: UIHelper)
+protocol InterfaceHelperDelegate {
+    func addTapped(_ helper: InterfaceHelper)
+    func selectTapped(_ helper: InterfaceHelper)
+    func moreTapped(_ helper: InterfaceHelper)
+    func trashTapped(_ helper: InterfaceHelper)
+    func doneTapped(_ helper: InterfaceHelper)
 }
 
-class UIHelper {
-    var delegate: UIHelperDelegate?
+class InterfaceHelper {
+    var delegate: InterfaceHelperDelegate?
     var addButton: UIBarButtonItem!
     var selectButton: UIBarButtonItem!
     var moreButton: UIBarButtonItem!
@@ -59,10 +59,10 @@ class UIHelper {
     }
 }
 
-extension UIHelperDelegate {
-    func addTapped(_ helper: UIHelper) {}
-    func selectTapped(_ helper: UIHelper) {}
-    func moreTapped(_ helper: UIHelper) {}
-    func trashTapped(_ helper: UIHelper) {}
-    func doneTapped(_ helper: UIHelper) {}
+extension InterfaceHelperDelegate {
+    func addTapped(_ helper: InterfaceHelper) {}
+    func selectTapped(_ helper: InterfaceHelper) {}
+    func moreTapped(_ helper: InterfaceHelper) {}
+    func trashTapped(_ helper: InterfaceHelper) {}
+    func doneTapped(_ helper: InterfaceHelper) {}
 }

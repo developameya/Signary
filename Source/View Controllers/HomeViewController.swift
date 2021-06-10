@@ -11,7 +11,7 @@ class HomeViewController: UITableViewController {
     //THIS IS TEMPORARY PLACEHOLDER DATA
     private var data = notesData
     private var searchController = UISearchController(searchResultsController: nil)
-    private var helper = UIHelper()
+    private var interface = InterfaceHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class HomeViewController: UITableViewController {
     }
     
     func registerDelegates() {
-        helper.delegate = self
+        interface.delegate = self
         tableView.dataSource = self
         tableView.delegate = self
         searchController.searchBar.delegate = self
@@ -69,9 +69,41 @@ class HomeViewController: UITableViewController {
         navigationController?.navigationBar.scrollEdgeAppearance = defaultAppearance
     }
     
+   private func sortUI() {
+        //1. CREATE AN ALERT FOR SORT BY
+        let alert = UIAlertController(title: "Sort By...", message: nil, preferredStyle: .actionSheet)
+        //2.CREATE DATE CREATED BUTTON
+        let dateCreated = UIAlertAction(title: "Date Created", style: .default) { (action) in
+            
+            
+            self.dismiss(animated: true, completion: nil)
+        }
+        //2.CREATE DATE MODIFIED BUTTON
+        let dateModified = UIAlertAction(title: "Date Modified", style: .default) { (action) in
+            
+            self.dismiss(animated: true, completion: nil)
+        }
+        //2.CREATE SORT BY NAME  BUTTON
+        let sortName = UIAlertAction(title: "Title", style: .default) { (action) in
+            
+            self.dismiss(animated: true, completion: nil)
+        }
+        //3.CREATE CANCEL BUTTON
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        //4.ADD ALL THE BUTTONS TO THE ALERT
+        alert.addAction(sortName)
+        alert.addAction(dateModified)
+        alert.addAction(dateCreated)
+        alert.addAction(cancelButton)
+        
+        //5.PRESENT THE ALERT
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func setNavigationItems() {
-        navigationItem.setRightBarButtonItems([helper.addButton, helper.selectButton], animated: true)
-        navigationItem.setLeftBarButtonItems([helper.moreButton], animated: true)
+        navigationItem.setRightBarButtonItems([interface.addButton, interface.selectButton], animated: true)
+        navigationItem.setLeftBarButtonItems([interface.moreButton], animated: true)
         searchController.searchBar.isHidden = false
         tableView.setEditing(false, animated: true)
     }
@@ -115,22 +147,60 @@ extension HomeViewController: UISearchBarDelegate {
 }
 
 //MARK:- UIHELPER DELEGATE METHODS
-extension HomeViewController: UIHelperDelegate {
-    func addTapped(_ helper: UIHelper) {
+extension HomeViewController: InterfaceHelperDelegate {
+    func addTapped(_ helper: InterfaceHelper) {
         print("From HomeViewController | \(#function) on line \(#line)")
     }
     
-    func selectTapped(_ helper: UIHelper) {
+    func selectTapped(_ helper: InterfaceHelper) {
         print("From HomeViewController | \(#function) on line \(#line)")
+        //1. Hide the searchController
+        searchController.searchBar.isHidden = true
+        //2. Change the mode to editing of TableView
+        tableView.allowsSelection = false
+        tableView.setEditing(false, animated: true)
+        tableView.setEditing(true, animated: true)
+        //3. change the barButtonItems
+        helper.trashbutton.isEnabled = false
+        navigationItem.setRightBarButtonItems([helper.donebutton], animated: true)
+        navigationItem.setLeftBarButtonItems([helper.trashbutton], animated: true)
     }
     
-    func moreTapped(_ helper: UIHelper) {
+    func moreTapped(_ helper: InterfaceHelper) {
+        print("From HomeViewController | \(#function) on line \(#line)")
+        //1. CREATE AN ALERT WITH TITLE 'OPTIONS
+        let alert = UIAlertController(title: "Options", message: nil, preferredStyle: .actionSheet)
+        //2. CREATE 'SORT BY' BUTTON
+        let sortBy = UIAlertAction(title: "Sort By...", style: .default) { (action) in
+            //CALL THE SORTUI FUNCITON
+            self.sortUI()
+            
+        }
+        //3.CREATE TRASH BUTTON
+        let trashButton = UIAlertAction(title: "Trash Bin", style: .destructive) { (action) in
+
+        }
+        let settings = UIAlertAction(title: "Settings", style: .default) { (action) in
+            
+        }
+        //4.CREATE CANCEL BUTTON
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        //5.ADD ALL THE BUTTONS TO THE ACTIONSHEET
+        alert.addAction(sortBy)
+        alert.addAction(settings)
+        alert.addAction(trashButton)
+        alert.addAction(cancelButton)
+        //6.PRESENT THE ALERT
+        present(alert, animated: true, completion: nil)
+
+    }
+    func trashTapped(_ helper: InterfaceHelper) {
         print("From HomeViewController | \(#function) on line \(#line)")
     }
-    func trashTapped(_ helper: UIHelper) {
+    func doneTapped(_ helper: InterfaceHelper) {
         print("From HomeViewController | \(#function) on line \(#line)")
-    }
-    func doneTapped(_ helper: UIHelper) {
-        print("From HomeViewController | \(#function) on line \(#line)")
+        tableView.setEditing(false, animated: true)
+        tableView.allowsSelection = true
+        setNavigationItems()
     }
 }
