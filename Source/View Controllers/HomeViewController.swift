@@ -40,7 +40,7 @@ class HomeViewController: UITableViewController {
         //ALLOW SELECTION OF MULTIPLE CELLS WHILE TABLEVIEW IS IN EDITING MODE
         tableView.allowsMultipleSelectionDuringEditing = true
         //REGISTER THE CUSTOM CELL TO THIS TABLEVIEW
-        tableView.register(UINib(nibName: cellConstants.cellNibName, bundle: nil), forCellReuseIdentifier: cellConstants.cellIdentifier)
+        tableView.register(UINib(nibName: cellConstants.nibName, bundle: nil), forCellReuseIdentifier: cellConstants.indetifier)
         //REGSITER THE CUSTOM HEADER TO THIS TABLEVIEW
         let headerNib = UINib.init(nibName: "SectionHeaderView", bundle: Bundle.main)
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: "SectionHeaderView")
@@ -84,11 +84,11 @@ class HomeViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return data.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellConstants.cellIdentifier, for: indexPath) as! listViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellConstants.indetifier, for: indexPath) as! listViewCell
         
         let cellData = notesData[indexPath.row]
         cell.noteTitle.text = cellData.title
@@ -102,7 +102,16 @@ class HomeViewController: UITableViewController {
 
 //MARK:- SEARCHBAR DELEGATE METHODS
 extension HomeViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        //SHOW THE CANCEL BUTTON WHEN THE SEARCHBAR IS ACTIVE
+        searchController.searchBar.setShowsCancelButton(true, animated: true)
+    }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        //MAKE THE SEARCHBAR ACTIVE AND SET THE TABLEVIEW ACCORDINGLY
+        searchController.searchBar.setShowsCancelButton(false, animated: true)
+//        self.tableView.reloadData()
+    }
 }
 
 //MARK:- UIHELPER DELEGATE METHODS

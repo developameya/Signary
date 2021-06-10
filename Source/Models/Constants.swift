@@ -16,8 +16,8 @@ public struct K {
     
     /// This struct contains constants for strings of cell indentifiers
     struct Cell {
-        static let cellNibName = "listViewCell"
-        static let cellIdentifier = "ReusableCell"
+        static let nibName = "listViewCell"
+        static let indetifier = "ReusableCell"
         static let settingsCellIdentifier = "SettingsCellIdentifier"
         static let trashCellIdentifier = "TrashCell"
     }
