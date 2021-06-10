@@ -18,8 +18,6 @@ public struct K {
     struct Cell {
         static let nibName = "listViewCell"
         static let indetifier = "ReusableCell"
-        static let settingsCellIdentifier = "SettingsCellIdentifier"
-        static let trashCellIdentifier = "TrashCell"
     }
     
     /// This struct contains string identifiers for 'Segues'

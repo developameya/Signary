@@ -178,7 +178,7 @@ extension HomeViewController: InterfaceHelperDelegate {
         }
         //3.CREATE TRASH BUTTON
         let trashButton = UIAlertAction(title: "Trash Bin", style: .destructive) { (action) in
-
+            self.performSegue(withIdentifier: segueConstants.trash, sender: self)
         }
         let settings = UIAlertAction(title: "Settings", style: .default) { (action) in
             

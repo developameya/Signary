@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		146947D926720EC900274B16 /* InterfaceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146947D826720EC900274B16 /* InterfaceHelper.swift */; };
+		146947DB2672330900274B16 /* Trash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 146947DA2672330900274B16 /* Trash.storyboard */; };
+		146947DD2672353600274B16 /* TrashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146947DC2672353600274B16 /* TrashViewController.swift */; };
 		14697BB42671EC8A0067A2FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14697BB32671EC8A0067A2FB /* AppDelegate.swift */; };
 		14697BB62671EC8A0067A2FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14697BB52671EC8A0067A2FB /* SceneDelegate.swift */; };
 		14697BBB2671EC8A0067A2FB /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14697BB92671EC8A0067A2FB /* Home.storyboard */; };
@@ -24,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		146947D826720EC900274B16 /* InterfaceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceHelper.swift; sourceTree = "<group>"; };
+		146947DA2672330900274B16 /* Trash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Trash.storyboard; sourceTree = "<group>"; };
+		146947DC2672353600274B16 /* TrashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashViewController.swift; sourceTree = "<group>"; };
 		14697BB02671EC8A0067A2FB /* Signary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Signary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14697BB32671EC8A0067A2FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14697BB52671EC8A0067A2FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				14697BCD267201690067A2FB /* HomeViewController.swift */,
+				146947DC2672353600274B16 /* TrashViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				14697BB92671EC8A0067A2FB /* Home.storyboard */,
+				146947DA2672330900274B16 /* Trash.storyboard */,
 			);
 			path = "Interface Builder";
 			sourceTree = "<group>";
@@ -226,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14697BD72672071E0067A2FB /* listViewCell.xib in Resources */,
+				146947DB2672330900274B16 /* Trash.storyboard in Resources */,
 				14697BC02671EC900067A2FB /* LaunchScreen.storyboard in Resources */,
 				14697BBD2671EC900067A2FB /* Assets.xcassets in Resources */,
 				14697BBB2671EC8A0067A2FB /* Home.storyboard in Resources */,
@@ -240,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14697BDB267208B50067A2FB /* TypeAliases.swift in Sources */,
+				146947DD2672353600274B16 /* TrashViewController.swift in Sources */,
 				14697BD9267208940067A2FB /* Constants.swift in Sources */,
 				14697BDF267209750067A2FB /* TestNotesModel.swift in Sources */,
 				14697BD82672071E0067A2FB /* listViewCell.swift in Sources */,

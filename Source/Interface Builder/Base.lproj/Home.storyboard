@@ -30,10 +30,23 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Bvn-Qr-aeR"/>
+                    <connections>
+                        <segue destination="Jen-El-M5n" kind="show" identifier="ToTrash" id="kAi-TE-tZ3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DyV-tB-ayE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1114.4927536231885" y="91.741071428571431"/>
+        </scene>
+        <!--Trash-->
+        <scene sceneID="XJ1-kO-qHr">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="trashView" storyboardName="Trash" id="Jen-El-M5n" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Qg2-jG-fd8"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gwE-yG-x3e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1716" y="92"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TLq-da-xvm">
