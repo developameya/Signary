@@ -10,6 +10,7 @@
 		146947D926720EC900274B16 /* HomeInterfaceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146947D826720EC900274B16 /* HomeInterfaceHelper.swift */; };
 		146947DB2672330900274B16 /* Trash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 146947DA2672330900274B16 /* Trash.storyboard */; };
 		146947DD2672353600274B16 /* TrashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146947DC2672353600274B16 /* TrashViewController.swift */; };
+		146947DF267245FF00274B16 /* TrashInterfaceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146947DE267245FF00274B16 /* TrashInterfaceHelper.swift */; };
 		14697BB42671EC8A0067A2FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14697BB32671EC8A0067A2FB /* AppDelegate.swift */; };
 		14697BB62671EC8A0067A2FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14697BB52671EC8A0067A2FB /* SceneDelegate.swift */; };
 		14697BBB2671EC8A0067A2FB /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14697BB92671EC8A0067A2FB /* Home.storyboard */; };
@@ -28,6 +29,7 @@
 		146947D826720EC900274B16 /* HomeInterfaceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInterfaceHelper.swift; sourceTree = "<group>"; };
 		146947DA2672330900274B16 /* Trash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Trash.storyboard; sourceTree = "<group>"; };
 		146947DC2672353600274B16 /* TrashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashViewController.swift; sourceTree = "<group>"; };
+		146947DE267245FF00274B16 /* TrashInterfaceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashInterfaceHelper.swift; sourceTree = "<group>"; };
 		14697BB02671EC8A0067A2FB /* Signary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Signary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14697BB32671EC8A0067A2FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14697BB52671EC8A0067A2FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				146947D826720EC900274B16 /* HomeInterfaceHelper.swift */,
+				146947DE267245FF00274B16 /* TrashInterfaceHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				14697BE0267209780067A2FB /* NotesData.swift in Sources */,
 				14697BB62671EC8A0067A2FB /* SceneDelegate.swift in Sources */,
 				14697BCE267201690067A2FB /* HomeViewController.swift in Sources */,
+				146947DF267245FF00274B16 /* TrashInterfaceHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

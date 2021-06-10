@@ -8,11 +8,13 @@
 import UIKit
 
 class HomeViewController: UITableViewController {
+    //MARK:- PROPERTIES
     //THIS IS TEMPORARY PLACEHOLDER DATA
     private var data = notesData
     private var searchController = UISearchController(searchResultsController: nil)
     private var interface = HomeInterfaceHelper()
     
+    //MARK:- INIT
     override func viewDidLoad() {
         super.viewDidLoad()
         registerDelegates()
@@ -21,7 +23,7 @@ class HomeViewController: UITableViewController {
         NavigationBarUI()
     }
     
-    func registerDelegates() {
+  private func registerDelegates() {
         interface.delegate = self
         tableView.dataSource = self
         tableView.delegate = self
@@ -146,7 +148,7 @@ extension HomeViewController: UISearchBarDelegate {
     }
 }
 
-//MARK:- UIHELPER DELEGATE METHODS
+//MARK:- INTERFACE DELEGATE METHODS
 extension HomeViewController: HomeInterfaceHelperDelegate {
     func addTapped(_ helper: HomeInterfaceHelper) {
         print("From HomeViewController | \(#function) on line \(#line)")
@@ -194,9 +196,11 @@ extension HomeViewController: HomeInterfaceHelperDelegate {
         present(alert, animated: true, completion: nil)
 
     }
+    
     func trashTapped(_ helper: HomeInterfaceHelper) {
         print("From HomeViewController | \(#function) on line \(#line)")
     }
+    
     func doneTapped(_ helper: HomeInterfaceHelper) {
         print("From HomeViewController | \(#function) on line \(#line)")
         tableView.setEditing(false, animated: true)
