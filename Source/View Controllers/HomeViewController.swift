@@ -11,7 +11,7 @@ class HomeViewController: UITableViewController {
     //THIS IS TEMPORARY PLACEHOLDER DATA
     private var data = notesData
     private var searchController = UISearchController(searchResultsController: nil)
-    private var interface = InterfaceHelper()
+    private var interface = HomeInterfaceHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,12 +147,12 @@ extension HomeViewController: UISearchBarDelegate {
 }
 
 //MARK:- UIHELPER DELEGATE METHODS
-extension HomeViewController: InterfaceHelperDelegate {
-    func addTapped(_ helper: InterfaceHelper) {
+extension HomeViewController: HomeInterfaceHelperDelegate {
+    func addTapped(_ helper: HomeInterfaceHelper) {
         print("From HomeViewController | \(#function) on line \(#line)")
     }
     
-    func selectTapped(_ helper: InterfaceHelper) {
+    func selectTapped(_ helper: HomeInterfaceHelper) {
         print("From HomeViewController | \(#function) on line \(#line)")
         //1. Hide the searchController
         searchController.searchBar.isHidden = true
@@ -166,7 +166,7 @@ extension HomeViewController: InterfaceHelperDelegate {
         navigationItem.setLeftBarButtonItems([helper.trashbutton], animated: true)
     }
     
-    func moreTapped(_ helper: InterfaceHelper) {
+    func moreTapped(_ helper: HomeInterfaceHelper) {
         print("From HomeViewController | \(#function) on line \(#line)")
         //1. CREATE AN ALERT WITH TITLE 'OPTIONS
         let alert = UIAlertController(title: "Options", message: nil, preferredStyle: .actionSheet)
@@ -194,10 +194,10 @@ extension HomeViewController: InterfaceHelperDelegate {
         present(alert, animated: true, completion: nil)
 
     }
-    func trashTapped(_ helper: InterfaceHelper) {
+    func trashTapped(_ helper: HomeInterfaceHelper) {
         print("From HomeViewController | \(#function) on line \(#line)")
     }
-    func doneTapped(_ helper: InterfaceHelper) {
+    func doneTapped(_ helper: HomeInterfaceHelper) {
         print("From HomeViewController | \(#function) on line \(#line)")
         tableView.setEditing(false, animated: true)
         tableView.allowsSelection = true
