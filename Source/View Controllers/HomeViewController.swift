@@ -109,9 +109,18 @@ class HomeViewController: UITableViewController {
         searchController.searchBar.isHidden = false
         tableView.setEditing(false, animated: true)
     }
-    
-    // MARK: - TABLEVIEW DATA SOURCE METHODS
-    
+}
+
+// MARK: - TABLEVIEW DELEGATE METHODS
+
+extension HomeViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: segueConstants.tapToEditor, sender: self)
+    }
+}
+// MARK: - TABLEVIEW DATA SOURCE METHODS
+extension HomeViewController {
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1

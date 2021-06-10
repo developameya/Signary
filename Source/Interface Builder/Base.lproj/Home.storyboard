@@ -22,6 +22,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="oTc-2b-yCg" kind="show" identifier="tapToEditor" id="Uwp-12-ehA"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -36,7 +39,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DyV-tB-ayE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1114.4927536231885" y="91.741071428571431"/>
+            <point key="canvasLocation" x="1001" y="92"/>
         </scene>
         <!--Trash-->
         <scene sceneID="XJ1-kO-qHr">
@@ -46,7 +49,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gwE-yG-x3e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1716" y="92"/>
+            <point key="canvasLocation" x="1739" y="204"/>
+        </scene>
+        <!--EditorView-->
+        <scene sceneID="vUa-m2-8Fq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Editor" referencedIdentifier="EditorView" id="oTc-2b-yCg" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="bam-yr-9xq"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DKj-PZ-NMt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1761" y="161"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TLq-da-xvm">
