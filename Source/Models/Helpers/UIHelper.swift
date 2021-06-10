@@ -25,7 +25,6 @@ class UIHelper {
     
     init() {
         registerBarButtons()
-        
     }
     
     func registerBarButtons() {
