@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E232" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="NoteContent" representedClassName="NoteContent" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <relationship name="metaData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NoteMetaData" inverseName="content" inverseEntity="NoteMetaData"/>
+    </entity>
+    <entity name="NoteMetaData" representedClassName="NoteMetaData" syncable="YES">
+        <attribute name="colour" optional="YES" attributeType="Transformable" valueTransformerName=""/>
+        <attribute name="dateCreated" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateModified" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isClear" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isPinned" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isTrashed" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="content" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NoteContent" inverseName="metaData" inverseEntity="NoteContent"/>
+    </entity>
+    <elements>
+        <element name="NoteMetaData" positionX="-54" positionY="-9" width="128" height="149"/>
+        <element name="NoteContent" positionX="-36" positionY="63" width="128" height="74"/>
+    </elements>
+</model>

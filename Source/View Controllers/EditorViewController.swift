@@ -11,7 +11,7 @@ class EditorViewController: UIViewController, UITextViewDelegate {
     //MARK:- PROPERTIES
     @IBOutlet weak var textView: UITextView!
     
-    //MARK:-INIT
+    //MARK:- INIT
     override func viewDidLoad() {
         super.viewDidLoad()
         textViewUI()
