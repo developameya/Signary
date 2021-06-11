@@ -9,15 +9,16 @@
 import UIKit
 
 class listViewCell: UITableViewCell {
-    @IBOutlet weak var noteTitle: UILabel!
     @IBOutlet weak var tags: UILabel!
     @IBOutlet weak var noteDescription: UILabel!
     @IBOutlet weak var colourBar: UIView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var content: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         contentView.backgroundColor = UIColor(named: "cellBackground")
+        noteDescription.lineBreakMode = .byCharWrapping
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -10,7 +10,7 @@ import Foundation
 
 public var notesData : [Notes] = [
     Notes(title: "This is the title of the note", body: "This is were the description of the note will be written"),
-    Notes(title: "what's cooking", body: "what is being cooked, one may never know, but I'll always be the sus"),
+    Notes(title: "what's cooking", body: "what is being cooked, one may never know,\n but I'll always be the sus"),
     Notes(title: "nothing gory here", body: "Random description writing is quite tough when the lack of imagination is too real."),
     Notes(title: "Why are we here, just to suffer", body: "I have not tasted candy in a while tbh."),
     Notes(title: "How this is going to go?", body: "This app business is a bit tough, but the whole puzzle solving stuff is really attractive. That being said there are some frustrating days, where I feel like this is my limit, can't go ahead with it. Then I find the limitation was the method I was pursuing. Then I get positive vibes as in, at least there are ton more ways to find the solution and I have definitely eliminated one of them. Cheers!"),

@@ -88,7 +88,6 @@ class TrashViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellConstants.indetifier, for: indexPath) as! listViewCell
         let cellData = data[indexPath.row]
         cell.noteDescription.text = cellData.body
-        cell.noteTitle.text = cellData.title
         cell.dateLabel.text = "0"
         cell.colourBar.backgroundColor = .green
         

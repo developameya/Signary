@@ -134,12 +134,27 @@ extension HomeViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellConstants.indetifier, for: indexPath) as! listViewCell
         
         let cellData = notesData[indexPath.row]
-        cell.noteTitle.text = cellData.title
         cell.noteDescription.text = cellData.body
+        cell.noteDescription.attributedText = highlightFirstLine(dataString: cell.noteDescription.text!)
         cell.dateLabel.text = "0"
         cell.colourBar.backgroundColor = .cyan
         
         return cell
+    }
+    
+    private func highlightFirstLine(dataString: String, font: UIFont = UIFont.preferredFont(forTextStyle: .headline)) -> NSAttributedString {
+        
+        let textAsNSString = dataString as NSString
+        let lineBreakRange = textAsNSString.range(of: "/n")
+        let boldRange: NSRange
+        let mutableAttributedString = NSMutableAttributedString(string: dataString)
+        if lineBreakRange.location < textAsNSString.length {
+            boldRange = NSRange(location: 0, length: lineBreakRange.location)
+        } else {
+            boldRange = NSRange(location: 0, length: textAsNSString.length)
+        }
+        mutableAttributedString.addAttribute(NSAttributedString.Key.font, value: font, range: boldRange)
+      return mutableAttributedString
     }
 }
 
