@@ -10,9 +10,9 @@ import UIKit
 class HomeViewController: UITableViewController {
     //MARK:- PROPERTIES
     //THIS IS TEMPORARY PLACEHOLDER DATA
-    private var data = notesData
-    private var searchController = UISearchController(searchResultsController: nil)
-    private var interface = HomeInterfaceHelper()
+    private let data = notesData
+    private let searchController = UISearchController(searchResultsController: nil)
+    private let interface = HomeInterfaceHelper()
     
     //MARK:- INIT
     override func viewDidLoad() {
@@ -169,7 +169,6 @@ extension HomeViewController: HomeInterfaceHelperDelegate {
         searchController.searchBar.isHidden = true
         //2. Change the mode to editing of TableView
         tableView.allowsSelection = false
-        tableView.setEditing(false, animated: true)
         tableView.setEditing(true, animated: true)
         //3. change the barButtonItems
         helper.trashbutton.isEnabled = false
@@ -183,12 +182,13 @@ extension HomeViewController: HomeInterfaceHelperDelegate {
         let alert = UIAlertController(title: "Options", message: nil, preferredStyle: .actionSheet)
         //2. CREATE 'SORT BY' BUTTON
         let sortBy = UIAlertAction(title: "Sort By...", style: .default) { (action) in
-            //CALL THE SORTUI FUNCITON
+            //PRESENT SORTING OPTIONS
             self.sortUI()
             
         }
         //3.CREATE TRASH BUTTON
         let trashButton = UIAlertAction(title: "Trash Bin", style: .destructive) { (action) in
+            //PRESENT TRASH VIEW
             self.performSegue(withIdentifier: segueConstants.trash, sender: self)
         }
         let settings = UIAlertAction(title: "Settings", style: .default) { (action) in

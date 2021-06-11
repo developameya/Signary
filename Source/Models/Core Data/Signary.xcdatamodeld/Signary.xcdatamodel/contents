@@ -16,7 +16,7 @@
         <relationship name="content" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NoteContent" inverseName="metaData" inverseEntity="NoteContent"/>
     </entity>
     <elements>
-        <element name="NoteMetaData" positionX="-54" positionY="-9" width="128" height="149"/>
         <element name="NoteContent" positionX="-36" positionY="63" width="128" height="74"/>
+        <element name="NoteMetaData" positionX="-54" positionY="-9" width="128" height="149"/>
     </elements>
 </model>
