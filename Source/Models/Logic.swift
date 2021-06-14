@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 ///This class provides the logic to load appropriate data as called by the app.
 class Logic: DataManager {
@@ -18,4 +19,17 @@ class Logic: DataManager {
         contentArray = [NoteContent]()
     }
     
+    func createNewNote() {
+        let newNote = NoteMetaData(context: managedContext!)
+        newNote.colour = UIColor.cyan
+        newNote.dateCreated = Date()
+        newNote.dateModified = Date()
+        let newUuid = UUID()
+        newNote.uuid = newUuid
+        let newContent = NoteContent(context: managedContext!)
+        newContent.text = "\(newUuid)"
+        newNote.content = newContent
+        metaDataArray?.append(newNote)
+        save()
+    }
 }

@@ -13,17 +13,17 @@ class DataManager {
     //MARK:- PROPERTIES
     
     private lazy var stack = CoreDataStack(modelName: "Signary")
-    var context: NSManagedObjectContext?
+    var managedContext: NSManagedObjectContext?
     
     //MARK:- INIT
     init() {
-        context = stack.managedContext
+        managedContext = stack.managedContext
     }
    
     /// The save function will be called to save the data stored in cotext to the coreData persistant data store.
     func save() {
         do {
-            try self.context?.save()
+            try self.managedContext?.save()
         } catch{
             print("Error saving data to context. Error: \(error)")
         }
@@ -36,7 +36,7 @@ class DataManager {
     func loadList (with request: NSFetchRequest<NoteMetaData> = NoteMetaData.fetchRequest(),loadto array: inout [NoteMetaData]?) {
         // use 'inout' for parameters which need to be mutable within the function
         do {
-            array = try context?.fetch(request)
+            array = try managedContext?.fetch(request)
         }catch{
             print("Error fetching the request. Error \(error)")
         }

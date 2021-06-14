@@ -9,9 +9,9 @@
         <attribute name="colour" optional="YES" attributeType="Transformable" valueTransformerName=""/>
         <attribute name="dateCreated" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dateModified" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="isClear" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isPinned" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isTrashed" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isClear" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="isPinned" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isTrashed" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="content" maxCount="1" deletionRule="Nullify" destinationEntity="NoteContent" inverseName="metaData" inverseEntity="NoteContent"/>
     </entity>

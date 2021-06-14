@@ -13,6 +13,7 @@ class HomeViewController: UITableViewController {
     private let data = notesData
     private let searchController = UISearchController(searchResultsController: nil)
     private let interface = HomeInterfaceHelper()
+    private let logic = Logic()
     
     //MARK:- INIT
     override func viewDidLoad() {
@@ -21,6 +22,9 @@ class HomeViewController: UITableViewController {
         tableViewUI()
         searchUI()
         NavigationBarUI()
+        
+        //TO CHECK THE DATABASE LOCATION ON THE COMPUTER, UNCOMMENT THIS LINE
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
     
   private func registerDelegates() {
@@ -189,6 +193,7 @@ extension HomeViewController: UISearchBarDelegate {
 extension HomeViewController: HomeInterfaceHelperDelegate {
     func addTapped(_ helper: HomeInterfaceHelper) {
         print("From HomeViewController | \(#function) on line \(#line)")
+        logic.createNewNote()
         performSegue(withIdentifier: segueConstants.newEditor, sender: self)
     }
     
