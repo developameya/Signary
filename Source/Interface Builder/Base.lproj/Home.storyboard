@@ -23,7 +23,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="oTc-2b-yCg" kind="show" identifier="tapToEditor" id="Uwp-12-ehA"/>
+                                    <segue destination="oTc-2b-yCg" kind="show" identifier="cellToEditor" id="Uwp-12-ehA"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -35,6 +35,7 @@
                     <navigationItem key="navigationItem" id="Bvn-Qr-aeR"/>
                     <connections>
                         <segue destination="Jen-El-M5n" kind="show" identifier="ToTrash" id="kAi-TE-tZ3"/>
+                        <segue destination="oTc-2b-yCg" kind="show" identifier="newEditor" id="d2W-S8-Edw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DyV-tB-ayE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -49,7 +50,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gwE-yG-x3e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1739" y="204"/>
+            <point key="canvasLocation" x="1000" y="513"/>
         </scene>
         <!--EditorView-->
         <scene sceneID="vUa-m2-8Fq">
@@ -59,7 +60,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKj-PZ-NMt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1761" y="161"/>
+            <point key="canvasLocation" x="1828" y="92"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TLq-da-xvm">
@@ -80,4 +81,7 @@
             <point key="canvasLocation" x="204.34782608695653" y="91.741071428571431"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="d2W-S8-Edw"/>
+    </inferredMetricsTieBreakers>
 </document>

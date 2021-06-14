@@ -9,6 +9,7 @@ import UIKit
 
 class EditorViewController: UIViewController, UITextViewDelegate {
     //MARK:- PROPERTIES
+    var content: String?
     @IBOutlet weak var textView: UITextView!
     
     //MARK:- INIT
@@ -22,6 +23,7 @@ class EditorViewController: UIViewController, UITextViewDelegate {
     
     private func textViewUI() {
         textView.delegate = self
+        textView.text = content
     }
     
     private func setBarButtonsItems() {

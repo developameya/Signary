@@ -30,6 +30,19 @@ class HomeViewController: UITableViewController {
         searchController.searchBar.delegate = self
     }
     
+    //MARK:- NAVIGATION
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! EditorViewController
+        switch segue.identifier {
+        case segueConstants.newEditor:
+            destinationVC.content = ""
+        case segueConstants.cellToEditor:
+            destinationVC.content = "Default"
+        default:
+            break
+        }
+    }
+    
     //MARK:-    USER INTERFACE METHODS
     
     private func tableViewUI() {
@@ -115,7 +128,7 @@ class HomeViewController: UITableViewController {
 
 extension HomeViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: segueConstants.tapToEditor, sender: self)
+        performSegue(withIdentifier: segueConstants.cellToEditor, sender: self)
     }
 }
 // MARK: - TABLEVIEW DATA SOURCE METHODS
@@ -132,9 +145,9 @@ extension HomeViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellConstants.indetifier, for: indexPath) as! listViewCell
-        
         let cellData = notesData[indexPath.row]
         cell.content.text = cellData.body
+        //FIXME: THE HIGHLIGHT OF THE FIRST ROW RANDOMALLY STOPS WORKING WHILE SCROLLING THE TABLE
         highlightFirstLine(in: cell)
         cell.dateLabel.text = "0"
         cell.colourBar.backgroundColor = .cyan
@@ -176,6 +189,7 @@ extension HomeViewController: UISearchBarDelegate {
 extension HomeViewController: HomeInterfaceHelperDelegate {
     func addTapped(_ helper: HomeInterfaceHelper) {
         print("From HomeViewController | \(#function) on line \(#line)")
+        performSegue(withIdentifier: segueConstants.newEditor, sender: self)
     }
     
     func selectTapped(_ helper: HomeInterfaceHelper) {

@@ -22,8 +22,8 @@ public struct K {
     
     /// This struct contains string identifiers for 'Segues'
     struct Segue {
-        static let editor = "ToEditor"
-        static let tapToEditor = "tapToEditor"
+        static let newEditor = "newEditor"
+        static let cellToEditor = "cellToEditor"
         static let trash = "ToTrash"
         static let settings = "toSettings"
         static let dimissBio = "dismissBioMetrics"
