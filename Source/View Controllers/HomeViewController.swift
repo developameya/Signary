@@ -134,7 +134,7 @@ extension HomeViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellConstants.indetifier, for: indexPath) as! listViewCell
         
         let cellData = notesData[indexPath.row]
-        cell.noteDescription.text = cellData.body
+        cell.content.text = cellData.body
         highlightFirstLine(cell: cell)
         cell.dateLabel.text = "0"
         cell.colourBar.backgroundColor = .cyan
@@ -144,17 +144,17 @@ extension HomeViewController {
     
     private func highlightFirstLine(cell: listViewCell, font: UIFont = UIFont.preferredFont(forTextStyle: .headline)) {
         
-        let textAsNSString = cell.noteDescription.text! as NSString
+        let textAsNSString = cell.content.text! as NSString
         let lineBreakRange = textAsNSString.range(of: "\n")
         let boldRange: NSRange
-        let newAttributedText = NSMutableAttributedString(attributedString: cell.noteDescription.attributedText!)
+        let newAttributedText = NSMutableAttributedString(attributedString: cell.content.attributedText!)
         if lineBreakRange.location < textAsNSString.length {
             boldRange = NSRange(location: 0, length: lineBreakRange.location)
         } else {
             boldRange = NSRange(location: 0, length: textAsNSString.length)
         }
         newAttributedText.addAttribute(NSAttributedString.Key.font, value: font, range: boldRange)
-        cell.noteDescription.attributedText = newAttributedText
+        cell.content.attributedText = newAttributedText
     }
 }
 

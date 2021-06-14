@@ -37,7 +37,7 @@
                         <color key="textColor" red="0.59607843140000005" green="0.58431372550000005" blue="0.58431372550000005" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zyr-I6-3yl">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zyr-I6-3yl">
                         <rect key="frame" x="12" y="12" width="258" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.59607843137254901" green="0.58431372549019611" blue="0.58431372549019611" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
@@ -58,9 +58,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="colourBar" destination="1tg-Ht-5hc" id="4X2-BT-ved"/>
-                <outlet property="content" destination="H2p-sc-9uM" id="e35-RE-K3Z"/>
+                <outlet property="content" destination="Zyr-I6-3yl" id="aDc-sp-fkX"/>
                 <outlet property="dateLabel" destination="eaH-3j-iEB" id="3QO-55-eVd"/>
-                <outlet property="noteDescription" destination="Zyr-I6-3yl" id="aDc-sp-fkX"/>
             </connections>
             <point key="canvasLocation" x="383" y="-40"/>
         </tableViewCell>
