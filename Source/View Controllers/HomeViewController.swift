@@ -135,14 +135,14 @@ extension HomeViewController {
         
         let cellData = notesData[indexPath.row]
         cell.content.text = cellData.body
-        highlightFirstLine(cell: cell)
+        highlightFirstLine(in: cell)
         cell.dateLabel.text = "0"
         cell.colourBar.backgroundColor = .cyan
         
         return cell
     }
     
-    private func highlightFirstLine(cell: listViewCell, font: UIFont = UIFont.preferredFont(forTextStyle: .headline)) {
+    private func highlightFirstLine(in cell: listViewCell, font: UIFont = UIFont.preferredFont(forTextStyle: .headline)) {
         
         let textAsNSString = cell.content.text! as NSString
         let lineBreakRange = textAsNSString.range(of: "\n")
