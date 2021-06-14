@@ -9,9 +9,11 @@ import Foundation
 import CoreData
 
 class CoreDataStack {
+    
     //MARK:- INIT
     init(modelName: String) {
         self.modelName = modelName
+        ColorValueTransformer.register()
     }
     //MARK:- PROPERTIES
     private let modelName: String
