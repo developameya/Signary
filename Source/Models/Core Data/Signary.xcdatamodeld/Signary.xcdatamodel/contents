@@ -3,7 +3,7 @@
     <entity name="NoteContent" representedClassName="NoteContent" syncable="YES">
         <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="text" optional="YES" attributeType="String"/>
-        <relationship name="metaData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NoteMetaData" inverseName="content" inverseEntity="NoteMetaData"/>
+        <relationship name="metaData" maxCount="1" deletionRule="Nullify" destinationEntity="NoteMetaData" inverseName="content" inverseEntity="NoteMetaData"/>
     </entity>
     <entity name="NoteMetaData" representedClassName="NoteMetaData" syncable="YES">
         <attribute name="colour" optional="YES" attributeType="Transformable" valueTransformerName=""/>
@@ -13,7 +13,7 @@
         <attribute name="isPinned" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isTrashed" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="content" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NoteContent" inverseName="metaData" inverseEntity="NoteContent"/>
+        <relationship name="content" maxCount="1" deletionRule="Nullify" destinationEntity="NoteContent" inverseName="metaData" inverseEntity="NoteContent"/>
     </entity>
     <elements>
         <element name="NoteContent" positionX="-36" positionY="63" width="128" height="74"/>

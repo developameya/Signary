@@ -135,26 +135,26 @@ extension HomeViewController {
         
         let cellData = notesData[indexPath.row]
         cell.noteDescription.text = cellData.body
-        cell.noteDescription.attributedText = highlightFirstLine(dataString: cell.noteDescription.text!)
+        highlightFirstLine(cell: cell)
         cell.dateLabel.text = "0"
         cell.colourBar.backgroundColor = .cyan
         
         return cell
     }
     
-    private func highlightFirstLine(dataString: String, font: UIFont = UIFont.preferredFont(forTextStyle: .headline)) -> NSAttributedString {
+    private func highlightFirstLine(cell: listViewCell, font: UIFont = UIFont.preferredFont(forTextStyle: .headline)) {
         
-        let textAsNSString = dataString as NSString
-        let lineBreakRange = textAsNSString.range(of: "/n")
+        let textAsNSString = cell.noteDescription.text! as NSString
+        let lineBreakRange = textAsNSString.range(of: "\n")
         let boldRange: NSRange
-        let mutableAttributedString = NSMutableAttributedString(string: dataString)
+        let newAttributedText = NSMutableAttributedString(attributedString: cell.noteDescription.attributedText!)
         if lineBreakRange.location < textAsNSString.length {
             boldRange = NSRange(location: 0, length: lineBreakRange.location)
         } else {
             boldRange = NSRange(location: 0, length: textAsNSString.length)
         }
-        mutableAttributedString.addAttribute(NSAttributedString.Key.font, value: font, range: boldRange)
-      return mutableAttributedString
+        newAttributedText.addAttribute(NSAttributedString.Key.font, value: font, range: boldRange)
+        cell.noteDescription.attributedText = newAttributedText
     }
 }
 
