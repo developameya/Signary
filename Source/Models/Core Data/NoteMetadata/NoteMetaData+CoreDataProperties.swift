@@ -2,7 +2,7 @@
 //  NoteMetaData+CoreDataProperties.swift
 //  Signary
 //
-//  Created by Ameya Bhagat on 11/06/21.
+//  Created by Ameya Bhagat on 14/06/21.
 //
 //
 
@@ -22,7 +22,7 @@ extension NoteMetaData {
     @NSManaged public var isClear: Bool
     @NSManaged public var isPinned: Bool
     @NSManaged public var isTrashed: Bool
-    @NSManaged public var uuid: UUID?
+    @NSManaged public var uuid: String?
     @NSManaged public var content: NoteContent?
 
 }

@@ -21,14 +21,18 @@ class Logic: DataManager {
     
     func createNewNote() {
         let newNote = NoteMetaData(context: managedContext!)
+        let newContent = NoteContent(context: managedContext!)
+        let newUuid = UUID()
+        
         newNote.colour = UIColor.cyan
         newNote.dateCreated = Date()
         newNote.dateModified = Date()
-        let newUuid = UUID()
-        newNote.uuid = newUuid
-        let newContent = NoteContent(context: managedContext!)
-        newContent.text = "\(newUuid)"
+        newNote.uuid = newUuid.uuidString
         newNote.content = newContent
+        
+        newContent.text = "\(newUuid)"
+        newContent.uuid = newUuid.uuidString
+        
         metaDataArray?.append(newNote)
         save()
     }

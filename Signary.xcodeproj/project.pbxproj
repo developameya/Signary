@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		145C35142673439700D88C54 /* Signary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 145C35122673439700D88C54 /* Signary.xcdatamodeld */; };
-		145C3519267359B700D88C54 /* NoteMetaData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C3515267359B700D88C54 /* NoteMetaData+CoreDataClass.swift */; };
-		145C351A267359B700D88C54 /* NoteMetaData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C3516267359B700D88C54 /* NoteMetaData+CoreDataProperties.swift */; };
-		145C351B267359B700D88C54 /* NoteContent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C3517267359B700D88C54 /* NoteContent+CoreDataClass.swift */; };
-		145C351C267359B700D88C54 /* NoteContent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C3518267359B700D88C54 /* NoteContent+CoreDataProperties.swift */; };
 		145C35202673606600D88C54 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C351F2673606600D88C54 /* CoreDataStack.swift */; };
 		145C352226736A5E00D88C54 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C352126736A5E00D88C54 /* DataManager.swift */; };
 		145C35242674847700D88C54 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C35232674847700D88C54 /* Logic.swift */; };
 		145C352D267759A800D88C54 /* ColorValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C352C267759A800D88C54 /* ColorValueTransformer.swift */; };
+		145C35332677624700D88C54 /* NoteContent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C352F2677624700D88C54 /* NoteContent+CoreDataClass.swift */; };
+		145C35342677624700D88C54 /* NoteContent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C35302677624700D88C54 /* NoteContent+CoreDataProperties.swift */; };
+		145C35352677624700D88C54 /* NoteMetaData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C35312677624700D88C54 /* NoteMetaData+CoreDataClass.swift */; };
+		145C35362677624700D88C54 /* NoteMetaData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C35322677624700D88C54 /* NoteMetaData+CoreDataProperties.swift */; };
 		146947D926720EC900274B16 /* HomeInterfaceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146947D826720EC900274B16 /* HomeInterfaceHelper.swift */; };
 		146947DB2672330900274B16 /* Trash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 146947DA2672330900274B16 /* Trash.storyboard */; };
 		146947DD2672353600274B16 /* TrashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146947DC2672353600274B16 /* TrashViewController.swift */; };
@@ -38,16 +38,17 @@
 
 /* Begin PBXFileReference section */
 		145C35132673439700D88C54 /* Signary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Signary.xcdatamodel; sourceTree = "<group>"; };
-		145C3515267359B700D88C54 /* NoteMetaData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteMetaData+CoreDataClass.swift"; sourceTree = "<group>"; };
-		145C3516267359B700D88C54 /* NoteMetaData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteMetaData+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		145C3517267359B700D88C54 /* NoteContent+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteContent+CoreDataClass.swift"; sourceTree = "<group>"; };
-		145C3518267359B700D88C54 /* NoteContent+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteContent+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		145C351F2673606600D88C54 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		145C352126736A5E00D88C54 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		145C35232674847700D88C54 /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
 		145C35272677504400D88C54 /* Signary v1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Signary v1.1.xcdatamodel"; sourceTree = "<group>"; };
 		145C352A2677516C00D88C54 /* Signary v1.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Signary v1.2.xcdatamodel"; sourceTree = "<group>"; };
 		145C352C267759A800D88C54 /* ColorValueTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorValueTransformer.swift; sourceTree = "<group>"; };
+		145C352E267761F400D88C54 /* Signary v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Signary v2.xcdatamodel"; sourceTree = "<group>"; };
+		145C352F2677624700D88C54 /* NoteContent+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteContent+CoreDataClass.swift"; sourceTree = "<group>"; };
+		145C35302677624700D88C54 /* NoteContent+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteContent+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		145C35312677624700D88C54 /* NoteMetaData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteMetaData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		145C35322677624700D88C54 /* NoteMetaData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteMetaData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		146947D826720EC900274B16 /* HomeInterfaceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInterfaceHelper.swift; sourceTree = "<group>"; };
 		146947DA2672330900274B16 /* Trash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Trash.storyboard; sourceTree = "<group>"; };
 		146947DC2672353600274B16 /* TrashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashViewController.swift; sourceTree = "<group>"; };
@@ -84,8 +85,8 @@
 		145C351D267359E200D88C54 /* NoteMetadata */ = {
 			isa = PBXGroup;
 			children = (
-				145C3515267359B700D88C54 /* NoteMetaData+CoreDataClass.swift */,
-				145C3516267359B700D88C54 /* NoteMetaData+CoreDataProperties.swift */,
+				145C35312677624700D88C54 /* NoteMetaData+CoreDataClass.swift */,
+				145C35322677624700D88C54 /* NoteMetaData+CoreDataProperties.swift */,
 			);
 			path = NoteMetadata;
 			sourceTree = "<group>";
@@ -93,8 +94,8 @@
 		145C351E267359EF00D88C54 /* NoteContent */ = {
 			isa = PBXGroup;
 			children = (
-				145C3517267359B700D88C54 /* NoteContent+CoreDataClass.swift */,
-				145C3518267359B700D88C54 /* NoteContent+CoreDataProperties.swift */,
+				145C352F2677624700D88C54 /* NoteContent+CoreDataClass.swift */,
+				145C35302677624700D88C54 /* NoteContent+CoreDataProperties.swift */,
 			);
 			path = NoteContent;
 			sourceTree = "<group>";
@@ -310,26 +311,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				14697BDB267208B50067A2FB /* TypeAliases.swift in Sources */,
-				145C351A267359B700D88C54 /* NoteMetaData+CoreDataProperties.swift in Sources */,
 				146947DD2672353600274B16 /* TrashViewController.swift in Sources */,
 				145C35202673606600D88C54 /* CoreDataStack.swift in Sources */,
+				145C35332677624700D88C54 /* NoteContent+CoreDataClass.swift in Sources */,
+				145C35352677624700D88C54 /* NoteMetaData+CoreDataClass.swift in Sources */,
+				145C35342677624700D88C54 /* NoteContent+CoreDataProperties.swift in Sources */,
 				14697BD9267208940067A2FB /* Constants.swift in Sources */,
 				14697BDF267209750067A2FB /* TestNotesModel.swift in Sources */,
 				145C35142673439700D88C54 /* Signary.xcdatamodeld in Sources */,
 				14697BD82672071E0067A2FB /* listViewCell.swift in Sources */,
 				14697BB42671EC8A0067A2FB /* AppDelegate.swift in Sources */,
-				145C351C267359B700D88C54 /* NoteContent+CoreDataProperties.swift in Sources */,
 				146947D926720EC900274B16 /* HomeInterfaceHelper.swift in Sources */,
 				146947E326724FF200274B16 /* EditorViewController.swift in Sources */,
 				14697BE0267209780067A2FB /* NotesData.swift in Sources */,
 				14697BB62671EC8A0067A2FB /* SceneDelegate.swift in Sources */,
 				145C352226736A5E00D88C54 /* DataManager.swift in Sources */,
+				145C35362677624700D88C54 /* NoteMetaData+CoreDataProperties.swift in Sources */,
 				14697BCE267201690067A2FB /* HomeViewController.swift in Sources */,
 				145C35242674847700D88C54 /* Logic.swift in Sources */,
-				145C3519267359B700D88C54 /* NoteMetaData+CoreDataClass.swift in Sources */,
 				146947DF267245FF00274B16 /* TrashInterfaceHelper.swift in Sources */,
 				145C352D267759A800D88C54 /* ColorValueTransformer.swift in Sources */,
-				145C351B267359B700D88C54 /* NoteContent+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,11 +539,12 @@
 		145C35122673439700D88C54 /* Signary.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				145C352E267761F400D88C54 /* Signary v2.xcdatamodel */,
 				145C352A2677516C00D88C54 /* Signary v1.2.xcdatamodel */,
 				145C35272677504400D88C54 /* Signary v1.1.xcdatamodel */,
 				145C35132673439700D88C54 /* Signary.xcdatamodel */,
 			);
-			currentVersion = 145C352A2677516C00D88C54 /* Signary v1.2.xcdatamodel */;
+			currentVersion = 145C352E267761F400D88C54 /* Signary v2.xcdatamodel */;
 			path = Signary.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
