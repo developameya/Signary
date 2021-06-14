@@ -29,6 +29,7 @@ class DataManager {
         }
     }
     
+    
     /// Loadlist will load the data from persistant store when called. This method can also be used to fetch data with specific request object of type NSRequest.
     /// - Parameters:
     ///   - request: Pass in the NSRequest object here with your query so that loadList can return the requested data
@@ -39,6 +40,32 @@ class DataManager {
             array = try managedContext?.fetch(request)
         }catch{
             print("Error fetching the request. Error \(error)")
+        }
+    }
+    
+    /// This will fetch all the objects of NoteMetaData entity from the CoreData context
+    /// - Parameter request: Pass a custom request to fetch data from context in the form of NSRequest.
+    /// - Returns: After succesful fetching of the data, this method will return a NoteMetaData array containing results matching the request.
+    func loadMetaData(with request: NSFetchRequest<NoteMetaData> = NoteMetaData.fetchRequest()) -> [NoteMetaData]? {
+        
+        do {
+            let array = try managedContext?.fetch(request)
+            return array
+        } catch  {
+            return nil
+        }
+    }
+    
+    /// This will fetch all the objects of NoteContent entity from the CoreData context
+    /// - Parameter request: Pass a custom request to fetch data from context in the form of NSRequest.
+    /// - Returns: After succesful fetching of the data, this method will return a NoteContent array containing results matching the request.
+    func loadContent(with request: NSFetchRequest<NoteContent> = NoteContent.fetchRequest()) -> [NoteContent]? {
+        
+        do {
+            let array = try managedContext?.fetch(request)
+            return array
+        } catch  {
+            return nil
         }
     }
     

@@ -15,8 +15,9 @@ class Logic: DataManager {
     
     override init() {
         super.init()
-        metaDataArray = [NoteMetaData]()
-        contentArray = [NoteContent]()
+        metaDataArray = loadMetaData()
+        contentArray = loadContent()
+        print(metaDataArray as Any)
     }
     
     func createNewNote() {
@@ -24,7 +25,7 @@ class Logic: DataManager {
         let newContent = NoteContent(context: managedContext!)
         let newUuid = UUID()
         
-        newNote.colour = UIColor.cyan
+        newNote.colour = UIColor.red
         newNote.dateCreated = Date()
         newNote.dateModified = Date()
         newNote.uuid = newUuid.uuidString

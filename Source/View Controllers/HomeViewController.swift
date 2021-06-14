@@ -14,8 +14,15 @@ class HomeViewController: UITableViewController {
     private let searchController = UISearchController(searchResultsController: nil)
     private let interface = HomeInterfaceHelper()
     private let logic = Logic()
+    private let dateFormatter = DateFormatter()
     
     //MARK:- INIT
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerDelegates()
@@ -23,6 +30,8 @@ class HomeViewController: UITableViewController {
         searchUI()
         NavigationBarUI()
         
+        //CHANGE THE STYLE OF DATE SHOWN IN THE CELL
+        dateFormatter.dateStyle = .short
         //TO CHECK THE DATABASE LOCATION ON THE COMPUTER, UNCOMMENT THIS LINE
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
@@ -144,17 +153,17 @@ extension HomeViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return logic.metaDataArray!.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellConstants.indetifier, for: indexPath) as! listViewCell
-        let cellData = notesData[indexPath.row]
-        cell.content.text = cellData.body
+        let cellData = logic.metaDataArray![indexPath.row]
+        cell.content.text = cellData.content?.text
         //FIXME: THE HIGHLIGHT OF THE FIRST ROW RANDOMALLY STOPS WORKING WHILE SCROLLING THE TABLE
         highlightFirstLine(in: cell)
-        cell.dateLabel.text = "0"
-        cell.colourBar.backgroundColor = .cyan
+        cell.dateLabel.text = dateFormatter.string(from: cellData.dateCreated!)
+        cell.colourBar.backgroundColor = cellData.colour as? UIColor
         
         return cell
     }
