@@ -17,7 +17,6 @@ class Logic: DataManager {
         super.init()
         metaDataArray = loadMetaData()
         contentArray = loadContent()
-        print(metaDataArray as Any)
     }
     
     func createNewNote() {
