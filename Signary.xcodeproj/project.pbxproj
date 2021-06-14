@@ -15,7 +15,7 @@
 		145C35202673606600D88C54 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C351F2673606600D88C54 /* CoreDataStack.swift */; };
 		145C352226736A5E00D88C54 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C352126736A5E00D88C54 /* DataManager.swift */; };
 		145C35242674847700D88C54 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C35232674847700D88C54 /* Logic.swift */; };
-		145C3529267750F400D88C54 /* UIColourTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C3528267750F400D88C54 /* UIColourTransformer.swift */; };
+		145C352D267759A800D88C54 /* ColorValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C352C267759A800D88C54 /* ColorValueTransformer.swift */; };
 		146947D926720EC900274B16 /* HomeInterfaceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146947D826720EC900274B16 /* HomeInterfaceHelper.swift */; };
 		146947DB2672330900274B16 /* Trash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 146947DA2672330900274B16 /* Trash.storyboard */; };
 		146947DD2672353600274B16 /* TrashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146947DC2672353600274B16 /* TrashViewController.swift */; };
@@ -46,8 +46,8 @@
 		145C352126736A5E00D88C54 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		145C35232674847700D88C54 /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
 		145C35272677504400D88C54 /* Signary v1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Signary v1.1.xcdatamodel"; sourceTree = "<group>"; };
-		145C3528267750F400D88C54 /* UIColourTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColourTransformer.swift; sourceTree = "<group>"; };
 		145C352A2677516C00D88C54 /* Signary v1.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Signary v1.2.xcdatamodel"; sourceTree = "<group>"; };
+		145C352C267759A800D88C54 /* ColorValueTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorValueTransformer.swift; sourceTree = "<group>"; };
 		146947D826720EC900274B16 /* HomeInterfaceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInterfaceHelper.swift; sourceTree = "<group>"; };
 		146947DA2672330900274B16 /* Trash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Trash.storyboard; sourceTree = "<group>"; };
 		146947DC2672353600274B16 /* TrashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashViewController.swift; sourceTree = "<group>"; };
@@ -114,8 +114,8 @@
 				145C35122673439700D88C54 /* Signary.xcdatamodeld */,
 				145C351D267359E200D88C54 /* NoteMetadata */,
 				145C351E267359EF00D88C54 /* NoteContent */,
-				145C3528267750F400D88C54 /* UIColourTransformer.swift */,
 				145C351F2673606600D88C54 /* CoreDataStack.swift */,
+				145C352C267759A800D88C54 /* ColorValueTransformer.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -323,12 +323,12 @@
 				146947E326724FF200274B16 /* EditorViewController.swift in Sources */,
 				14697BE0267209780067A2FB /* NotesData.swift in Sources */,
 				14697BB62671EC8A0067A2FB /* SceneDelegate.swift in Sources */,
-				145C3529267750F400D88C54 /* UIColourTransformer.swift in Sources */,
 				145C352226736A5E00D88C54 /* DataManager.swift in Sources */,
 				14697BCE267201690067A2FB /* HomeViewController.swift in Sources */,
 				145C35242674847700D88C54 /* Logic.swift in Sources */,
 				145C3519267359B700D88C54 /* NoteMetaData+CoreDataClass.swift in Sources */,
 				146947DF267245FF00274B16 /* TrashInterfaceHelper.swift in Sources */,
+				145C352D267759A800D88C54 /* ColorValueTransformer.swift in Sources */,
 				145C351B267359B700D88C54 /* NoteContent+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
