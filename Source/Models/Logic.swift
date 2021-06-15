@@ -12,6 +12,7 @@ import UIKit
 class Logic: DataManager {
     var metaDataArray: [NoteMetaData]?
     var contentArray: [NoteContent]?
+    var fetchedContent: NoteContent?
     
     override init() {
         super.init()
@@ -24,7 +25,7 @@ class Logic: DataManager {
         let newContent = NoteContent(context: managedContext!)
         let newUuid = UUID()
         
-        newNote.colour = UIColor.red
+        newNote.colour = UIColor.random()
         newNote.dateCreated = Date()
         newNote.dateModified = Date()
         newNote.uuid = newUuid.uuidString
@@ -35,5 +36,9 @@ class Logic: DataManager {
         
         metaDataArray?.append(newNote)
         save()
+    }
+    
+    func fetchNote(at indexPath: IndexPath) {
+        fetchedContent =  metaDataArray![indexPath.row].content
     }
 }

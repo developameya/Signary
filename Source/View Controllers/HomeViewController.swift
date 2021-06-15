@@ -48,9 +48,9 @@ class HomeViewController: UITableViewController {
         let destinationVC = segue.destination as! EditorViewController
         switch segue.identifier {
         case segueConstants.newEditor:
-            destinationVC.content = ""
+            destinationVC.content = nil
         case segueConstants.cellToEditor:
-            destinationVC.content = "Default"
+            destinationVC.content = logic.fetchedContent
         default:
             break
         }
@@ -141,6 +141,7 @@ class HomeViewController: UITableViewController {
 
 extension HomeViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        logic.fetchNote(at: indexPath)
         performSegue(withIdentifier: segueConstants.cellToEditor, sender: self)
     }
 }

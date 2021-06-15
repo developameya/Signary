@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import CoreData
 
 class EditorViewController: UIViewController, UITextViewDelegate {
     //MARK:- PROPERTIES
-    var content: String?
+    var content: NoteContent?
     @IBOutlet weak var textView: UITextView!
     
     //MARK:- INIT
@@ -23,7 +24,8 @@ class EditorViewController: UIViewController, UITextViewDelegate {
     
     private func textViewUI() {
         textView.delegate = self
-        textView.text = content
+        textView.text = content?.text
+        textView.highlightFirstLineInTextView()
     }
     
     private func setBarButtonsItems() {
