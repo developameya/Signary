@@ -8,7 +8,8 @@
 import UIKit
 
 public extension UITextView {
-    
+    /// Call this method to highlight the first line in the textView
+    /// - Parameter font: If you have custom font, pass it here as UIFont. This method uses 'largeTitle' text style of system font by default.
     func highlightFirstLineInTextView(font: UIFont = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.largeTitle)) {
         
         let textAsNSString = text as NSString
