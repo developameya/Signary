@@ -13,14 +13,16 @@ class HomeViewController: UITableViewController {
     private let data = notesData
     private let searchController = UISearchController(searchResultsController: nil)
     private let interface = HomeInterfaceHelper()
-    private let logic = Logic()
+    private var logic = Logic()
     private let dateFormatter = DateFormatter()
     
     //MARK:- INIT
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        logic.updateData()
         tableView.reloadData()
+        
     }
     
     override func viewDidLoad() {

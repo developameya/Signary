@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 /// This class will handle the common CoreData tasks for CRUD operations of persistant data store
-class DataManager {
+public class DataManager {
     //MARK:- PROPERTIES
     
     private lazy var stack = CoreDataStack(modelName: "Signary")
@@ -81,5 +81,26 @@ class DataManager {
         
         loadList(with: request, loadto: &array)
    
+    }
+    
+    func fetchMetaData(withid id: String) -> NoteMetaData? {
+        let request:NSFetchRequest<NoteMetaData> = NoteMetaData.fetchRequest()
+        let predicate = NSPredicate(format: "%K == %@", #keyPath(NoteContent.uuid), id as CVarArg)
+        request.predicate = predicate
+        let results:[NoteMetaData]
+        do {
+            results = try managedContext!.fetch(request)
+            return results.last!
+        } catch {
+            print("Error fetching data from coreData \(error).")
+            return nil
+        }
+        
+    }
+    
+    func deleteFromStore(metaData: NoteMetaData, content:NoteContent) {
+        managedContext?.delete(metaData)
+        managedContext?.delete(content)
+        save()
     }
 }
