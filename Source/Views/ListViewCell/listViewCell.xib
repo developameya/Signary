@@ -72,7 +72,7 @@
                 <outlet property="colourBar" destination="1tg-Ht-5hc" id="4X2-BT-ved"/>
                 <outlet property="contectView" destination="H2p-sc-9uM" id="e35-RE-K3Z"/>
                 <outlet property="dateLabel" destination="eaH-3j-iEB" id="3QO-55-eVd"/>
-                <outlet property="noteDescription" destination="Zyr-I6-3yl" id="aDc-sp-fkX"/>
+                <outlet property="noteDescription" destination="Zyr-I6-3yl" id="MW0-yN-aoQ"/>
                 <outlet property="noteTitle" destination="CvE-yq-70j" id="mIf-xW-C2c"/>
                 <outlet property="title" destination="CvE-yq-70j" id="qX8-x4-0it"/>
             </connections>

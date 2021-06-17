@@ -35,6 +35,10 @@
 		14697BE0267209780067A2FB /* NotesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14697BDE2672096D0067A2FB /* NotesData.swift */; };
 		148F5E52267B29B200EFE9AD /* TableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F5E51267B29B200EFE9AD /* TableSection.swift */; };
 		148F5E54267B335100EFE9AD /* listViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148F5E53267B335100EFE9AD /* listViewCell.xib */; };
+		148F5E57267B562200EFE9AD /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148F5E56267B562200EFE9AD /* SectionHeaderView.xib */; };
+		148F5E59267B563C00EFE9AD /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F5E58267B563C00EFE9AD /* SectionHeaderView.swift */; };
+		148F5E5B267B569900EFE9AD /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F5E5A267B569900EFE9AD /* UIViewExtension.swift */; };
+		148F5E5D267B58C300EFE9AD /* HomeViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F5E5C267B58C300EFE9AD /* HomeViewSectionHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +72,10 @@
 		14697BDE2672096D0067A2FB /* NotesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesData.swift; sourceTree = "<group>"; };
 		148F5E51267B29B200EFE9AD /* TableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSection.swift; sourceTree = "<group>"; };
 		148F5E53267B335100EFE9AD /* listViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = listViewCell.xib; sourceTree = "<group>"; };
+		148F5E56267B562200EFE9AD /* SectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
+		148F5E58267B563C00EFE9AD /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		148F5E5A267B569900EFE9AD /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		148F5E5C267B58C300EFE9AD /* HomeViewSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewSectionHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +106,7 @@
 			children = (
 				145C353A26789EF200D88C54 /* UIColorExtension.swift */,
 				145C353C2678BF8200D88C54 /* UITextViewExtension.swift */,
+				148F5E5A267B569900EFE9AD /* UIViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -206,7 +215,9 @@
 		14697BD3267206FA0067A2FB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				148F5E55267B560800EFE9AD /* SectionHeaderView */,
 				14697BD42672071E0067A2FB /* ListViewCell */,
+				148F5E5C267B58C300EFE9AD /* HomeViewSectionHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -227,6 +238,15 @@
 				14697BDE2672096D0067A2FB /* NotesData.swift */,
 			);
 			path = TestData;
+			sourceTree = "<group>";
+		};
+		148F5E55267B560800EFE9AD /* SectionHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				148F5E56267B562200EFE9AD /* SectionHeaderView.xib */,
+				148F5E58267B563C00EFE9AD /* SectionHeaderView.swift */,
+			);
+			path = SectionHeaderView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +312,7 @@
 				14697BC02671EC900067A2FB /* LaunchScreen.storyboard in Resources */,
 				14697BBD2671EC900067A2FB /* Assets.xcassets in Resources */,
 				14697BBB2671EC8A0067A2FB /* Home.storyboard in Resources */,
+				148F5E57267B562200EFE9AD /* SectionHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,13 +329,16 @@
 				14591342267B22CA00DC6488 /* CoreDataStack.swift in Sources */,
 				145C353D2678BF8200D88C54 /* UITextViewExtension.swift in Sources */,
 				14697BD9267208940067A2FB /* Constants.swift in Sources */,
+				148F5E5B267B569900EFE9AD /* UIViewExtension.swift in Sources */,
 				14697BDF267209750067A2FB /* TestNotesModel.swift in Sources */,
 				14697BD82672071E0067A2FB /* listViewCell.swift in Sources */,
 				14697BB42671EC8A0067A2FB /* AppDelegate.swift in Sources */,
+				148F5E59267B563C00EFE9AD /* SectionHeaderView.swift in Sources */,
 				1459134C267B264D00DC6488 /* Logic.swift in Sources */,
 				146947D926720EC900274B16 /* HomeInterfaceHelper.swift in Sources */,
 				146947E326724FF200274B16 /* EditorViewController.swift in Sources */,
 				148F5E52267B29B200EFE9AD /* TableSection.swift in Sources */,
+				148F5E5D267B58C300EFE9AD /* HomeViewSectionHeader.swift in Sources */,
 				14697BE0267209780067A2FB /* NotesData.swift in Sources */,
 				14591348267B23B700DC6488 /* Note+CoreDataProperties.swift in Sources */,
 				14697BB62671EC8A0067A2FB /* SceneDelegate.swift in Sources */,

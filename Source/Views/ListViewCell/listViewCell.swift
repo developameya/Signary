@@ -13,6 +13,7 @@ class listViewCell: UITableViewCell {
     @IBOutlet weak var colourBar: UIView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var cellView: UIView!
+    @IBOutlet weak var noteDescription: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
