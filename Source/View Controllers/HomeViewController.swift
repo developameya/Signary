@@ -9,29 +9,35 @@ import UIKit
 
 class HomeViewController: UITableViewController {
     //MARK:- PROPERTIES
-    //THIS IS TEMPORARY PLACEHOLDER DATA
-    private let data = notesData
+    private var logic = Logic()
+    private var cellData = Note()
     private let searchController = UISearchController(searchResultsController: nil)
     private let interface = HomeInterfaceHelper()
-    private var logic = Logic()
+    private var cellColour: UIColor?
+    var isCollapsed: Bool?
     private let dateFormatter = DateFormatter()
+    let sectionHeaderHeight: CGFloat = 34
+    var currentSection:Int?
     
     //MARK:- INIT
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        logic.updateData()
+        //CLEAR THE CELL SELECTION BEFORE THIS VIEW IS PRESENTED
+        clearsSelectionOnViewWillAppear = true
+        NavigationBarUI()
+        logic.dataFilter()
         tableView.reloadData()
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//      logic.dataFilter()
         registerDelegates()
         tableViewUI()
         searchUI()
         NavigationBarUI()
-        
+        isCollapsed = UserDefaults.standard.bool(forKey: "isPinnedCollapsed")
         //CHANGE THE STYLE OF DATE SHOWN IN THE CELL
         dateFormatter.dateStyle = .short
         //TO CHECK THE DATABASE LOCATION ON THE COMPUTER, UNCOMMENT THIS LINE

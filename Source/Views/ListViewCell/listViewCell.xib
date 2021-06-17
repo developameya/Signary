@@ -17,6 +17,21 @@
                 <rect key="frame" x="0.0" y="0.0" width="385" height="125"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zyr-I6-3yl">
+                        <rect key="frame" x="9" y="35" width="72.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.59607843137254901" green="0.58431372549019611" blue="0.58431372549019611" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="noteTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CvE-yq-70j">
+                        <rect key="frame" x="9" y="0.0" width="266" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="Tbk-99-9Vg"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tg-Ht-5hc">
                         <rect key="frame" x="0.0" y="-43" width="4" height="211"/>
                         <color key="backgroundColor" red="0.92156862750000001" green="0.23137254900000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -37,31 +52,31 @@
                         <color key="textColor" red="0.59607843140000005" green="0.58431372550000005" blue="0.58431372550000005" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zyr-I6-3yl">
-                        <rect key="frame" x="12" y="12" width="258" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="0.59607843137254901" green="0.58431372549019611" blue="0.58431372549019611" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="1tg-Ht-5hc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Eco-9h-NoF"/>
+                    <constraint firstItem="eaH-3j-iEB" firstAttribute="leading" secondItem="CvE-yq-70j" secondAttribute="trailing" constant="5" id="H2z-X4-qab"/>
                     <constraint firstAttribute="trailingMargin" secondItem="eaH-3j-iEB" secondAttribute="trailing" constant="5" id="Peh-Ta-Uig"/>
+                    <constraint firstItem="CvE-yq-70j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="RDO-m8-6Id"/>
+                    <constraint firstItem="Zyr-I6-3yl" firstAttribute="leading" secondItem="1tg-Ht-5hc" secondAttribute="trailing" constant="5" id="TKC-ed-sB7"/>
                     <constraint firstItem="1tg-Ht-5hc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ZOO-1J-Xr4"/>
-                    <constraint firstItem="Zyr-I6-3yl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="c6D-Eb-NUX"/>
                     <constraint firstItem="eaH-3j-iEB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="ct0-uy-Z5o"/>
-                    <constraint firstItem="Zyr-I6-3yl" firstAttribute="leading" secondItem="1tg-Ht-5hc" secondAttribute="leading" constant="12" id="lG0-wb-rOp"/>
+                    <constraint firstItem="Zyr-I6-3yl" firstAttribute="top" secondItem="CvE-yq-70j" secondAttribute="bottom" constant="5" id="dKi-wv-WS7"/>
                     <constraint firstItem="1tg-Ht-5hc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-54" id="lmv-gY-GLW"/>
-                    <constraint firstItem="eaH-3j-iEB" firstAttribute="leading" secondItem="Zyr-I6-3yl" secondAttribute="trailing" constant="10" id="nxX-uo-wL5"/>
+                    <constraint firstItem="CvE-yq-70j" firstAttribute="leading" secondItem="1tg-Ht-5hc" secondAttribute="trailing" constant="5" id="uoe-Od-gdu"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="cellView" destination="H2p-sc-9uM" id="eht-hD-WSe"/>
                 <outlet property="colourBar" destination="1tg-Ht-5hc" id="4X2-BT-ved"/>
-                <outlet property="content" destination="Zyr-I6-3yl" id="aDc-sp-fkX"/>
+                <outlet property="contectView" destination="H2p-sc-9uM" id="e35-RE-K3Z"/>
                 <outlet property="dateLabel" destination="eaH-3j-iEB" id="3QO-55-eVd"/>
+                <outlet property="noteDescription" destination="Zyr-I6-3yl" id="aDc-sp-fkX"/>
+                <outlet property="noteTitle" destination="CvE-yq-70j" id="mIf-xW-C2c"/>
+                <outlet property="title" destination="CvE-yq-70j" id="qX8-x4-0it"/>
             </connections>
-            <point key="canvasLocation" x="383" y="-40"/>
+            <point key="canvasLocation" x="163.04347826086959" y="100.78125"/>
         </tableViewCell>
     </objects>
 </document>

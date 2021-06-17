@@ -9,8 +9,7 @@
 import UIKit
 
 class listViewCell: UITableViewCell {
-    @IBOutlet weak var tags: UILabel!
-    @IBOutlet weak var content: UILabel!
+    @IBOutlet weak var title: UILabel!
     @IBOutlet weak var colourBar: UIView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var cellView: UIView!
@@ -18,7 +17,6 @@ class listViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         contentView.backgroundColor = UIColor(named: "cellBackground")
-        content.lineBreakMode = .byCharWrapping
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

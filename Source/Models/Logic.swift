@@ -5,7 +5,8 @@
 //  Created by Ameya Bhagat on 17/06/21.
 //
 
-import Foundation
+import UIKit
+import CoreData
 
 class Logic: DataManager {
     //MARK:- PROPERTIES
@@ -25,8 +26,8 @@ class Logic: DataManager {
     func dataFilter() {
         //LOAD THE DATA FROM COREDATA TO THE NOTEARRAY AND SORT IT BY DATE MODIFIED PARAMETER
         dataSort(query: K.SortBy.dateModified, asceding: false)
-        combinedData[.unpinned] = data.filter({$0.pin == false})
-        combinedData[.pinned] = data.filter({$0.pin == true})
+        combinedData[.unpinned] = data.filter({$0.isPinned == false})
+        combinedData[.pinned] = data.filter({$0.isPinned == true})
     }
     
     func dataSort(query: String, asceding: Bool) {
@@ -44,7 +45,7 @@ class Logic: DataManager {
 }
 
 //MARK:- DATA MARKING METHODS
-extension DataManager {
+extension Logic {
     
     //MARK: TRASH METHODS
     func moveOneToTrash(indexPath: IndexPath, tableView: UITableView) {
@@ -53,7 +54,7 @@ extension DataManager {
             switch thisTableSection {
             case .pinned:
                 //SET THE PIN STATUS OF THE OBJECT
-                data[indexPath.row].isTrash = true
+                data[indexPath.row].isTrashed = true
                 data[indexPath.row].dateModified = Date()
                 //START THE TABLEVIEW UPDATE BLOCK
                 tableView.beginUpdates()
@@ -69,7 +70,7 @@ extension DataManager {
             case .unpinned:
                 print("unpinned")
                 //SET THE PIN STATUS OF THE OBJECT
-                data[indexPath.row].isTrash = true
+                data[indexPath.row].isTrashed = true
                 data[indexPath.row].dateModified = Date()
                 //START THE TABLEVIEW UPDATE BLOCK
                 tableView.beginUpdates()
@@ -103,15 +104,13 @@ extension DataManager {
                         //SET THE OBJECT AT THE CURRENT ROW TO 'NOTE' VARIABLE
                         note = data[indexPath.row]
                         //CHANGE THE 'isTrash' and 'isSelected' PROPERTIES
-                        note.isTrash = true
-                        note.isSelected = false
+                        note.isTrashed = true
                         
                     case .unpinned:
                         //SET THE OBJECT AT THE CURRENT ROW TO 'NOTE' VARIABLE
                         note = data[indexPath.row]
                         //CHANGE THE 'isTrash' and 'isSelected' PROPERTIES
-                        note.isTrash = true
-                        note.isSelected = false
+                        note.isTrashed = true
                         
                     default:
                         print("default")
@@ -142,8 +141,7 @@ extension DataManager {
                 
                 for indexPath in safeSelectedRows {
                     note = trashData[indexPath.row]
-                    note.isTrash = false
-                    note.isSelected = false
+                    note.isTrashed = false
                 }
                 
                 tableView.beginUpdates()
@@ -157,7 +155,7 @@ extension DataManager {
         case false:
             if let safeIndexPath = indexPath {
                 //1. Note at current indexPath is set to not be in trash
-                trashData[safeIndexPath.row].isTrash = false
+                trashData[safeIndexPath.row].isTrashed = false
                 //2. Remove the note from current noteArray
                 trashData.remove(at: safeIndexPath.row)
                 //3. Delete the row from the tableView
@@ -176,7 +174,7 @@ extension DataManager {
             
             case .unpinned:
                 //1. SET THE PIN PROPERTY OF THE OBJECT AT INDEXPATH TO TRUE
-                data[indexPath.row].pin = true
+                data[indexPath.row].isPinned = true
                 id = data[indexPath.row].uuid!
                 //2. START THE TABLEVIEW UPDATE BLOCK
                 tableView.beginUpdates()
@@ -210,7 +208,7 @@ extension DataManager {
                 
             case .pinned:
                 //1. SET THE PIN PROPERTY OF THE OBJECT AT INDEXPATH TO FALSE
-                data[indexPath.row].pin = false
+                data[indexPath.row].isPinned = false
                 id = data[indexPath.row].uuid!
                 //2. START THE TABLEVIEW UPDATE BLOCK
                 tableView.beginUpdates()
@@ -249,7 +247,7 @@ extension DataManager {
 }
 
 //MARK:- DATA MANIPULATION METHODS
-extension DataManager {
+extension Logic {
     
     func erase(selected:Bool, tableView: UITableView) {
         
@@ -261,7 +259,7 @@ extension DataManager {
             if let safeRows = selectedRows {
                 for indexPath in safeRows {
                     note = trashData[indexPath.row]
-                    context.delete(note)
+                    managedContext?.delete(note)
                 }
                 tableView.beginUpdates()
                 //DELETE SELECTED ROWS FROM THE TABLEVIEW
@@ -277,7 +275,7 @@ extension DataManager {
             
             for note in trashData {
                 //Delete all the notes in the current noteArray created in Trash
-                context.delete(note)
+                managedContext?.delete(note)
             }
             //Save the context
             save()
@@ -286,19 +284,19 @@ extension DataManager {
 }
 
 //MARK:- DATA RETRIEVAL METHODS
-extension DataManager {
+extension Logic {
     
     func fetchNote(withId id: String) -> Note {
         let request:NSFetchRequest<Note> = Note.fetchRequest()
         let predicate = NSPredicate(format: "%K == %@", #keyPath(Note.uuid), id as CVarArg)
         request.predicate = predicate
-        var notes = [Note]()
+        var notes: [Note]?
         do {
-            notes = try context.fetch(request)
+            notes = try managedContext?.fetch(request)
         } catch {
             print("Error fetching data from coreData \(error).")
         }
-        guard let safeNote = notes.last else {fatalError()}
+        guard let safeNote = notes?.last else {fatalError()}
         return safeNote
     }
     
@@ -318,4 +316,3 @@ extension DataManager {
         return safeID
     }
 }
-
