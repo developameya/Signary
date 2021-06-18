@@ -15,12 +15,14 @@ class Logic: DataManager {
     var combinedData = sections()
     var selectedRows: [IndexPath]?
     var id: String?
+    let dateFormatter = DateFormatter()
     
     //MARK:- INIT
     override init() {
         super.init()
         loadList(loadto: &data)
         loadList(loadto: &trashData, wantTrash: true)
+        dateFormatter.dateStyle = .short
     }
     //MARK:- DATA MANAGEMENT METHODS
     func dataFilter() {

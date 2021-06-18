@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class CoreDataStack {
+private class CoreDataStack {
     
     //MARK:- INIT
     init(modelName: String) {

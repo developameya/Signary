@@ -5,18 +5,16 @@
 //  Created by Ameya Bhagat on 17/06/21.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 class DataManager {
     //MARK:- PROPERTIES
-    
-    private lazy var stack = CoreDataStack(modelName: "Signary")
     var managedContext: NSManagedObjectContext?
     
     //MARK:- INIT
     init() {
-        managedContext = stack.managedContext
+        managedContext = (UIApplication.shared.delegate as! AppDelegate).managedContext
     }
    
     /// The save function will be called to save the data stored in cotext to the coreData persistant data store.

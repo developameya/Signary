@@ -30,7 +30,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
+    
+    //MARK:- COREDATA STACK
+    
+    private lazy var persistanContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "Signary")
+        container.loadPersistentStores { storeDescription, error in
+            if let error = error as NSError? {
+                print("Unresolved error \(error), \(error.userInfo)")
+            }
+        }
+        return container
+    }()
+    
+    lazy var managedContext: NSManagedObjectContext = {
+        return self.persistanContainer.viewContext
+    }()
+    
+    //MARK:- DATA MANIPULATION METHODS
+    func saveContext() {
+        guard managedContext.hasChanges else {return}
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Unresolved error \(error), \(error.userInfo)")
+        }
+    }
 }
+
+
 

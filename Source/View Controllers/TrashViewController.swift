@@ -11,6 +11,7 @@ class TrashViewController: UITableViewController {
     //MARK:- PROPRTIES
     private var data = notesData
     private let interface = TrashInterFaceHelper()
+    private let logic = Logic()
     
     //MARK:- INIT
     override func viewDidLoad() {
@@ -57,6 +58,7 @@ class TrashViewController: UITableViewController {
         // create the Erase button for the Alert
         let EraseButton = UIAlertAction(title: "Erase", style: .destructive) { (action) in
             // call the erase function with selection property set to 'false' to clear all the notes in trash.
+            self.logic.erase(selected: false, tableView: self.tableView)
             //Navigate to the HomeView
             self.navigationController?.popToRootViewController(animated: true)
         }
@@ -74,24 +76,56 @@ class TrashViewController: UITableViewController {
     
     // MARK: - TABLEVIEW DATA SOURCE
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        
-        return 1
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return notesData.count
+        return logic.trashData.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellConstants.indetifier, for: indexPath) as! listViewCell
-        let cellData = data[indexPath.row]
-        cell.content.text = cellData.body
-        cell.dateLabel.text = "0"
-        cell.colourBar.backgroundColor = .green
+        let thisNote = logic.trashData[indexPath.row]
+        let cellColour: UIColor
         
+        cell.title.text = thisNote.title
+        cell.noteDescription.text = thisNote.body
+        cell.dateLabel.text = logic.dateFormatter.string(from: thisNote.dateCreated!)
+        cell.colourBar.backgroundColor = .random()
+        
+        //SET THE COLOUR OF THE COLOURBAR
+        if logic.trashData[indexPath.row].color != nil {
+            let cellColour = logic.trashData[indexPath.row].color
+            cell.colourBar.backgroundColor = cellColour as? UIColor
+            
+        } else {
+            cellColour = .random()
+            logic.trashData[indexPath.row].color = cellColour
+            cell.colourBar.backgroundColor = cellColour
+            logic.save()
+        }
         return cell
+    }
+}
+
+//MARK:- TABLEVIEW DELEGATE METHODS
+extension TrashViewController {
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        // Create 'Restore' action to be shown while cell is swiped from the trail
+        let restoreAction = UIContextualAction(style: .destructive, title: "Restore") { (_, _, CompeletionHandler) in
+            // When restore is tapped do the following
+            self.logic.restore(multipleItems: false, indexPath: indexPath, tableView: tableView)
+            CompeletionHandler(true)
+            
+        }
+        // Change the colour of the restore button
+        restoreAction.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
+        // Create configuration array for the buttons to show while the cell is swiped
+        let configuration = UISwipeActionsConfiguration(actions: [restoreAction])
+        // return the configuration
+        return configuration
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //2. PASS THE NUMBER OF SELECTED ROWS TO THE GLOBAL 'SELECTEDROWS' OBJECT
+        logic.selectedRows = tableView.indexPathsForSelectedRows
     }
 }
 
@@ -118,6 +152,7 @@ extension TrashViewController: TrashInterfaceDelegate {
             // change the properties of the barbuttons after clicking the 'Yes' Button
             self.setNavigationItems()
             // Call the restore function to change the 'isTrash' property of the selected notes to false and reload the tableView
+            self.logic.restore(multipleItems: true, tableView: self.tableView)
         }
         
         let eraseAction = UIAlertAction(title: "Erase", style: .destructive) { (action) in
@@ -131,7 +166,7 @@ extension TrashViewController: TrashInterfaceDelegate {
                 // change the properties of the barbuttons after clicking the 'Yes' Button
                 self.setNavigationItems()
                 // Call 'Erase' function with 'selection' property set to 'true' so that only selected objects are deleted permenantly
-                
+                self.logic.erase(selected: true, tableView: self.tableView)
             }
             let noButton = UIAlertAction(title: "No", style: .cancel) { (action) in
                 // Revert the editing mode of the table

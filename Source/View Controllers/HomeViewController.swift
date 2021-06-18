@@ -16,7 +16,6 @@ class HomeViewController: UITableViewController {
     private let interface = HomeInterfaceHelper()
     private var cellColour: UIColor?
     var isCollapsed: Bool?
-    private let dateFormatter = DateFormatter()
     let sectionHeaderHeight: CGFloat = 34
     var currentSection:Int?
     
@@ -33,14 +32,12 @@ class HomeViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //      logic.dataFilter()
+        logic.dataFilter()
         registerDelegates()
         tableViewUI()
         searchUI()
         NavigationBarUI()
         isCollapsed = UserDefaults.standard.bool(forKey: "isPinnedCollapsed")
-        //CHANGE THE STYLE OF DATE SHOWN IN THE CELL
-        dateFormatter.dateStyle = .short
         //TO CHECK THE DATABASE LOCATION ON THE COMPUTER, UNCOMMENT THIS LINE
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
@@ -50,27 +47,6 @@ class HomeViewController: UITableViewController {
         tableView.dataSource = self
         tableView.delegate = self
         searchController.searchBar.delegate = self
-    }
-    
-    //MARK:- NAVIGATION METHODS
-    extension HomeViewController {
-        
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            
-            switch segue.identifier {
-            case segueConstants.newEditor:
-                //            prepare the EditorViewController for new note
-                let destinationVC = segue.destination as! EditorViewController
-                destinationVC.id = logic.data.last?.uuid
-                
-            case segueConstants.cellToEditor:
-                //         prepare the EditorViewController for the selected note and load all the relevant data
-                let destinationVC = segue.destination as! EditorViewController
-                destinationVC.id = logic.selectedNote(tableView: tableView)
-            default:
-                return
-            }
-        }
     }
     
     //MARK:-    USER INTERFACE METHODS
@@ -154,6 +130,26 @@ class HomeViewController: UITableViewController {
     }
 }
 
+//MARK:- NAVIGATION METHODS
+extension HomeViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        switch segue.identifier {
+        case segueConstants.newEditor:
+            //            prepare the EditorViewController for new note
+            let destinationVC = segue.destination as! EditorViewController
+            destinationVC.id = logic.data.last?.uuid
+            
+        case segueConstants.cellToEditor:
+            //         prepare the EditorViewController for the selected note and load all the relevant data
+            let destinationVC = segue.destination as! EditorViewController
+            destinationVC.id = logic.selectedNote(tableView: tableView)
+        default:
+            return
+        }
+    }
+}
 // MARK: - TABLEVIEW DELEGATE METHODS
 
 extension HomeViewController {
@@ -284,7 +280,7 @@ extension HomeViewController {
         //SET THE DESCRIPTION TO THE BODY OF THE NOTE
         cell.noteDescription.text = cellData.body
         //SHOW THE NOTE CREATED
-        cell.dateLabel.text = dateFormatter.string(from: cellData.dateCreated!)
+        cell.dateLabel.text = logic.dateFormatter.string(from: cellData.dateCreated!)
         //SET THE COLOUR OF THE COLOURBAR
         if cellData.color != nil {
             cellColour = cellData.color as? UIColor
@@ -411,6 +407,22 @@ extension HomeViewController: HomeInterfaceHelperDelegate {
     
     func trashTapped(_ helper: HomeInterfaceHelper) {
         print("From HomeViewController | \(#function) on line \(#line)")
+        //2. PRESENT AN ALERT TO CONFIRM IF THE SELECTED NOTES ARE TO BE TRASHED
+        let alert = UIAlertController(title: "Send to trash", message: "The selected notes can be recovered from the trash bin.", preferredStyle: .alert)
+        //3. CREATE YES BUTTON
+        let yesButton = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+            self.setNavigationItems()
+            self.logic.moveManyToTrash(tableView: self.tableView)
+        }
+        //4.CREATE NO BUTTON
+        let noButton = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        
+        //5.ADD THE BUTTONS TO THE ALERT
+        alert.addAction(yesButton)
+        alert.addAction(noButton)
+        
+        //6.PRESENT THE ALERT
+        self.present(alert, animated: true, completion: nil)
     }
     
     func doneTapped(_ helper: HomeInterfaceHelper) {

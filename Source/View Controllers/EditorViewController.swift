@@ -10,30 +10,37 @@ import CoreData
 
 class EditorViewController: UIViewController {
     //MARK:- PROPERTIES
-    var content: NoteContent?
+    var id: String?
     @IBOutlet weak var textView: UITextView!
     private var headerAttributes: [NSAttributedString.Key : Any]?
     private var bodyAttributes: [NSAttributedString.Key : Any]?
     private var logic = Logic()
+    private var notes = [Note]()
+    private var note: Note?
     
     //MARK:- INIT
     override func viewDidLoad() {
         super.viewDidLoad()
+        note = logic.fetchNote(withId: id!)
         textViewUI()
         setBarButtonsItems()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        logic.clearEmptyNote(textView: textView)
+        ifClear()
     }
     
     //MARK:- USER INTERFACE METHODS
     
     private func textViewUI() {
+        guard let safeNote = note else {fatalError()}
         textView.delegate = self
-        textView.text = content?.text
+        textView.text = safeNote.body
         textView.highlightFirstLineInTextView()
+        textView.textColor = UIColor(named: "editorTextColour")
+        textView.backgroundColor = .systemBackground
+        textView.alwaysBounceVertical = true
         
         headerAttributes = [NSAttributedString.Key.font :
                                 UIFont.preferredFont(forTextStyle: UIFont.TextStyle.largeTitle),
@@ -44,6 +51,18 @@ class EditorViewController: UIViewController {
                             UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body),
                           NSAttributedString.Key.foregroundColor :
                             UIColor(named: "editorTextColour")!]
+        
+        if textView.isFirstResponder {
+            navigationController?.hidesBarsWhenKeyboardAppears = true
+        } else {
+            navigationController?.hidesBarsWhenKeyboardAppears = false
+        }
+        
+        if textView.text == "" || textView.text.hasPrefix(" ") == true {
+            textView.becomeFirstResponder()
+        } else {
+            textView.resignFirstResponder()
+        }
     }
     
     private func setBarButtonsItems() {
@@ -61,7 +80,7 @@ class EditorViewController: UIViewController {
     
     @objc private func trashButtonPressed() {
         
-        let alert = UIAlertController(title: "Delete Notey!", message: "Deleted notes cannot be recovered.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Delete Note", message: "Deleted notes cannot be recovered.", preferredStyle: .alert)
         let delete = UIAlertAction(title: "Delete", style: .destructive) { _ in
             
         }
@@ -80,6 +99,26 @@ class EditorViewController: UIViewController {
 
 extension EditorViewController: UITextViewDelegate {
     
+    func textViewDidChange(_ textView: UITextView) {
+        guard let safeNote = note else { fatalError() }
+        safeNote.body = textView.text
+        safeNote.dateModified = Date()
+        safeNote.title = textView.text.lines[0]
+        note = safeNote
+        logic.save()
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        guard let safeNote = note else { fatalError() }
+        if textView.text == "" || textView.text.hasPrefix(" ") == true {
+            safeNote.isClear = true
+        } else {
+            safeNote.isClear = false
+        }
+        note = safeNote
+        logic.save()
+    }
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         let textAsNSString = self.textView.text as NSString
@@ -95,5 +134,35 @@ extension EditorViewController: UITextViewDelegate {
             }
         }
         return true
+    }
+}
+
+//MARK:- DATA MANIPULATION METHODS
+
+extension EditorViewController {
+    func ifClear() {
+        //BEFORE THE VIEW DISAPPEARS, THIS LINE CHECKS FOR THE FINAL TIME IF BOTH TEXVIEW AND TEXTFIELD ARE CLEAR OR NOT AND SETS THE 'ISCLEAR' PROPERTY OF THE NOTE ACCORDINGLY
+        guard let safeNote = note else { fatalError() }
+        if (textView.text == "" || textView.text.hasPrefix(" ") == true) {
+            safeNote.isClear = true
+            note = safeNote
+            trash()
+        } else {
+            safeNote.isClear = false
+            note = safeNote
+            logic.save()
+        }
+    }
+    
+    func trash() {
+        self.dismiss(animated: true) {
+            self.navigationController?.popToRootViewController(animated: true)
+            guard let safeNote = self.notes.last else {
+                print("note is nil")
+                return
+            }
+            self.logic.managedContext?.delete(safeNote)
+            self.logic.save()
+        }
     }
 }

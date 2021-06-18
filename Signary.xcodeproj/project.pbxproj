@@ -39,6 +39,7 @@
 		148F5E59267B563C00EFE9AD /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F5E58267B563C00EFE9AD /* SectionHeaderView.swift */; };
 		148F5E5B267B569900EFE9AD /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F5E5A267B569900EFE9AD /* UIViewExtension.swift */; };
 		148F5E5D267B58C300EFE9AD /* HomeViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F5E5C267B58C300EFE9AD /* HomeViewSectionHeader.swift */; };
+		148F5E5F267B60BF00EFE9AD /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F5E5E267B60BF00EFE9AD /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		148F5E58267B563C00EFE9AD /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		148F5E5A267B569900EFE9AD /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		148F5E5C267B58C300EFE9AD /* HomeViewSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewSectionHeader.swift; sourceTree = "<group>"; };
+		148F5E5E267B60BF00EFE9AD /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				145C353A26789EF200D88C54 /* UIColorExtension.swift */,
 				145C353C2678BF8200D88C54 /* UITextViewExtension.swift */,
 				148F5E5A267B569900EFE9AD /* UIViewExtension.swift */,
+				148F5E5E267B60BF00EFE9AD /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				14591344267B236A00DC6488 /* ColorValueTrasnformer.swift in Sources */,
 				14591347267B23B700DC6488 /* Note+CoreDataClass.swift in Sources */,
 				145C353B26789EF200D88C54 /* UIColorExtension.swift in Sources */,
+				148F5E5F267B60BF00EFE9AD /* StringExtension.swift in Sources */,
 				146947DF267245FF00274B16 /* TrashInterfaceHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
