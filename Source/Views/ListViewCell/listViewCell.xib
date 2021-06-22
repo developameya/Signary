@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zyr-I6-3yl">
-                        <rect key="frame" x="9" y="35" width="72.5" height="17"/>
+                        <rect key="frame" x="9" y="35" width="269" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.59607843137254901" green="0.58431372549019611" blue="0.58431372549019611" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -56,6 +55,7 @@
                 <constraints>
                     <constraint firstItem="1tg-Ht-5hc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Eco-9h-NoF"/>
                     <constraint firstItem="eaH-3j-iEB" firstAttribute="leading" secondItem="CvE-yq-70j" secondAttribute="trailing" constant="5" id="H2z-X4-qab"/>
+                    <constraint firstItem="eaH-3j-iEB" firstAttribute="leading" secondItem="Zyr-I6-3yl" secondAttribute="trailing" constant="2" id="JUS-yv-J58"/>
                     <constraint firstAttribute="trailingMargin" secondItem="eaH-3j-iEB" secondAttribute="trailing" constant="5" id="Peh-Ta-Uig"/>
                     <constraint firstItem="CvE-yq-70j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="RDO-m8-6Id"/>
                     <constraint firstItem="Zyr-I6-3yl" firstAttribute="leading" secondItem="1tg-Ht-5hc" secondAttribute="trailing" constant="5" id="TKC-ed-sB7"/>

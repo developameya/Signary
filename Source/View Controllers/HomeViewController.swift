@@ -123,11 +123,41 @@ class HomeViewController: UITableViewController {
     }
     
     func setNavigationItems() {
+        
+        let menuItems = ["Sort":"arrow.up.arrow.down", "Trash":"xmark.bin.fill"]
+        let orderedMenuItems = menuItems.sorted(by: { $0.value < $1.value })
+        var elements = [UIMenuElement]()
+
+            for (button, symbol) in orderedMenuItems {
+                let identifier = UIAction.Identifier(button)
+                let action = UIAction(title: button, image: .init(systemName: symbol), identifier: identifier) { _ in
+                    self.menuButtonTapped(identifier: identifier.rawValue)
+                }
+                elements.append(action)
+            }
+        
+        let moreButton = UIBarButtonItem(image: .init(systemName: "ellipsis.circle"), menu: UIMenu(title: "Options",children: elements))
+        
         navigationItem.setRightBarButtonItems([interface.addButton, interface.selectButton], animated: true)
-        navigationItem.setLeftBarButtonItems([interface.moreButton], animated: true)
+        navigationItem.setLeftBarButtonItems([moreButton], animated: true)
         searchController.searchBar.isHidden = false
         tableView.setEditing(false, animated: true)
     }
+    
+    private func menuButtonTapped(identifier: String) {
+         switch identifier {
+         case "Sort":
+             print("Sort")
+             sortUI()
+         case "Settings":
+             print("Settings")
+         case "Trash":
+             print("Trash")
+             performSegue(withIdentifier: segueConstants.trash, sender: self)
+         default:
+             break
+         }
+     }
 }
 
 //MARK:- NAVIGATION METHODS
@@ -382,7 +412,7 @@ extension HomeViewController: HomeInterfaceHelperDelegate {
         //2. CREATE 'SORT BY' BUTTON
         let sortBy = UIAlertAction(title: "Sort By...", style: .default) { (action) in
             //PRESENT SORTING OPTIONS
-            self.sortUI()
+            self.sortUI()	
             
         }
         //3.CREATE TRASH BUTTON

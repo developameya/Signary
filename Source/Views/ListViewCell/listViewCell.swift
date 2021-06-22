@@ -16,6 +16,7 @@ class listViewCell: UITableViewCell {
     @IBOutlet weak var noteDescription: UILabel!
     
     override func awakeFromNib() {
+        colourBar.alpha = 0.0
         super.awakeFromNib()
         contentView.backgroundColor = UIColor(named: "cellBackground")
     }

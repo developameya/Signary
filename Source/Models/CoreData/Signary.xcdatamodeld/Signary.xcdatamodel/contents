@@ -2,7 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E232" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Note" representedClassName="Note" syncable="YES">
         <attribute name="body" optional="YES" attributeType="String"/>
-        <attribute name="color" attributeType="Transformable" valueTransformerName="ColorValueTransformer"/>
+        <attribute name="color" attributeType="Transformable" valueTransformerName="UIColorValueTransformer"/>
         <attribute name="dateCreated" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dateModified" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="isClear" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>

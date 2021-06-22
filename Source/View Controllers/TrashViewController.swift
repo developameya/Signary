@@ -44,12 +44,38 @@ class TrashViewController: UITableViewController {
     }
     
     private func setNavigationItems() {
+        let menuItems = ["Restore":"arrowshape.turn.up.backward.fill", "Erase":"xmark.bin.fill", "Erase All":"xmark.bin.circle"]
+        let orderedMenuItems = menuItems.sorted(by: { $0.value < $1.value })
+        var elements = [UIMenuElement]()
+        
+        for (button, symbol) in orderedMenuItems {
+            let identifier = UIAction.Identifier(button)
+            let action = UIAction(title: button, image: .init(systemName: symbol), identifier: identifier) { _ in
+                self.menuButtonTapped(identifier: identifier.rawValue)
+            }
+            elements.append(action)
+        }
+        
+        let optionsButton = UIBarButtonItem( image: .init(systemName: "ellipsis.circle"), menu: UIMenu(title: "Options", children: elements))
         
         navigationItem.leftItemsSupplementBackButton = true
         navigationItem.leftBarButtonItem = nil
         navigationItem.title = "Trash"
-        navigationItem.setRightBarButton(interface.selectButton, animated: true)
+        navigationItem.setRightBarButtonItems([interface.selectButton, optionsButton], animated: true)
     }
+    
+    private func menuButtonTapped(identifier: String) {
+         switch identifier {
+         case "Restore":
+             print("Restore")
+         case "Erase":
+             print("Erase")
+         case "Erase All":
+             print("Erase All")
+         default:
+             break
+         }
+     }
     
     private func eraseAllPressed() {
         
@@ -137,8 +163,8 @@ extension TrashViewController: TrashInterfaceDelegate {
         print("From TrashViewController | \(#function) on line \(#line)")
         tableView.setEditing(false, animated: true)
         tableView.setEditing(true, animated: true)
-        navigationItem.setLeftBarButton(helper.optionsButton, animated: true)
-        navigationItem.setRightBarButton(helper.doneButton, animated: true)
+
+        navigationItem.setRightBarButtonItems([interface.doneButton], animated: true)
     }
     
     func optionsTapped(_ helper: TrashInterFaceHelper) {

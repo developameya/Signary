@@ -23,7 +23,8 @@ public class HomeViewSectionHeader {
             case .pinned:
                 header.button.isHidden = false
                 print(isCollapsed)
-                header.button.setTitle(">", for: .normal)
+                header.button.setTitle("", for: .normal)
+                header.button.setImage(.init(systemName: "chevron.forward"), for: .normal)
                 header.setExpansion(isCollapsed: isCollapsed)
                 header.label.text = "Pinned"
                 

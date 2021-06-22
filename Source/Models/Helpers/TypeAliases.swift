@@ -10,3 +10,4 @@ import Foundation
 typealias sections = [TableSection : [Note]]
 typealias cellConstants = K.Cell
 typealias segueConstants = K.Segue
+typealias EmptyCallback = () -> Void

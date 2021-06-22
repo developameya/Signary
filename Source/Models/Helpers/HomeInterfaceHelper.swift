@@ -11,7 +11,6 @@ import UIKit
 protocol HomeInterfaceHelperDelegate {
     func addTapped(_ helper: HomeInterfaceHelper)
     func selectTapped(_ helper: HomeInterfaceHelper)
-    func moreTapped(_ helper: HomeInterfaceHelper)
     func trashTapped(_ helper: HomeInterfaceHelper)
     func doneTapped(_ helper: HomeInterfaceHelper)
 }
@@ -21,19 +20,23 @@ class HomeInterfaceHelper {
     var delegate: HomeInterfaceHelperDelegate?
     var addButton: UIBarButtonItem!
     var selectButton: UIBarButtonItem!
-    var moreButton: UIBarButtonItem!
     var trashbutton: UIBarButtonItem!
     var donebutton: UIBarButtonItem!
+    
     
     //MARK:- INIT
     init() {
         registerBarButtons()
+
     }
+    
+ 
+    
     
    private func registerBarButtons() {
         addButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(addButtonPressed))
         selectButton = UIBarButtonItem(title: "Select", style: .plain, target: self, action: #selector(selectButtonPressed))
-        moreButton = UIBarButtonItem(title: "More", style: .plain, target: self, action: #selector(moreButtonPressed))
+
         trashbutton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(trashPressed))
         trashbutton.tintColor = .systemRed
         trashbutton.isEnabled = false
@@ -47,10 +50,6 @@ class HomeInterfaceHelper {
     
     @objc func selectButtonPressed(sender:UIBarButtonItem!) {
         delegate?.selectTapped(self)
-    }
-    
-    @objc func moreButtonPressed(sender:UIBarButtonItem!) {
-        delegate?.moreTapped(self)
     }
     
     @objc func trashPressed(sender:UIBarButtonItem!) {
