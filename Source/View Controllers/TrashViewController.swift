@@ -19,6 +19,7 @@ class TrashViewController: UITableViewController {
         registerDelegates()
         setNavigationItems()
         tableViewUI()
+        navigationItem.title = "Trash"
     }
     
     private func registerDelegates() {
@@ -41,63 +42,14 @@ class TrashViewController: UITableViewController {
         tableView.allowsMultipleSelectionDuringEditing = true
         //SET THE HEIGHT OF THE ROW IN TABLEVIEW EQUAL TO THE THE CUSTOM CELL
         tableView.rowHeight = 125
+        tableView.separatorStyle = .singleLine
     }
     
     private func setNavigationItems() {
-        let menuItems = ["Restore":"arrowshape.turn.up.backward.fill", "Erase":"xmark.bin.fill", "Erase All":"xmark.bin.circle"]
-        let orderedMenuItems = menuItems.sorted(by: { $0.value < $1.value })
-        var elements = [UIMenuElement]()
-        
-        for (button, symbol) in orderedMenuItems {
-            let identifier = UIAction.Identifier(button)
-            let action = UIAction(title: button, image: .init(systemName: symbol), identifier: identifier) { _ in
-                self.menuButtonTapped(identifier: identifier.rawValue)
-            }
-            elements.append(action)
-        }
-        
-        let optionsButton = UIBarButtonItem( image: .init(systemName: "ellipsis.circle"), menu: UIMenu(title: "Options", children: elements))
-        
         navigationItem.leftItemsSupplementBackButton = true
         navigationItem.leftBarButtonItem = nil
-        navigationItem.title = "Trash"
-        navigationItem.setRightBarButtonItems([interface.selectButton, optionsButton], animated: true)
-    }
-    
-    private func menuButtonTapped(identifier: String) {
-         switch identifier {
-         case "Restore":
-             print("Restore")
-         case "Erase":
-             print("Erase")
-         case "Erase All":
-             print("Erase All")
-         default:
-             break
-         }
-     }
-    
-    private func eraseAllPressed() {
         
-        // 1. Create the alert to show when 'Erase All' is tapped.
-        let alert = UIAlertController(title: "Erase All", message: "This action will erase all the notes in the trash permanently.", preferredStyle: .actionSheet)
-        // create the Erase button for the Alert
-        let EraseButton = UIAlertAction(title: "Erase", style: .destructive) { (action) in
-            // call the erase function with selection property set to 'false' to clear all the notes in trash.
-            self.logic.erase(selected: false, tableView: self.tableView)
-            //Navigate to the HomeView
-            self.navigationController?.popToRootViewController(animated: true)
-        }
-        // create the cancel button for the allert
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-            self.dismiss(animated: true, completion: nil)
-        }
-        
-        // 2. Add buttons to the alert
-        alert.addAction(EraseButton)
-        alert.addAction(cancelButton)
-        // 3. Present the alert
-        self.present(alert, animated: true, completion: nil)
+        navigationItem.setRightBarButtonItems([interface.selectButton, interface.eraseAllButton], animated: true)
     }
     
     // MARK: - TABLEVIEW DATA SOURCE
@@ -152,74 +104,90 @@ extension TrashViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //2. PASS THE NUMBER OF SELECTED ROWS TO THE GLOBAL 'SELECTEDROWS' OBJECT
         logic.selectedRows = tableView.indexPathsForSelectedRows
+        if tableView.indexPathsForSelectedRows != nil {
+            interface.optionsButton.isEnabled = true
+        } else {
+            interface.optionsButton.isEnabled = false
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        //2. PASS THE NUMBER OF SELECTED ROWS TO THE GLOBAL 'SELECTEDROWS' OBJECT
+        logic.selectedRows = tableView.indexPathsForSelectedRows
+        if tableView.indexPathsForSelectedRows != nil {
+            interface.optionsButton.isEnabled = true
+        } else {
+            interface.optionsButton.isEnabled = false
+        }
     }
 }
 
 //MARK:- INTERFACE DELEGATE METHODS
 
 extension TrashViewController: TrashInterfaceDelegate {
-    
-    func selectTapped(_ helper: TrashInterFaceHelper) {
+    func restoreTapped(_ helper: TrashInterFaceHelper) {
         print("From TrashViewController | \(#function) on line \(#line)")
-        tableView.setEditing(false, animated: true)
-        tableView.setEditing(true, animated: true)
-
-        navigationItem.setRightBarButtonItems([interface.doneButton], animated: true)
+        logic.restore(multipleItems: true, tableView: tableView)
     }
     
-    func optionsTapped(_ helper: TrashInterFaceHelper) {
+    func eraseTapped(_ helper: TrashInterFaceHelper) {
         print("From TrashViewController | \(#function) on line \(#line)")
-        let alert = UIAlertController(title: "Options", message: nil, preferredStyle: .actionSheet)
-        
-        //3. Show options to Restore or erase selected notes
-        let restoreAction = UIAlertAction(title: "Restore", style: .default) { (action) in
+        // 1. Create an alert to confirm the deletion of the notes
+        let alert = UIAlertController(title: "Erase selected notes" , message: "Selecting 'Yes' will erase selected notes permanently.", preferredStyle: .alert)
+        // create the 'Yes' button
+        let yesButton = UIAlertAction(title: "Yes", style: .destructive) { (action) in
             // set the table to editing mode
             self.tableView.setEditing(false, animated: true)
             // change the properties of the barbuttons after clicking the 'Yes' Button
             self.setNavigationItems()
-            // Call the restore function to change the 'isTrash' property of the selected notes to false and reload the tableView
-            self.logic.restore(multipleItems: true, tableView: self.tableView)
+            // Call 'Erase' function with 'selection' property set to 'true' so that only selected objects are deleted permenantly
+            self.logic.erase(selected: true, tableView: self.tableView)
         }
-        
-        let eraseAction = UIAlertAction(title: "Erase", style: .destructive) { (action) in
-            
-            // 1. Create an alert to confirm the deletion of the notes
-            let alert = UIAlertController(title: "Erase selected notes" , message: "Erase selected notes permanently?", preferredStyle: .alert)
-            // create the 'Yes' button
-            let yesButton = UIAlertAction(title: "Yes", style: .destructive) { (action) in
-                // set the table to editing mode
-                self.tableView.setEditing(false, animated: true)
-                // change the properties of the barbuttons after clicking the 'Yes' Button
-                self.setNavigationItems()
-                // Call 'Erase' function with 'selection' property set to 'true' so that only selected objects are deleted permenantly
-                self.logic.erase(selected: true, tableView: self.tableView)
-            }
-            let noButton = UIAlertAction(title: "No", style: .cancel) { (action) in
-                // Revert the editing mode of the table
-                self.tableView.setEditing(false, animated: true)
-                // Set the properties of the barbuttons when 'No' is selected
-                self.setNavigationItems()
-                // Dismiss the alert
-                self.dismiss(animated: true, completion: nil)
-            }
-            // 2. Add the buttons to the action
-            alert.addAction(yesButton)
-            alert.addAction(noButton)
-            // 3. Present the alert when 'Erase' is pressed.
-            self.present(alert, animated: true, completion: nil)
-            
+        let noButton = UIAlertAction(title: "No", style: .cancel) { (action) in
+            // Revert the editing mode of the table
+            self.tableView.setEditing(false, animated: true)
+            // Set the properties of the barbuttons when 'No' is selected
+            self.setNavigationItems()
+            // Dismiss the alert
+            self.dismiss(animated: true, completion: nil)
         }
-        let eraseAll = UIAlertAction(title: "Erase All", style: .destructive) { (action) in
-            self.eraseAllPressed()
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        alert.addAction(restoreAction)
-        alert.addAction(eraseAction)
-        alert.addAction(eraseAll)
-        alert.addAction(cancelAction)
-        //3. Present the popup sheet
+        // 2. Add the buttons to the action
+        alert.addAction(yesButton)
+        alert.addAction(noButton)
+        // 3. Present the alert when 'Erase' is pressed.
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func eraseAllTapped(_ helper: TrashInterFaceHelper) {
+        print("From TrashViewController | \(#function) on line \(#line)")
+        // 1. Create the alert to show when 'Erase All' is tapped.
+        let alert = UIAlertController(title: "Empty the trash?", message: "This action will erase all the notes in the trash permanently.", preferredStyle: .alert)
+        // create the Erase button for the Alert
+        let EraseButton = UIAlertAction(title: "Erase", style: .destructive) { (action) in
+            // call the erase function with selection property set to 'false' to clear all the notes in trash.
+            self.logic.erase(selected: false, tableView: self.tableView)
+            //Navigate to the HomeView
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        // create the cancel button for the allert
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        // 2. Add buttons to the alert
+        alert.addAction(EraseButton)
+        alert.addAction(cancelButton)
+        // 3. Present the alert
+        self.present(alert, animated: true, completion: nil)
+
+    }
+
+    func selectTapped(_ helper: TrashInterFaceHelper) {
+        print("From TrashViewController | \(#function) on line \(#line)")
+        tableView.setEditing(false, animated: true)
+        tableView.setEditing(true, animated: true)
+        interface.optionsButton.isEnabled = false
+        navigationItem.setRightBarButtonItems([interface.doneButton, interface.optionsButton], animated: true)
     }
     
     func doneTapped(_ helper: TrashInterFaceHelper) {

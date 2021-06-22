@@ -68,9 +68,9 @@ class EditorViewController: UIViewController {
     private func setBarButtonsItems() {
         
         let micButton = UIBarButtonItem(image: UIImage(systemName: "mic.fill"), style: .plain, target: self, action: #selector(micButtonPressed))
-        let trashButton = UIBarButtonItem(image: UIImage(systemName: "trash.fill"), style: .plain, target: self, action: #selector(trashButtonPressed))
+        let trashButton = UIBarButtonItem(image: UIImage(systemName: "xmark.bin.fill"), style: .plain, target: self, action: #selector(trashButtonPressed))
         //        let gearButton = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(gearPressed))
-        navigationItem.rightBarButtonItems = [micButton, trashButton]
+        navigationItem.rightBarButtonItems = [trashButton]
     }
     
     //MARK:- UI SUPPORT METHODS
