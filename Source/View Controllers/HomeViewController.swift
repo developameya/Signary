@@ -65,9 +65,8 @@ class HomeViewController: UITableViewController {
         //REGSITER THE CUSTOM HEADER TO THIS TABLEVIEW
         let headerNib = UINib.init(nibName: "SectionHeaderView", bundle: Bundle.main)
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: "SectionHeaderView")
-        // Set the content offset to the height of the search bar's height
-              // to hide it when the view is first presented.
-              self.tableView.contentOffset = CGPoint(x: 0, y: searchController.searchBar.frame.height)
+        // Set the content offset to the height of the search bar's height to hide it when the view is first presented.
+        tableView.contentOffset = CGPoint(x: 0, y: searchController.searchBar.frame.height)
     }
     
     private func searchUI() {
