@@ -65,6 +65,9 @@ class HomeViewController: UITableViewController {
         //REGSITER THE CUSTOM HEADER TO THIS TABLEVIEW
         let headerNib = UINib.init(nibName: "SectionHeaderView", bundle: Bundle.main)
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: "SectionHeaderView")
+        // Set the content offset to the height of the search bar's height
+              // to hide it when the view is first presented.
+              self.tableView.contentOffset = CGPoint(x: 0, y: searchController.searchBar.frame.height)
     }
     
     private func searchUI() {
@@ -84,10 +87,11 @@ class HomeViewController: UITableViewController {
     private func NavigationBarUI() {
         setNavigationItems()
         navigationController?.navigationBar.tintColor = UIColor(named: "Accent Colour")
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = false
         let defaultAppearance = UINavigationBarAppearance()
         defaultAppearance.configureWithTransparentBackground()
         navigationController?.navigationBar.scrollEdgeAppearance = defaultAppearance
+
     }
     
     private func sortUI() {
