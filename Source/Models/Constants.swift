@@ -10,9 +10,8 @@ import Foundation
 
 /// Use this struct to find constants for commonly used Strings
 public struct K {
-    
-//    static let dataModel = "Notey_2_0"
-//    static let dataModelDebug = "Notey_2_0_debug"
+
+    static let accentColor = "Accent Colour"
     
     /// This struct contains constants for strings of cell indentifiers
     struct Cell {

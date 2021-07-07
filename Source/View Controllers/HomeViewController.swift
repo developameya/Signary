@@ -35,11 +35,15 @@ class HomeViewController: UITableViewController {
         logic.dataFilter()
         registerDelegates()
         tableViewUI()
-        searchUI()
         NavigationBarUI()
         isCollapsed = UserDefaults.standard.bool(forKey: "isPinnedCollapsed")
         //TO CHECK THE DATABASE LOCATION ON THE COMPUTER, UNCOMMENT THIS LINE
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //ATTACHING THE SEARCHCONTOLLER HERE WILL HIDE THE SEARCHBAR BY DEFAULT
+        searchUI()
     }
     
     private func registerDelegates() {
@@ -65,8 +69,6 @@ class HomeViewController: UITableViewController {
         //REGSITER THE CUSTOM HEADER TO THIS TABLEVIEW
         let headerNib = UINib.init(nibName: "SectionHeaderView", bundle: Bundle.main)
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: "SectionHeaderView")
-        // Set the content offset to the height of the search bar's height to hide it when the view is first presented.
-        tableView.contentOffset = CGPoint(x: 0, y: searchController.searchBar.frame.height)
     }
     
     private func searchUI() {
@@ -85,8 +87,9 @@ class HomeViewController: UITableViewController {
     
     private func NavigationBarUI() {
         setNavigationItems()
-        navigationController?.navigationBar.tintColor = UIColor(named: "Accent Colour")
-        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.title = "Signary"
+        navigationController?.navigationBar.tintColor = UIColor(named: K.accentColor)
+        navigationController?.navigationBar.prefersLargeTitles = true
         let defaultAppearance = UINavigationBarAppearance()
         defaultAppearance.configureWithTransparentBackground()
         navigationController?.navigationBar.scrollEdgeAppearance = defaultAppearance
@@ -98,18 +101,20 @@ class HomeViewController: UITableViewController {
         let alert = UIAlertController(title: "Sort By...", message: nil, preferredStyle: .actionSheet)
         //2.CREATE DATE CREATED BUTTON
         let dateCreated = UIAlertAction(title: "Date Created", style: .default) { (action) in
-            
-            
+            self.logic.dataSort(query: K.SortBy.dateCreated, asceding: false)
+            self.tableView.reloadData()
             self.dismiss(animated: true, completion: nil)
         }
         //2.CREATE DATE MODIFIED BUTTON
         let dateModified = UIAlertAction(title: "Date Modified", style: .default) { (action) in
-            
+            self.logic.dataSort(query: K.SortBy.dateModified, asceding: false)
+            self.tableView.reloadData()
             self.dismiss(animated: true, completion: nil)
         }
         //2.CREATE SORT BY NAME  BUTTON
         let sortName = UIAlertAction(title: "Title", style: .default) { (action) in
-            
+            self.logic.dataSort(query: K.SortBy.title, asceding: true)
+            self.tableView.reloadData()
             self.dismiss(animated: true, completion: nil)
         }
         //3.CREATE CANCEL BUTTON

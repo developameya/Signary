@@ -35,6 +35,7 @@ class EditorViewController: UIViewController {
     
     private func textViewUI() {
         guard let safeNote = note else {fatalError()}
+        textView.tintColor = UIColor(named: K.accentColor)
         textView.delegate = self
         textView.text = safeNote.body
         textView.highlightFirstLineInTextView()

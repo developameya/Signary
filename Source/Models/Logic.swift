@@ -34,6 +34,8 @@ class Logic: DataManager {
     
     func dataSort(query: String, asceding: Bool) {
         sort(query: query, ascending: asceding, array: &data)
+        combinedData[.unpinned] = data.filter({$0.isPinned == false})
+        combinedData[.pinned] = data.filter({$0.isPinned == true})
     }
     
     func attachToDataArray(_ note: Note) {
