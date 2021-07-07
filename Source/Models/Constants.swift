@@ -12,6 +12,8 @@ import Foundation
 public struct K {
 
     static let accentColor = "Accent Colour"
+    static let sectionHeaderIdentifier = "SectionHeaderView"
+    static let appTitle = "Signary"
     
     /// This struct contains constants for strings of cell indentifiers
     struct Cell {
@@ -44,20 +46,10 @@ public struct K {
         static let title = "title"
     }
     
-    struct features {
-        
-        static let firstLaunch = "If everything goes as planned, you should be able to see this!\n\nThere's no More textField but one giant canvas to type on!\n-- From now on the first line of the note will be automatically set as the title of the note.\n\nBut what about the titles of my previous notes?\n-- They are still there, though the editor won't be able to show it. Sorry!\n\nIn Home, tap on select to select multiple notes and then tap on the trash icon in the top left corner to move them to trash\n\nIn the trash bin, you can left swipe any note restore it.\n\nIn the trash bin, tap on 'select' in top right corner, to select multiple notes and then tap on 'options' in the top left corner to either restore or permanently erase the selected notes."
+    struct colours {
+        static let background = "TableBackground"
+        static let textColour = "editorTextColour"
     }
     
 }
 
-#if DEVELOPMENT
-
-let baseUrl = "https://dev.google.com"
-
-#else
-
-let baseUrl = "https://prod.google.com"
-
-
-#endif

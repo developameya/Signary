@@ -32,8 +32,8 @@ class HomeViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        logic.dataFilter()
         registerDelegates()
+        logic.dataFilter()
         tableViewUI()
         NavigationBarUI()
         isCollapsed = UserDefaults.standard.bool(forKey: "isPinnedCollapsed")
@@ -59,7 +59,7 @@ class HomeViewController: UITableViewController {
         
         //CHANGE THE SEPARATOR BETWEEN TWO CELLS TO SINGLELINE
         tableView.separatorStyle = .singleLine
-        tableView.backgroundColor = UIColor(named: "TableBackground")
+        tableView.backgroundColor = UIColor(named: K.colours.background)
         //SET THE HEIGHT OF THE ROW IN TABLEVIEW EQUAL TO THE THE CUSTOM CELL
         tableView.rowHeight = 125
         //ALLOW SELECTION OF MULTIPLE CELLS WHILE TABLEVIEW IS IN EDITING MODE
@@ -67,8 +67,8 @@ class HomeViewController: UITableViewController {
         //REGISTER THE CUSTOM CELL TO THIS TABLEVIEW
         tableView.register(UINib(nibName: cellConstants.nibName, bundle: nil), forCellReuseIdentifier: cellConstants.indetifier)
         //REGSITER THE CUSTOM HEADER TO THIS TABLEVIEW
-        let headerNib = UINib.init(nibName: "SectionHeaderView", bundle: Bundle.main)
-        tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: "SectionHeaderView")
+        let headerNib = UINib.init(nibName: K.sectionHeaderIdentifier, bundle: Bundle.main)
+        tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: K.sectionHeaderIdentifier)
     }
     
     private func searchUI() {
@@ -87,7 +87,7 @@ class HomeViewController: UITableViewController {
     
     private func NavigationBarUI() {
         setNavigationItems()
-        navigationItem.title = "Signary"
+        navigationItem.title = K.appTitle
         navigationController?.navigationBar.tintColor = UIColor(named: K.accentColor)
         navigationController?.navigationBar.prefersLargeTitles = true
         let defaultAppearance = UINavigationBarAppearance()

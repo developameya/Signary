@@ -11,18 +11,17 @@ public class HomeViewSectionHeader {
     //    let sectionHeaderHeight: CGFloat = 34
     
     func view(_ target:SectionHeaderViewDelegate, _ tableView: UITableView,_ section: Int,_ isCollapsed: Bool) -> UIView {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SectionHeaderView") as! SectionHeaderView
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: K.sectionHeaderIdentifier) as! SectionHeaderView
         header.delegate = target
         header.label.font = UIFont.boldSystemFont(ofSize: 22)
-        header.label.textColor = UIColor(named: "editorTextColour")
+        header.label.textColor = UIColor(named: K.colours.textColour)
         
-        header.button.tintColor = UIColor(named: "editorTextColour")
+        header.button.tintColor = UIColor(named: K.colours.textColour)
         
         if let safeTableSection = TableSection(rawValue: section) {
             switch safeTableSection {
             case .pinned:
                 header.button.isHidden = false
-                print(isCollapsed)
                 header.button.setTitle("", for: .normal)
                 header.button.setImage(.init(systemName: "chevron.forward"), for: .normal)
                 header.setExpansion(isCollapsed: isCollapsed)
