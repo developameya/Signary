@@ -45,6 +45,8 @@ class Logic: DataManager {
     
     func sortSearch(query: String, ascending: Bool, request: NSFetchRequest<Note>) {
         sort(query: query, ascending: ascending, request: request, array: &data)
+        combinedData[.unpinned] = data.filter({$0.isPinned == false})
+        combinedData[.pinned] = data.filter({$0.isPinned == true})
     }
 }
 
