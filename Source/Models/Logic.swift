@@ -25,17 +25,21 @@ class Logic: DataManager {
         dateFormatter.dateStyle = .short
     }
     //MARK:- DATA MANAGEMENT METHODS
-    func dataFilter() {
-        //LOAD THE DATA FROM COREDATA TO THE NOTEARRAY AND SORT IT BY DATE MODIFIED PARAMETER
-        dataSort(query: K.SortBy.dateModified, asceding: false)
+    
+    func buildSections() {
         combinedData[.unpinned] = data.filter({$0.isPinned == false})
         combinedData[.pinned] = data.filter({$0.isPinned == true})
     }
     
+    func dataFilter() {
+        //LOAD THE DATA FROM COREDATA TO THE NOTEARRAY AND SORT IT BY DATE MODIFIED PARAMETER
+        dataSort(query: K.SortBy.dateModified, asceding: false)
+        buildSections()
+    }
+    
     func dataSort(query: String, asceding: Bool) {
         sort(query: query, ascending: asceding, array: &data)
-        combinedData[.unpinned] = data.filter({$0.isPinned == false})
-        combinedData[.pinned] = data.filter({$0.isPinned == true})
+        buildSections()
     }
     
     func attachToDataArray(_ note: Note) {
@@ -45,8 +49,7 @@ class Logic: DataManager {
     
     func sortSearch(query: String, ascending: Bool, request: NSFetchRequest<Note>) {
         sort(query: query, ascending: ascending, request: request, array: &data)
-        combinedData[.unpinned] = data.filter({$0.isPinned == false})
-        combinedData[.pinned] = data.filter({$0.isPinned == true})
+        buildSections()
     }
 }
 
