@@ -10,7 +10,7 @@ import UIKit
 public class HomeViewSectionHeader {
     //    let sectionHeaderHeight: CGFloat = 34
     
-    func view(_ target:SectionHeaderViewDelegate, _ tableView: UITableView,_ section: Int,_ isCollapsed: Bool) -> UIView {
+    func view(_ target:SectionHeaderViewDelegate,_ tableView: UITableView,_ section: Int,_ isCollapsed: Bool) -> UIView {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: K.sectionHeaderIdentifier) as! SectionHeaderView
         header.delegate = target
         header.label.font = UIFont.boldSystemFont(ofSize: 22)

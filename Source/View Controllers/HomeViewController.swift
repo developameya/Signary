@@ -15,7 +15,7 @@ class HomeViewController: UITableViewController {
     private let searchController = UISearchController(searchResultsController: nil)
     private let interface = HomeInterfaceHelper()
     private var cellColour: UIColor?
-    var isCollapsed: Bool?
+    private var isCollapsed: Bool?
     let sectionHeaderHeight: CGFloat = 34
     var currentSection:Int?
     
@@ -348,7 +348,6 @@ extension HomeViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let query = searchController.searchBar.text!
-        
         if query.count == 0 {
             //WHEN THERE IS NO TEXT IN SEARCH BAR RETURN THE TABLEVIEW TO IT'S PREVIOUS STATE
             logic.dataSort(query: K.SortBy.dateModified, asceding: false)
@@ -475,6 +474,7 @@ extension HomeViewController: HomeInterfaceHelperDelegate {
 extension HomeViewController: SectionHeaderViewDelegate {
     
     func toggleSection(_ header: SectionHeaderView) {
+        
         let section = 0
         var indexPaths = [IndexPath]()
 

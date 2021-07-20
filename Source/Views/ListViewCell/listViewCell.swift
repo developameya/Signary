@@ -14,7 +14,7 @@ class listViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var noteDescription: UILabel!
-    
+        
     override func awakeFromNib() {
         colourBar.alpha = 0.0
         super.awakeFromNib()
