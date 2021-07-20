@@ -14,6 +14,7 @@ class HomeViewController: UITableViewController {
     private var cellData = Note()
     private let searchController = UISearchController(searchResultsController: nil)
     private let interface = HomeInterfaceHelper()
+    private var menuElements = MenuElementsHelper()
     private var cellColour: UIColor?
     private var isCollapsed: Bool?
     let sectionHeaderHeight: CGFloat = 34
@@ -51,6 +52,7 @@ class HomeViewController: UITableViewController {
         tableView.dataSource = self
         tableView.delegate = self
         searchController.searchBar.delegate = self
+        menuElements.delegate = self
     }
     
     //MARK:-    USER INTERFACE METHODS
@@ -93,7 +95,7 @@ class HomeViewController: UITableViewController {
         let defaultAppearance = UINavigationBarAppearance()
         defaultAppearance.configureWithTransparentBackground()
         navigationController?.navigationBar.scrollEdgeAppearance = defaultAppearance
-
+        
     }
     
     private func sortUI() {
@@ -133,17 +135,7 @@ class HomeViewController: UITableViewController {
     func setNavigationItems() {
         
         let menuItems = ["Sort":"arrow.up.arrow.down", "Trash":"xmark.bin.fill"]
-        let orderedMenuItems = menuItems.sorted(by: { $0.value < $1.value })
-        var elements = [UIMenuElement]()
-
-            for (button, symbol) in orderedMenuItems {
-                let identifier = UIAction.Identifier(button)
-                let action = UIAction(title: button, image: .init(systemName: symbol), identifier: identifier) { _ in
-                    self.menuButtonTapped(identifier: identifier.rawValue)
-                }
-                elements.append(action)
-            }
-        
+        let elements = menuElements.createActionsWithSymbols(from: menuItems)
         let moreButton = UIBarButtonItem(image: .init(systemName: "ellipsis.circle"), menu: UIMenu(title: "Options",children: elements))
         
         navigationItem.setRightBarButtonItems([interface.addButton, interface.selectButton], animated: true)
@@ -151,21 +143,6 @@ class HomeViewController: UITableViewController {
         searchController.searchBar.isHidden = false
         tableView.setEditing(false, animated: true)
     }
-    
-    private func menuButtonTapped(identifier: String) {
-         switch identifier {
-         case "Sort":
-             print("Sort")
-             sortUI()
-         case "Settings":
-             print("Settings")
-         case "Trash":
-             print("Trash")
-             performSegue(withIdentifier: segueConstants.trash, sender: self)
-         default:
-             break
-         }
-     }
 }
 
 //MARK:- NAVIGATION METHODS
@@ -244,7 +221,7 @@ extension HomeViewController {
             } else {
                 interface.trashbutton.isEnabled = false
             }
-
+            
         } else {
             //IF THE TABLEVIEW IS NOT IN EDITING MODE, WHEN A CELL IS SELECTED, SEGUE TO THE EDITOR
             performSegue(withIdentifier: segueConstants.cellToEditor, sender: self)
@@ -412,36 +389,6 @@ extension HomeViewController: HomeInterfaceHelperDelegate {
         navigationItem.setLeftBarButtonItems([helper.trashbutton], animated: true)
     }
     
-    func moreTapped(_ helper: HomeInterfaceHelper) {
-        print("From HomeViewController | \(#function) on line \(#line)")
-        //1. CREATE AN ALERT WITH TITLE 'OPTIONS
-        let alert = UIAlertController(title: "Options", message: nil, preferredStyle: .actionSheet)
-        //2. CREATE 'SORT BY' BUTTON
-        let sortBy = UIAlertAction(title: "Sort By...", style: .default) { (action) in
-            //PRESENT SORTING OPTIONS
-            self.sortUI()	
-            
-        }
-        //3.CREATE TRASH BUTTON
-        let trashButton = UIAlertAction(title: "Trash Bin", style: .destructive) { (action) in
-            //PRESENT TRASH VIEW
-            self.performSegue(withIdentifier: segueConstants.trash, sender: self)
-        }
-        let settings = UIAlertAction(title: "Settings", style: .default) { (action) in
-            
-        }
-        //4.CREATE CANCEL BUTTON
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        //5.ADD ALL THE BUTTONS TO THE ACTIONSHEET
-        alert.addAction(sortBy)
-        alert.addAction(settings)
-        alert.addAction(trashButton)
-        alert.addAction(cancelButton)
-        //6.PRESENT THE ALERT
-        present(alert, animated: true, completion: nil)
-        
-    }
-    
     func trashTapped(_ helper: HomeInterfaceHelper) {
         print("From HomeViewController | \(#function) on line \(#line)")
         //2. PRESENT AN ALERT TO CONFIRM IF THE SELECTED NOTES ARE TO BE TRASHED
@@ -477,7 +424,7 @@ extension HomeViewController: SectionHeaderViewDelegate {
         
         let section = 0
         var indexPaths = [IndexPath]()
-
+        
         if let tableSection = TableSection(rawValue: section),
            let data = logic.combinedData[tableSection]?.indices {
             for row in data {
@@ -501,5 +448,21 @@ extension HomeViewController: SectionHeaderViewDelegate {
     
     func toggleHeaderRotation(_ header: SectionHeaderView) {
         print("SectionHeaderViewDelegate Method | \(#function) on line \(#line) | \(String(describing: isCollapsed!))")
+    }
+}
+
+//MARK:- MENU ELEMENTS DELEGATE METHODS
+extension HomeViewController: MenuElementsDelegate {
+    func menuButtonTapped(_ identifier: String) {
+        switch identifier {
+        case "Sort":
+            sortUI()
+        case "Settings":
+            print("Settings")
+        case "Trash":
+            performSegue(withIdentifier: segueConstants.trash, sender: self)
+        default:
+            break
+        }
     }
 }

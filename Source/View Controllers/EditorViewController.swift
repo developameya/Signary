@@ -16,12 +16,14 @@ class EditorViewController: UIViewController {
     private var bodyAttributes: [NSAttributedString.Key : Any]?
     private var logic = Logic()
     private var notes = [Note]()
+    private var menuElements = MenuElementsHelper()
     private var note: Note?
     
     //MARK:- INIT
     override func viewDidLoad() {
         super.viewDidLoad()
         note = logic.fetchNote(withId: id!)
+        registerDelegate()
         textViewUI()
         setBarButtonsItems()
     }
@@ -31,12 +33,16 @@ class EditorViewController: UIViewController {
         ifClear()
     }
     
+    private func registerDelegate() {
+        textView.delegate = self
+        menuElements.delegate = self
+    }
+    
     //MARK:- USER INTERFACE METHODS
     
     private func textViewUI() {
         guard let safeNote = note else {fatalError()}
         textView.tintColor = UIColor(named: K.accentColor)
-        textView.delegate = self
         textView.text = safeNote.body
         textView.highlightFirstLineInTextView()
         textView.textColor = UIColor(named: "editorTextColour")
@@ -67,17 +73,17 @@ class EditorViewController: UIViewController {
     }
     
     private func setBarButtonsItems() {
+        let menuItems = ["FiraSans", "OpenSans", "PTSans"]
+        let elements = menuElements.createActions(from: menuItems)
         
-        let micButton = UIBarButtonItem(image: UIImage(systemName: "mic.fill"), style: .plain, target: self, action: #selector(micButtonPressed))
+        let fontButton = UIBarButtonItem(image: .init(systemName: "textformat"), menu: UIMenu(title: "Select Font", children: elements))
+        
         let trashButton = UIBarButtonItem(image: UIImage(systemName: "xmark.bin.fill"), style: .plain, target: self, action: #selector(trashButtonPressed))
-        //        let gearButton = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(gearPressed))
-        navigationItem.rightBarButtonItems = [trashButton]
+
+        navigationItem.rightBarButtonItems = [trashButton, fontButton]
     }
     
     //MARK:- UI SUPPORT METHODS
-    @objc private func micButtonPressed() {
-        print("EditorViewController | \(#function)")
-    }
     
     @objc private func trashButtonPressed() {
         
@@ -166,4 +172,23 @@ extension EditorViewController {
             self.logic.save()
         }
     }
+}
+
+//MARK:- MENU DELEGATE METHODS
+
+extension EditorViewController: MenuElementsDelegate {
+    func menuButtonTapped(_ identifier: String) {
+        switch identifier {
+        case "FiraSans":
+            print("FiraSans")
+        case "OpenSans":
+            print("OpenSans")
+        case "PTSans":
+            print("PTSans")
+        default:
+            break
+        }
+    }
+    
+    
 }
