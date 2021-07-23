@@ -17,6 +17,7 @@ class EditorViewController: UIViewController {
     private var logic = Logic()
     private var notes = [Note]()
     private var menuElements = MenuElementsHelper()
+    private var customFont = CustomFontCreator()
     private var note: Note?
     
     //MARK:- INIT
@@ -177,18 +178,22 @@ extension EditorViewController {
 //MARK:- MENU DELEGATE METHODS
 
 extension EditorViewController: MenuElementsDelegate {
+    
     func menuButtonTapped(_ identifier: String) {
         switch identifier {
-        case "FiraSans":
-            print("FiraSans")
-        case "OpenSans":
-            print("OpenSans")
-        case "PTSans":
-            print("PTSans")
+        case "FiraSans", "OpenSans", "PTSans":
+            do {
+                let customFont = try UIFont.customFont(fontFamliy: identifier, forTextStyle: .headline)
+                print(customFont.fontName)
+            } catch CustomFontCreatorError.fontNotFound {
+                print("Font couldn't be located in bundle.")
+            } catch CustomFontCreatorError.fontFamilyDoesNotExist {
+                print("The font does not exist in the app bundle.")
+            } catch {
+                print("Unknown error occured.")
+            }
         default:
             break
         }
     }
-    
-    
 }

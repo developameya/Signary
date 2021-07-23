@@ -29,10 +29,7 @@ class HomeInterfaceHelper {
         registerBarButtons()
 
     }
-    
- 
-    
-    
+
    private func registerBarButtons() {
         addButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(addButtonPressed))
         selectButton = UIBarButtonItem(title: "Select", style: .plain, target: self, action: #selector(selectButtonPressed))

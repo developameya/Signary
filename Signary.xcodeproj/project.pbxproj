@@ -34,6 +34,8 @@
 		14697BDF267209750067A2FB /* TestNotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14697BDD2672096D0067A2FB /* TestNotesModel.swift */; };
 		14697BE0267209780067A2FB /* NotesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14697BDE2672096D0067A2FB /* NotesData.swift */; };
 		146F0F7826A710DA004E5634 /* MenuElementsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F0F7726A710DA004E5634 /* MenuElementsHelper.swift */; };
+		146F0F7C26A729C4004E5634 /* CustomFontCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F0F7B26A729C4004E5634 /* CustomFontCreator.swift */; };
+		148F570326A9A6B500936A18 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F570226A9A6B500936A18 /* UIFontExtension.swift */; };
 		148F5E52267B29B200EFE9AD /* TableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F5E51267B29B200EFE9AD /* TableSection.swift */; };
 		148F5E54267B335100EFE9AD /* listViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148F5E53267B335100EFE9AD /* listViewCell.xib */; };
 		148F5E57267B562200EFE9AD /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148F5E56267B562200EFE9AD /* SectionHeaderView.xib */; };
@@ -73,6 +75,8 @@
 		14697BDD2672096D0067A2FB /* TestNotesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNotesModel.swift; sourceTree = "<group>"; };
 		14697BDE2672096D0067A2FB /* NotesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesData.swift; sourceTree = "<group>"; };
 		146F0F7726A710DA004E5634 /* MenuElementsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuElementsHelper.swift; sourceTree = "<group>"; };
+		146F0F7B26A729C4004E5634 /* CustomFontCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontCreator.swift; sourceTree = "<group>"; };
+		148F570226A9A6B500936A18 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		148F5E51267B29B200EFE9AD /* TableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSection.swift; sourceTree = "<group>"; };
 		148F5E53267B335100EFE9AD /* listViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = listViewCell.xib; sourceTree = "<group>"; };
 		148F5E56267B562200EFE9AD /* SectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 				145C353C2678BF8200D88C54 /* UITextViewExtension.swift */,
 				148F5E5A267B569900EFE9AD /* UIViewExtension.swift */,
 				148F5E5E267B60BF00EFE9AD /* StringExtension.swift */,
+				148F570226A9A6B500936A18 /* UIFontExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -124,6 +129,7 @@
 				146947DE267245FF00274B16 /* TrashInterfaceHelper.swift */,
 				1459134D267B269A00DC6488 /* TypeAliases.swift */,
 				148F5E51267B29B200EFE9AD /* TableSection.swift */,
+				146F0F7B26A729C4004E5634 /* CustomFontCreator.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -339,12 +345,14 @@
 				148F5E5B267B569900EFE9AD /* UIViewExtension.swift in Sources */,
 				14697BDF267209750067A2FB /* TestNotesModel.swift in Sources */,
 				14697BD82672071E0067A2FB /* listViewCell.swift in Sources */,
+				146F0F7C26A729C4004E5634 /* CustomFontCreator.swift in Sources */,
 				14697BB42671EC8A0067A2FB /* AppDelegate.swift in Sources */,
 				148F5E59267B563C00EFE9AD /* SectionHeaderView.swift in Sources */,
 				1459134C267B264D00DC6488 /* Logic.swift in Sources */,
 				146947D926720EC900274B16 /* HomeInterfaceHelper.swift in Sources */,
 				146947E326724FF200274B16 /* EditorViewController.swift in Sources */,
 				148F5E52267B29B200EFE9AD /* TableSection.swift in Sources */,
+				148F570326A9A6B500936A18 /* UIFontExtension.swift in Sources */,
 				148F5E5D267B58C300EFE9AD /* HomeViewSectionHeader.swift in Sources */,
 				14697BE0267209780067A2FB /* NotesData.swift in Sources */,
 				14591348267B23B700DC6488 /* Note+CoreDataProperties.swift in Sources */,
