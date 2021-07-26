@@ -28,12 +28,15 @@ struct CustomFontCreator {
         }
     }
     
-    func createCustomFontDictionary(fontFamiliy: String, italic: Bool = false) -> [UIFont.TextStyle: UIFont?] {
+    func createCustomFontDictionary(of fontFamiliy: String, italic: Bool = false) -> [UIFont.TextStyle: UIFont?] {
         var customFontRegular = String()
         var customFontBold = String()
         
         if !italic {
             customFontRegular = createCustomFontSring(fontFamiliy: fontFamiliy, fontStyle: .Regular)
+            customFontBold = createCustomFontSring(fontFamiliy: fontFamiliy, fontStyle: .Bold)
+        } else {
+            customFontRegular = createCustomFontSring(fontFamiliy: fontFamiliy, fontStyle: .Regular, italic: true)
             customFontBold = createCustomFontSring(fontFamiliy: fontFamiliy, fontStyle: .Bold, italic: true)
         }
         let customFonts: [UIFont.TextStyle: UIFont?] = [

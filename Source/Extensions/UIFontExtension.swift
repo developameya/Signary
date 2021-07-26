@@ -14,7 +14,7 @@ extension UIFont {
     
     class func customFont(fontFamliy family: String, forTextStyle style: UIFont.TextStyle) throws -> UIFont {
         let creator = CustomFontCreator()
-        let customFontDict = creator.createCustomFontDictionary(fontFamiliy: family)
+        let customFontDict = creator.createCustomFontDictionary(of: family)
         
         guard let safeCustomFont = customFontDict[style] else {
             throw CustomFontCreatorError.fontNotFound
