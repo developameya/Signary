@@ -7,13 +7,14 @@
 
 import UIKit
 
+
 enum CustomFontStyle: String {
     case Regular, Bold, Thin, Extralight, Light, Medium, Semibold, Extrabold, Black
 }
 
 struct CustomFontCreator {
     
-    func createCustomFontSring(fontFamiliy: String, fontStyle: CustomFontStyle, italic: Bool = false) -> String {
+    func createCustomFontSring(fontFamiliy: CustomFonts.RawValue, fontStyle: CustomFontStyle, italic: Bool = false) -> String {
         
         if !italic {
             switch fontStyle {
@@ -28,7 +29,7 @@ struct CustomFontCreator {
         }
     }
     
-    func createCustomFontDictionary(of fontFamiliy: String, italic: Bool = false) throws -> [UIFont.TextStyle: UIFont] {
+    func createCustomFontDictionary(of fontFamiliy: CustomFonts.RawValue, italic: Bool = false) throws -> [UIFont.TextStyle: UIFont] {
         var customFontRegular = String()
         var customFontBold = String()
         

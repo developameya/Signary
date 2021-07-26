@@ -45,6 +45,8 @@
 		148F5E5F267B60BF00EFE9AD /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F5E5E267B60BF00EFE9AD /* StringExtension.swift */; };
 		14C3E4A726AEC33E00D7E166 /* FiraSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14C3E4A626AEC21300D7E166 /* FiraSans-Bold.ttf */; };
 		14C3E4A826AEC34000D7E166 /* FiraSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14C3E4A526AEC21300D7E166 /* FiraSans-Regular.ttf */; };
+		14C3E4AA26AED31300D7E166 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C3E4A926AED31300D7E166 /* ArrayExtension.swift */; };
+		14C3E4AC26AEE43200D7E166 /* CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C3E4AB26AEE43200D7E166 /* CustomFonts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +90,8 @@
 		148F5E5E267B60BF00EFE9AD /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		14C3E4A526AEC21300D7E166 /* FiraSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-Regular.ttf"; sourceTree = "<group>"; };
 		14C3E4A626AEC21300D7E166 /* FiraSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-Bold.ttf"; sourceTree = "<group>"; };
+		14C3E4A926AED31300D7E166 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		14C3E4AB26AEE43200D7E166 /* CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 				148F5E5A267B569900EFE9AD /* UIViewExtension.swift */,
 				148F5E5E267B60BF00EFE9AD /* StringExtension.swift */,
 				148F570226A9A6B500936A18 /* UIFontExtension.swift */,
+				14C3E4A926AED31300D7E166 /* ArrayExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -133,7 +138,7 @@
 				146947DE267245FF00274B16 /* TrashInterfaceHelper.swift */,
 				1459134D267B269A00DC6488 /* TypeAliases.swift */,
 				148F5E51267B29B200EFE9AD /* TableSection.swift */,
-				146F0F7B26A729C4004E5634 /* CustomFontCreator.swift */,
+				14C3E4AE26AEE44400D7E166 /* CustomFonts */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -275,6 +280,15 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		14C3E4AE26AEE44400D7E166 /* CustomFonts */ = {
+			isa = PBXGroup;
+			children = (
+				146F0F7B26A729C4004E5634 /* CustomFontCreator.swift */,
+				14C3E4AB26AEE43200D7E166 /* CustomFonts.swift */,
+			);
+			path = CustomFonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -366,6 +380,7 @@
 				148F5E59267B563C00EFE9AD /* SectionHeaderView.swift in Sources */,
 				1459134C267B264D00DC6488 /* Logic.swift in Sources */,
 				146947D926720EC900274B16 /* HomeInterfaceHelper.swift in Sources */,
+				14C3E4AA26AED31300D7E166 /* ArrayExtension.swift in Sources */,
 				146947E326724FF200274B16 /* EditorViewController.swift in Sources */,
 				148F5E52267B29B200EFE9AD /* TableSection.swift in Sources */,
 				148F570326A9A6B500936A18 /* UIFontExtension.swift in Sources */,
@@ -373,6 +388,7 @@
 				14697BE0267209780067A2FB /* NotesData.swift in Sources */,
 				14591348267B23B700DC6488 /* Note+CoreDataProperties.swift in Sources */,
 				14697BB62671EC8A0067A2FB /* SceneDelegate.swift in Sources */,
+				14C3E4AC26AEE43200D7E166 /* CustomFonts.swift in Sources */,
 				1459134E267B269A00DC6488 /* TypeAliases.swift in Sources */,
 				14697BCE267201690067A2FB /* HomeViewController.swift in Sources */,
 				14591344267B236A00DC6488 /* ColorValueTrasnformer.swift in Sources */,

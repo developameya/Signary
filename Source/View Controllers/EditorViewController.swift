@@ -27,7 +27,7 @@ class EditorViewController: UIViewController {
         registerDelegate()
         textViewUI()
         setBarButtonsItems()
-
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -75,13 +75,18 @@ class EditorViewController: UIViewController {
     }
     
     private func setBarButtonsItems() {
-        let menuItems = ["FiraSans", "OpenSans", "PTSans"]
+        
+        var menuItems = [CustomFonts]()
+        
+        for customFont in CustomFonts.allCases {
+            menuItems.append(customFont)
+        }
         let elements = menuElements.createActions(from: menuItems)
         
         let fontButton = UIBarButtonItem(image: .init(systemName: "textformat"), menu: UIMenu(title: "Select Font", children: elements))
         
         let trashButton = UIBarButtonItem(image: UIImage(systemName: "xmark.bin.fill"), style: .plain, target: self, action: #selector(trashButtonPressed))
-
+        
         navigationItem.rightBarButtonItems = [trashButton, fontButton]
     }
     
@@ -180,21 +185,27 @@ extension EditorViewController {
 
 extension EditorViewController: MenuElementsDelegate {
     
-    func menuButtonTapped(_ identifier: String) {
+    func fontsMenuTapped(_ identifier: CustomFonts) {
+        
         switch identifier {
-        case "FiraSans", "OpenSans", "PTSans":
+        
+        case .FiraSans, .OpenSans, .PTSans:
             do {
-                let customFont = try UIFont.customFont(fontFamliy: identifier, forTextStyle: .headline)
-                print(customFont.fontName)
-            } catch CustomFontCreatorError.fontNotFound {
-                print("The font \(identifier) could not be located in the app bundle. Please check the name of the font.")
+                textView.font = try UIFont.customFont(fontFamliy: identifier.rawValue, forTextStyle: .body)
+                textView.highlightFirstLineInTextView(font: try UIFont.customFont(fontFamliy: identifier.rawValue, forTextStyle: .largeTitle))
+                
+                headerAttributes = [NSAttributedString.Key.font : try UIFont.customFont(fontFamliy: identifier.rawValue, forTextStyle: .largeTitle),
+                                    NSAttributedString.Key.foregroundColor : UIColor(named: "editorTextColour")!]
+                bodyAttributes = [NSAttributedString.Key.font : try UIFont.customFont(fontFamliy: identifier.rawValue, forTextStyle: .body),
+                                  NSAttributedString.Key.foregroundColor : UIColor(named: "editorTextColour")!]
+                
+            } catch CustomFontCreatorError.fontStyleNotFound {
+                print("UIFont extension | The font style for '\(identifier)' could not found.")
             } catch CustomFontCreatorError.fontFamilyDoesNotExist {
-                print("The font family \(identifier) does not exist in the app bundle.")
+                print("Custom Font Creator | The font family '\(identifier)' does not exist in the app bundle.")
             } catch {
                 print("Unknown error occured.")
             }
-        default:
-            break
         }
     }
 }

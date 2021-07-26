@@ -453,7 +453,9 @@ extension HomeViewController: SectionHeaderViewDelegate {
 
 //MARK:- MENU ELEMENTS DELEGATE METHODS
 extension HomeViewController: MenuElementsDelegate {
-    func menuButtonTapped(_ identifier: String) {
+
+    
+    func menuTapped(_ identifier: String) {
         switch identifier {
         case "Sort":
             sortUI()

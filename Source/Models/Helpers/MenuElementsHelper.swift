@@ -8,7 +8,8 @@
 import UIKit
 
 protocol MenuElementsDelegate {
-    func menuButtonTapped(_ identifier: String)
+    func menuTapped(_ identifier: String)
+    func fontsMenuTapped(_ identifier: CustomFonts)
 }
 
 /// Use this struct to construct UIMenu elements either with  or without SFSymbols.
@@ -31,7 +32,7 @@ struct MenuElementsHelper {
         for (itemName, itemSymbol) in orderedMenuItems {
             let customIdentifier = UIAction.Identifier(itemName)
             let action = UIAction(title: itemName, image: .init(systemName: itemSymbol), identifier: customIdentifier) { _ in
-                delegate?.menuButtonTapped(customIdentifier.rawValue)
+                delegate?.menuTapped(customIdentifier.rawValue)
             }
             elements.append(action)
         }
@@ -41,16 +42,27 @@ struct MenuElementsHelper {
     /// This method creates menu actions for UIMenu.
     /// - Parameter menuItems: Pass an array with the names of the items to be shown in the UIMenu
     /// - Returns: The method will return an array of UIElements which can be passed to UIMenu as its 'children'.
-    func createActions(from menuItems: [String]) -> [UIMenuElement] {
+    func createActions(from menuItems: [CustomFonts]) -> [UIMenuElement] {
         var elements = [UIMenuElement]()
         
         for itemName in menuItems {
-            let customIdentifier = UIAction.Identifier(itemName)
-            let action = UIAction(title: itemName, identifier: customIdentifier) { _ in
-                delegate?.menuButtonTapped(customIdentifier.rawValue)
+            let customIdentifier = UIAction.Identifier(itemName.rawValue)
+            let action = UIAction(title: itemName.rawValue, identifier: customIdentifier) { _ in
+                delegate?.fontsMenuTapped(itemName)
             }
             elements.append(action)
         }
         return elements
+    }
+}
+
+extension MenuElementsDelegate {
+    
+    func menuTapped(_ identifier: String) {
+        
+    }
+    
+    func fontsMenuTapped(_ identifier: CustomFonts) {
+        
     }
 }
