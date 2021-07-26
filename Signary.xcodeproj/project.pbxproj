@@ -43,6 +43,8 @@
 		148F5E5B267B569900EFE9AD /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F5E5A267B569900EFE9AD /* UIViewExtension.swift */; };
 		148F5E5D267B58C300EFE9AD /* HomeViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F5E5C267B58C300EFE9AD /* HomeViewSectionHeader.swift */; };
 		148F5E5F267B60BF00EFE9AD /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F5E5E267B60BF00EFE9AD /* StringExtension.swift */; };
+		14C3E4A726AEC33E00D7E166 /* FiraSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14C3E4A626AEC21300D7E166 /* FiraSans-Bold.ttf */; };
+		14C3E4A826AEC34000D7E166 /* FiraSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14C3E4A526AEC21300D7E166 /* FiraSans-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +86,8 @@
 		148F5E5A267B569900EFE9AD /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		148F5E5C267B58C300EFE9AD /* HomeViewSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewSectionHeader.swift; sourceTree = "<group>"; };
 		148F5E5E267B60BF00EFE9AD /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		14C3E4A526AEC21300D7E166 /* FiraSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-Regular.ttf"; sourceTree = "<group>"; };
+		14C3E4A626AEC21300D7E166 /* FiraSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +191,7 @@
 		14697BCA2671EE7D0067A2FB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				14C3E4A426AEC1B500D7E166 /* Fonts */,
 				14697BBC2671EC900067A2FB /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -261,6 +266,15 @@
 			path = SectionHeaderView;
 			sourceTree = "<group>";
 		};
+		14C3E4A426AEC1B500D7E166 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				14C3E4A626AEC21300D7E166 /* FiraSans-Bold.ttf */,
+				14C3E4A526AEC21300D7E166 /* FiraSans-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -320,11 +334,13 @@
 			files = (
 				148F5E54267B335100EFE9AD /* listViewCell.xib in Resources */,
 				146947E126724F0000274B16 /* Editor.storyboard in Resources */,
+				14C3E4A726AEC33E00D7E166 /* FiraSans-Bold.ttf in Resources */,
 				146947DB2672330900274B16 /* Trash.storyboard in Resources */,
 				14697BC02671EC900067A2FB /* LaunchScreen.storyboard in Resources */,
 				14697BBD2671EC900067A2FB /* Assets.xcassets in Resources */,
 				14697BBB2671EC8A0067A2FB /* Home.storyboard in Resources */,
 				148F5E57267B562200EFE9AD /* SectionHeaderView.xib in Resources */,
+				14C3E4A826AEC34000D7E166 /* FiraSans-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

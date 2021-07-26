@@ -13,17 +13,15 @@ enum CustomFontCreatorError: Error {
 extension UIFont {
     
     class func customFont(fontFamliy family: String, forTextStyle style: UIFont.TextStyle) throws -> UIFont {
-        let creator = CustomFontCreator()
-        let customFontDict = creator.createCustomFontDictionary(of: family)
         
-        guard let safeCustomFont = customFontDict[style] else {
-            throw CustomFontCreatorError.fontNotFound
-        }
+        let creator = CustomFontCreator()
+        
+        let customFontDict = try creator.createCustomFontDictionary(of: family)
+
+        guard let customFont = customFontDict[style] else { throw CustomFontCreatorError.fontNotFound }
         
         let metrics = UIFontMetrics(forTextStyle: style)
-        guard let safeFont = safeCustomFont else {
-            throw CustomFontCreatorError.fontFamilyDoesNotExist
-        }
-        return metrics.scaledFont(for: safeFont)
+
+        return metrics.scaledFont(for: customFont)
     }
 }

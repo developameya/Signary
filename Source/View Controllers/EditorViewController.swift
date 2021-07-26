@@ -27,6 +27,7 @@ class EditorViewController: UIViewController {
         registerDelegate()
         textViewUI()
         setBarButtonsItems()
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -186,9 +187,9 @@ extension EditorViewController: MenuElementsDelegate {
                 let customFont = try UIFont.customFont(fontFamliy: identifier, forTextStyle: .headline)
                 print(customFont.fontName)
             } catch CustomFontCreatorError.fontNotFound {
-                print("Font couldn't be located in bundle.")
+                print("The font \(identifier) could not be located in the app bundle. Please check the name of the font.")
             } catch CustomFontCreatorError.fontFamilyDoesNotExist {
-                print("The font does not exist in the app bundle.")
+                print("The font family \(identifier) does not exist in the app bundle.")
             } catch {
                 print("Unknown error occured.")
             }
