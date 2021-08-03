@@ -7,8 +7,8 @@
 
 import UIKit
 
-enum CustomFontCreatorError: Error {
-    case fontStyleNotFound, fontFamilyDoesNotExist
+enum CustomFontExtensionError: Error {
+    case fontNotFound
 }
 extension UIFont {
     
@@ -18,7 +18,7 @@ extension UIFont {
         
         let customFontDict = try creator.createCustomFontDictionary(of: family)
 
-        guard let customFont = customFontDict[style] else { throw CustomFontCreatorError.fontStyleNotFound }
+        guard let customFont = customFontDict[style] else { throw CustomFontExtensionError.fontNotFound }
         
         let metrics = UIFontMetrics(forTextStyle: style)
 

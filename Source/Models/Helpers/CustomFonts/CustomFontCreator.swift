@@ -7,6 +7,10 @@
 
 import UIKit
 
+enum CustomFontCreatorError: Error {
+    case FontStyleDoesNotExist
+}
+
 
 enum CustomFontStyle: String {
     case Regular, Bold, Thin, Extralight, Light, Medium, Semibold, Extrabold, Black
@@ -45,14 +49,17 @@ struct CustomFontCreator {
               let titleOneFont = UIFont(name: customFontRegular, size: 28),
               let titleTwoFont = UIFont(name: customFontRegular, size: 22),
               let titleThreeFont = UIFont(name: customFontRegular, size: 20),
-              let headlineFont = UIFont(name: customFontBold, size: 17),
               let bodyFont = UIFont(name: customFontRegular, size: 17),
               let calloutFont = UIFont(name: customFontRegular, size: 16),
               let subheadlineFont =  UIFont(name: customFontRegular, size: 15),
               let footNoteFont = UIFont(name: customFontRegular, size: 13),
               let captionOneFont = UIFont(name: customFontRegular, size: 12),
               let captionTwoFont =  UIFont(name: customFontRegular, size: 11) else {
-            throw CustomFontCreatorError.fontFamilyDoesNotExist
+            throw CustomFontCreatorError.FontStyleDoesNotExist
+        }
+        
+        guard let headlineFont = UIFont(name: customFontBold, size: 17) else {
+            throw CustomFontCreatorError.FontStyleDoesNotExist
         }
         
         let customFonts: [UIFont.TextStyle: UIFont] = [

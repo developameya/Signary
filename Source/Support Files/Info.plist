@@ -64,6 +64,12 @@
 	<array>
 		<string>FiraSans-Bold.ttf</string>
 		<string>FiraSans-Regular.ttf</string>
+		<string>OpenSans-Bold.ttf</string>
+		<string>OpenSans-Regular.ttf</string>
+		<string>PTSans-Bold.ttf</string>
+		<string>PTSans-Regular.ttf</string>
+		<string>Times New Roman-Bold.ttf</string>
+		<string>Times New Roman-Regular.ttf</string>
 	</array>
 </dict>
 </plist>

@@ -27,6 +27,7 @@ class EditorViewController: UIViewController {
         registerDelegate()
         textViewUI()
         setBarButtonsItems()
+        checkAvailableFonts()
         
     }
     
@@ -50,6 +51,7 @@ class EditorViewController: UIViewController {
         textView.textColor = UIColor(named: "editorTextColour")
         textView.backgroundColor = .systemBackground
         textView.alwaysBounceVertical = true
+        textView.adjustsFontForContentSizeCategory = true
         
         headerAttributes = [NSAttributedString.Key.font :
                                 UIFont.preferredFont(forTextStyle: UIFont.TextStyle.largeTitle),
@@ -108,6 +110,13 @@ class EditorViewController: UIViewController {
     }
 }
 
+func checkAvailableFonts() {
+    for family in UIFont.familyNames.sorted() {
+        let names = UIFont.fontNames(forFamilyName: family)
+        print("Family: \(family) Font names: \(names)")
+    }
+}
+
 
 //MARK:- TEXTVIEW DELEGATE METHODS
 
@@ -154,6 +163,7 @@ extension EditorViewController: UITextViewDelegate {
 //MARK:- DATA MANIPULATION METHODS
 
 extension EditorViewController {
+    
     func ifClear() {
         //BEFORE THE VIEW DISAPPEARS, THIS LINE CHECKS FOR THE FINAL TIME IF BOTH TEXVIEW AND TEXTFIELD ARE CLEAR OR NOT AND SETS THE 'ISCLEAR' PROPERTY OF THE NOTE ACCORDINGLY
         guard let safeNote = note else { fatalError() }
@@ -189,7 +199,7 @@ extension EditorViewController: MenuElementsDelegate {
         
         switch identifier {
         
-        case .FiraSans, .OpenSans, .PTSans:
+        case .FiraSans, .OpenSans, .PTSans, .TimesNewRoman:
             do {
                 textView.font = try UIFont.customFont(fontFamliy: identifier.rawValue, forTextStyle: .body)
                 textView.highlightFirstLineInTextView(font: try UIFont.customFont(fontFamliy: identifier.rawValue, forTextStyle: .largeTitle))
@@ -199,10 +209,10 @@ extension EditorViewController: MenuElementsDelegate {
                 bodyAttributes = [NSAttributedString.Key.font : try UIFont.customFont(fontFamliy: identifier.rawValue, forTextStyle: .body),
                                   NSAttributedString.Key.foregroundColor : UIColor(named: "editorTextColour")!]
                 
-            } catch CustomFontCreatorError.fontStyleNotFound {
-                print("UIFont extension | The font style for '\(identifier)' could not found.")
-            } catch CustomFontCreatorError.fontFamilyDoesNotExist {
-                print("Custom Font Creator | The font family '\(identifier)' does not exist in the app bundle.")
+            } catch CustomFontExtensionError.fontNotFound {
+                print("UIFont extension | The font family for '\(identifier)' could not found.")
+            } catch CustomFontCreatorError.FontStyleDoesNotExist {
+                print("Custom Font Creator | The specific font style for font '\(identifier)' does not exist in the app bundle.")
             } catch {
                 print("Unknown error occured.")
             }

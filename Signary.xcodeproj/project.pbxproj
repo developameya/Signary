@@ -17,6 +17,7 @@
 		1459134E267B269A00DC6488 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459134D267B269A00DC6488 /* TypeAliases.swift */; };
 		145C353B26789EF200D88C54 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C353A26789EF200D88C54 /* UIColorExtension.swift */; };
 		145C353D2678BF8200D88C54 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C353C2678BF8200D88C54 /* UITextViewExtension.swift */; };
+		146708EF26B8059B00F17177 /* CustomFontController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146708EE26B8059B00F17177 /* CustomFontController.swift */; };
 		146947D926720EC900274B16 /* HomeInterfaceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146947D826720EC900274B16 /* HomeInterfaceHelper.swift */; };
 		146947DB2672330900274B16 /* Trash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 146947DA2672330900274B16 /* Trash.storyboard */; };
 		146947DD2672353600274B16 /* TrashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146947DC2672353600274B16 /* TrashViewController.swift */; };
@@ -47,6 +48,12 @@
 		14C3E4A826AEC34000D7E166 /* FiraSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14C3E4A526AEC21300D7E166 /* FiraSans-Regular.ttf */; };
 		14C3E4AA26AED31300D7E166 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C3E4A926AED31300D7E166 /* ArrayExtension.swift */; };
 		14C3E4AC26AEE43200D7E166 /* CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C3E4AB26AEE43200D7E166 /* CustomFonts.swift */; };
+		14C3E4B326AEE6F600D7E166 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14C3E4B126AEE6F600D7E166 /* OpenSans-Bold.ttf */; };
+		14C3E4B426AEE6F600D7E166 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14C3E4B226AEE6F600D7E166 /* OpenSans-Regular.ttf */; };
+		14C3E4B826AEE79200D7E166 /* PTSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14C3E4B626AEE79200D7E166 /* PTSans-Bold.ttf */; };
+		14C3E4B926AEE79200D7E166 /* PTSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14C3E4B726AEE79200D7E166 /* PTSans-Regular.ttf */; };
+		14C3E4C426AEEF9300D7E166 /* TimesNewRoman-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14C3E4C226AEEF9300D7E166 /* TimesNewRoman-Bold.ttf */; };
+		14C3E4C526AEEF9300D7E166 /* TimesNewRoman-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14C3E4C326AEEF9300D7E166 /* TimesNewRoman-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +67,7 @@
 		1459134D267B269A00DC6488 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		145C353A26789EF200D88C54 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		145C353C2678BF8200D88C54 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
+		146708EE26B8059B00F17177 /* CustomFontController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontController.swift; sourceTree = "<group>"; };
 		146947D826720EC900274B16 /* HomeInterfaceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInterfaceHelper.swift; sourceTree = "<group>"; };
 		146947DA2672330900274B16 /* Trash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Trash.storyboard; sourceTree = "<group>"; };
 		146947DC2672353600274B16 /* TrashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +100,12 @@
 		14C3E4A626AEC21300D7E166 /* FiraSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-Bold.ttf"; sourceTree = "<group>"; };
 		14C3E4A926AED31300D7E166 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		14C3E4AB26AEE43200D7E166 /* CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
+		14C3E4B126AEE6F600D7E166 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		14C3E4B226AEE6F600D7E166 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		14C3E4B626AEE79200D7E166 /* PTSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSans-Bold.ttf"; sourceTree = "<group>"; };
+		14C3E4B726AEE79200D7E166 /* PTSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSans-Regular.ttf"; sourceTree = "<group>"; };
+		14C3E4C226AEEF9300D7E166 /* TimesNewRoman-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TimesNewRoman-Bold.ttf"; sourceTree = "<group>"; };
+		14C3E4C326AEEF9300D7E166 /* TimesNewRoman-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TimesNewRoman-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,8 +288,10 @@
 		14C3E4A426AEC1B500D7E166 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				14C3E4A626AEC21300D7E166 /* FiraSans-Bold.ttf */,
-				14C3E4A526AEC21300D7E166 /* FiraSans-Regular.ttf */,
+				14C3E4C626AEEFB900D7E166 /* Times New Roman */,
+				14C3E4BA26AEE79800D7E166 /* PTSans */,
+				14C3E4B526AEE70200D7E166 /* OpenSans */,
+				14C3E4B026AEE6D000D7E166 /* FiraSans */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -285,8 +301,45 @@
 			children = (
 				146F0F7B26A729C4004E5634 /* CustomFontCreator.swift */,
 				14C3E4AB26AEE43200D7E166 /* CustomFonts.swift */,
+				146708EE26B8059B00F17177 /* CustomFontController.swift */,
 			);
 			path = CustomFonts;
+			sourceTree = "<group>";
+		};
+		14C3E4B026AEE6D000D7E166 /* FiraSans */ = {
+			isa = PBXGroup;
+			children = (
+				14C3E4A626AEC21300D7E166 /* FiraSans-Bold.ttf */,
+				14C3E4A526AEC21300D7E166 /* FiraSans-Regular.ttf */,
+			);
+			path = FiraSans;
+			sourceTree = "<group>";
+		};
+		14C3E4B526AEE70200D7E166 /* OpenSans */ = {
+			isa = PBXGroup;
+			children = (
+				14C3E4B126AEE6F600D7E166 /* OpenSans-Bold.ttf */,
+				14C3E4B226AEE6F600D7E166 /* OpenSans-Regular.ttf */,
+			);
+			path = OpenSans;
+			sourceTree = "<group>";
+		};
+		14C3E4BA26AEE79800D7E166 /* PTSans */ = {
+			isa = PBXGroup;
+			children = (
+				14C3E4B626AEE79200D7E166 /* PTSans-Bold.ttf */,
+				14C3E4B726AEE79200D7E166 /* PTSans-Regular.ttf */,
+			);
+			path = PTSans;
+			sourceTree = "<group>";
+		};
+		14C3E4C626AEEFB900D7E166 /* Times New Roman */ = {
+			isa = PBXGroup;
+			children = (
+				14C3E4C226AEEF9300D7E166 /* TimesNewRoman-Bold.ttf */,
+				14C3E4C326AEEF9300D7E166 /* TimesNewRoman-Regular.ttf */,
+			);
+			path = "Times New Roman";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,13 +400,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				148F5E54267B335100EFE9AD /* listViewCell.xib in Resources */,
+				14C3E4C526AEEF9300D7E166 /* TimesNewRoman-Regular.ttf in Resources */,
+				14C3E4B426AEE6F600D7E166 /* OpenSans-Regular.ttf in Resources */,
+				14C3E4B826AEE79200D7E166 /* PTSans-Bold.ttf in Resources */,
 				146947E126724F0000274B16 /* Editor.storyboard in Resources */,
 				14C3E4A726AEC33E00D7E166 /* FiraSans-Bold.ttf in Resources */,
 				146947DB2672330900274B16 /* Trash.storyboard in Resources */,
 				14697BC02671EC900067A2FB /* LaunchScreen.storyboard in Resources */,
 				14697BBD2671EC900067A2FB /* Assets.xcassets in Resources */,
+				14C3E4C426AEEF9300D7E166 /* TimesNewRoman-Bold.ttf in Resources */,
+				14C3E4B926AEE79200D7E166 /* PTSans-Regular.ttf in Resources */,
 				14697BBB2671EC8A0067A2FB /* Home.storyboard in Resources */,
 				148F5E57267B562200EFE9AD /* SectionHeaderView.xib in Resources */,
+				14C3E4B326AEE6F600D7E166 /* OpenSans-Bold.ttf in Resources */,
 				14C3E4A826AEC34000D7E166 /* FiraSans-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +435,7 @@
 				14697BDF267209750067A2FB /* TestNotesModel.swift in Sources */,
 				14697BD82672071E0067A2FB /* listViewCell.swift in Sources */,
 				146F0F7C26A729C4004E5634 /* CustomFontCreator.swift in Sources */,
+				146708EF26B8059B00F17177 /* CustomFontController.swift in Sources */,
 				14697BB42671EC8A0067A2FB /* AppDelegate.swift in Sources */,
 				148F5E59267B563C00EFE9AD /* SectionHeaderView.swift in Sources */,
 				1459134C267B264D00DC6488 /* Logic.swift in Sources */,

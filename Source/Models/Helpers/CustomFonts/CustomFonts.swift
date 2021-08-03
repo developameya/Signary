@@ -10,5 +10,5 @@ import Foundation
 //UPDATE THESE CASES WHEN A NEW FONT IS ADDED
 
 enum CustomFonts: String, CaseIterable {
-    case FiraSans, OpenSans, PTSans
+    case FiraSans, OpenSans, PTSans, TimesNewRoman
 }
