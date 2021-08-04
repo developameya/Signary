@@ -19,6 +19,7 @@ class EditorViewController: UIViewController {
     private var menuElements = MenuElementsHelper()
     private var customFont = CustomFontCreator()
     private var note: Note?
+    private let fontController = CustomFontController()
     
     //MARK:- INIT
     override func viewDidLoad() {
@@ -208,6 +209,7 @@ extension EditorViewController: MenuElementsDelegate {
                                     NSAttributedString.Key.foregroundColor : UIColor(named: "editorTextColour")!]
                 bodyAttributes = [NSAttributedString.Key.font : try UIFont.customFont(fontFamliy: identifier.rawValue, forTextStyle: .body),
                                   NSAttributedString.Key.foregroundColor : UIColor(named: "editorTextColour")!]
+                try fontController.saveFontAttributes(header: headerAttributes, body: bodyAttributes)
                 
             } catch CustomFontExtensionError.fontNotFound {
                 print("UIFont extension | The font family for '\(identifier)' could not found.")
