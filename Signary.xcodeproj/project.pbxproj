@@ -17,7 +17,7 @@
 		1459134E267B269A00DC6488 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459134D267B269A00DC6488 /* TypeAliases.swift */; };
 		145C353B26789EF200D88C54 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C353A26789EF200D88C54 /* UIColorExtension.swift */; };
 		145C353D2678BF8200D88C54 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C353C2678BF8200D88C54 /* UITextViewExtension.swift */; };
-		146708EF26B8059B00F17177 /* CustomFontController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146708EE26B8059B00F17177 /* CustomFontController.swift */; };
+		146708EF26B8059B00F17177 /* FontController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146708EE26B8059B00F17177 /* FontController.swift */; };
 		146947D926720EC900274B16 /* HomeInterfaceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146947D826720EC900274B16 /* HomeInterfaceHelper.swift */; };
 		146947DB2672330900274B16 /* Trash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 146947DA2672330900274B16 /* Trash.storyboard */; };
 		146947DD2672353600274B16 /* TrashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146947DC2672353600274B16 /* TrashViewController.swift */; };
@@ -34,8 +34,9 @@
 		14697BD9267208940067A2FB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14697BD0267205060067A2FB /* Constants.swift */; };
 		14697BDF267209750067A2FB /* TestNotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14697BDD2672096D0067A2FB /* TestNotesModel.swift */; };
 		14697BE0267209780067A2FB /* NotesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14697BDE2672096D0067A2FB /* NotesData.swift */; };
+		146A2F2F26BBF8C400C5E1D3 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146A2F2E26BBF8C400C5E1D3 /* UserDefaultsExtension.swift */; };
 		146F0F7826A710DA004E5634 /* MenuElementsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F0F7726A710DA004E5634 /* MenuElementsHelper.swift */; };
-		146F0F7C26A729C4004E5634 /* CustomFontCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F0F7B26A729C4004E5634 /* CustomFontCreator.swift */; };
+		146F0F7C26A729C4004E5634 /* FontCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F0F7B26A729C4004E5634 /* FontCreator.swift */; };
 		148F570326A9A6B500936A18 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F570226A9A6B500936A18 /* UIFontExtension.swift */; };
 		148F5E52267B29B200EFE9AD /* TableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F5E51267B29B200EFE9AD /* TableSection.swift */; };
 		148F5E54267B335100EFE9AD /* listViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148F5E53267B335100EFE9AD /* listViewCell.xib */; };
@@ -47,7 +48,7 @@
 		14C3E4A726AEC33E00D7E166 /* FiraSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14C3E4A626AEC21300D7E166 /* FiraSans-Bold.ttf */; };
 		14C3E4A826AEC34000D7E166 /* FiraSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14C3E4A526AEC21300D7E166 /* FiraSans-Regular.ttf */; };
 		14C3E4AA26AED31300D7E166 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C3E4A926AED31300D7E166 /* ArrayExtension.swift */; };
-		14C3E4AC26AEE43200D7E166 /* CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C3E4AB26AEE43200D7E166 /* CustomFonts.swift */; };
+		14C3E4AC26AEE43200D7E166 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C3E4AB26AEE43200D7E166 /* Fonts.swift */; };
 		14C3E4B326AEE6F600D7E166 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14C3E4B126AEE6F600D7E166 /* OpenSans-Bold.ttf */; };
 		14C3E4B426AEE6F600D7E166 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14C3E4B226AEE6F600D7E166 /* OpenSans-Regular.ttf */; };
 		14C3E4B826AEE79200D7E166 /* PTSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14C3E4B626AEE79200D7E166 /* PTSans-Bold.ttf */; };
@@ -67,7 +68,7 @@
 		1459134D267B269A00DC6488 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		145C353A26789EF200D88C54 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		145C353C2678BF8200D88C54 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
-		146708EE26B8059B00F17177 /* CustomFontController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontController.swift; sourceTree = "<group>"; };
+		146708EE26B8059B00F17177 /* FontController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontController.swift; sourceTree = "<group>"; };
 		146947D826720EC900274B16 /* HomeInterfaceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInterfaceHelper.swift; sourceTree = "<group>"; };
 		146947DA2672330900274B16 /* Trash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Trash.storyboard; sourceTree = "<group>"; };
 		146947DC2672353600274B16 /* TrashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashViewController.swift; sourceTree = "<group>"; };
@@ -86,8 +87,9 @@
 		14697BD62672071E0067A2FB /* listViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = listViewCell.swift; sourceTree = "<group>"; };
 		14697BDD2672096D0067A2FB /* TestNotesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNotesModel.swift; sourceTree = "<group>"; };
 		14697BDE2672096D0067A2FB /* NotesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesData.swift; sourceTree = "<group>"; };
+		146A2F2E26BBF8C400C5E1D3 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		146F0F7726A710DA004E5634 /* MenuElementsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuElementsHelper.swift; sourceTree = "<group>"; };
-		146F0F7B26A729C4004E5634 /* CustomFontCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontCreator.swift; sourceTree = "<group>"; };
+		146F0F7B26A729C4004E5634 /* FontCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontCreator.swift; sourceTree = "<group>"; };
 		148F570226A9A6B500936A18 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		148F5E51267B29B200EFE9AD /* TableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSection.swift; sourceTree = "<group>"; };
 		148F5E53267B335100EFE9AD /* listViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = listViewCell.xib; sourceTree = "<group>"; };
@@ -99,7 +101,7 @@
 		14C3E4A526AEC21300D7E166 /* FiraSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-Regular.ttf"; sourceTree = "<group>"; };
 		14C3E4A626AEC21300D7E166 /* FiraSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-Bold.ttf"; sourceTree = "<group>"; };
 		14C3E4A926AED31300D7E166 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
-		14C3E4AB26AEE43200D7E166 /* CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
+		14C3E4AB26AEE43200D7E166 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		14C3E4B126AEE6F600D7E166 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		14C3E4B226AEE6F600D7E166 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		14C3E4B626AEE79200D7E166 /* PTSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSans-Bold.ttf"; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				148F5E5E267B60BF00EFE9AD /* StringExtension.swift */,
 				148F570226A9A6B500936A18 /* UIFontExtension.swift */,
 				14C3E4A926AED31300D7E166 /* ArrayExtension.swift */,
+				146A2F2E26BBF8C400C5E1D3 /* UserDefaultsExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -299,9 +302,9 @@
 		14C3E4AE26AEE44400D7E166 /* CustomFonts */ = {
 			isa = PBXGroup;
 			children = (
-				146F0F7B26A729C4004E5634 /* CustomFontCreator.swift */,
-				14C3E4AB26AEE43200D7E166 /* CustomFonts.swift */,
-				146708EE26B8059B00F17177 /* CustomFontController.swift */,
+				146F0F7B26A729C4004E5634 /* FontCreator.swift */,
+				14C3E4AB26AEE43200D7E166 /* Fonts.swift */,
+				146708EE26B8059B00F17177 /* FontController.swift */,
 			);
 			path = CustomFonts;
 			sourceTree = "<group>";
@@ -434,8 +437,9 @@
 				148F5E5B267B569900EFE9AD /* UIViewExtension.swift in Sources */,
 				14697BDF267209750067A2FB /* TestNotesModel.swift in Sources */,
 				14697BD82672071E0067A2FB /* listViewCell.swift in Sources */,
-				146F0F7C26A729C4004E5634 /* CustomFontCreator.swift in Sources */,
-				146708EF26B8059B00F17177 /* CustomFontController.swift in Sources */,
+				146A2F2F26BBF8C400C5E1D3 /* UserDefaultsExtension.swift in Sources */,
+				146F0F7C26A729C4004E5634 /* FontCreator.swift in Sources */,
+				146708EF26B8059B00F17177 /* FontController.swift in Sources */,
 				14697BB42671EC8A0067A2FB /* AppDelegate.swift in Sources */,
 				148F5E59267B563C00EFE9AD /* SectionHeaderView.swift in Sources */,
 				1459134C267B264D00DC6488 /* Logic.swift in Sources */,
@@ -448,7 +452,7 @@
 				14697BE0267209780067A2FB /* NotesData.swift in Sources */,
 				14591348267B23B700DC6488 /* Note+CoreDataProperties.swift in Sources */,
 				14697BB62671EC8A0067A2FB /* SceneDelegate.swift in Sources */,
-				14C3E4AC26AEE43200D7E166 /* CustomFonts.swift in Sources */,
+				14C3E4AC26AEE43200D7E166 /* Fonts.swift in Sources */,
 				1459134E267B269A00DC6488 /* TypeAliases.swift in Sources */,
 				14697BCE267201690067A2FB /* HomeViewController.swift in Sources */,
 				14591344267B236A00DC6488 /* ColorValueTrasnformer.swift in Sources */,

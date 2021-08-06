@@ -7,8 +7,8 @@
 
 import UIKit
 
-enum CustomFontCreatorError: Error {
-    case FontStyleDoesNotExist
+enum FontCreatorError: Error {
+    case invalidFontName
 }
 
 
@@ -16,33 +16,33 @@ enum CustomFontStyle: String {
     case Regular, Bold, Thin, Extralight, Light, Medium, Semibold, Extrabold, Black
 }
 
-struct CustomFontCreator {
+struct FontCreator{
     
-    func createCustomFontSring(fontFamiliy: CustomFonts.RawValue, fontStyle: CustomFontStyle, italic: Bool = false) -> String {
+    func createCustomFontString(fontFamiliy famliy: Fonts.RawValue, fontStyle style: CustomFontStyle, italic: Bool = false) -> String {
         
         if !italic {
-            switch fontStyle {
+            switch style {
             case .Regular, .Bold, .Thin, .Extralight, .Light, .Medium, .Semibold, .Extrabold, .Black:
-                return "\(fontFamiliy)-\(fontStyle.rawValue)"
+                return "\(famliy)-\(style.rawValue)"
             }
         } else {
-            switch fontStyle {
+            switch style {
             case .Regular, .Bold, .Thin, .Extralight, .Light, .Medium, .Semibold, .Extrabold, .Black:
-                return "\(fontFamiliy)-\(fontStyle.rawValue)Italic"
+                return "\(famliy)-\(style.rawValue)Italic"
             }
         }
     }
     
-    func createCustomFontDictionary(of fontFamiliy: CustomFonts.RawValue, italic: Bool = false) throws -> [UIFont.TextStyle: UIFont] {
+    func createCustomFontDictionary(of fontFamiliy: Fonts.RawValue, italic: Bool = false) throws -> [UIFont.TextStyle: UIFont] {
         var customFontRegular = String()
         var customFontBold = String()
         
         if !italic {
-            customFontRegular = createCustomFontSring(fontFamiliy: fontFamiliy, fontStyle: .Regular)
-            customFontBold = createCustomFontSring(fontFamiliy: fontFamiliy, fontStyle: .Bold)
+            customFontRegular = createCustomFontString(fontFamiliy: fontFamiliy, fontStyle: .Regular)
+            customFontBold = createCustomFontString(fontFamiliy: fontFamiliy, fontStyle: .Bold)
         } else {
-            customFontRegular = createCustomFontSring(fontFamiliy: fontFamiliy, fontStyle: .Regular, italic: true)
-            customFontBold = createCustomFontSring(fontFamiliy: fontFamiliy, fontStyle: .Bold, italic: true)
+            customFontRegular = createCustomFontString(fontFamiliy: fontFamiliy, fontStyle: .Regular, italic: true)
+            customFontBold = createCustomFontString(fontFamiliy: fontFamiliy, fontStyle: .Bold, italic: true)
         }
         
         guard let largeTitleFont = UIFont(name: customFontRegular, size: 34),
@@ -54,13 +54,14 @@ struct CustomFontCreator {
               let subheadlineFont =  UIFont(name: customFontRegular, size: 15),
               let footNoteFont = UIFont(name: customFontRegular, size: 13),
               let captionOneFont = UIFont(name: customFontRegular, size: 12),
-              let captionTwoFont =  UIFont(name: customFontRegular, size: 11) else {
-            throw CustomFontCreatorError.FontStyleDoesNotExist
+              let captionTwoFont =  UIFont(name: customFontRegular, size: 11),
+              let headlineFont = UIFont(name: customFontBold, size: 17)
+        else {
+            
+           throw FontCreatorError.invalidFontName
+            
         }
         
-        guard let headlineFont = UIFont(name: customFontBold, size: 17) else {
-            throw CustomFontCreatorError.FontStyleDoesNotExist
-        }
         
         let customFonts: [UIFont.TextStyle: UIFont] = [
             .largeTitle: largeTitleFont,

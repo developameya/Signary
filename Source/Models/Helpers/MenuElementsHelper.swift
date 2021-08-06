@@ -9,7 +9,7 @@ import UIKit
 
 protocol MenuElementsDelegate {
     func menuTapped(_ identifier: String)
-    func fontsMenuTapped(_ identifier: CustomFonts)
+    func fontsMenuTapped(_ identifier: Fonts)
 }
 
 /// Use this struct to construct UIMenu elements either with  or without SFSymbols.
@@ -42,7 +42,7 @@ struct MenuElementsHelper {
     /// This method creates menu actions for UIMenu.
     /// - Parameter menuItems: Pass an array with the names of the items to be shown in the UIMenu
     /// - Returns: The method will return an array of UIElements which can be passed to UIMenu as its 'children'.
-    func createActions(from menuItems: [CustomFonts]) -> [UIMenuElement] {
+    func createActions(from menuItems: [Fonts]) -> [UIMenuElement] {
         var elements = [UIMenuElement]()
         
         for itemName in menuItems {
@@ -62,7 +62,7 @@ extension MenuElementsDelegate {
         
     }
     
-    func fontsMenuTapped(_ identifier: CustomFonts) {
+    func fontsMenuTapped(_ identifier: Fonts) {
         
     }
 }

@@ -9,6 +9,6 @@ import Foundation
 
 //UPDATE THESE CASES WHEN A NEW FONT IS ADDED
 
-enum CustomFonts: String, CaseIterable {
+enum Fonts: String, CaseIterable {
     case FiraSans, OpenSans, PTSans, TimesNewRoman
 }

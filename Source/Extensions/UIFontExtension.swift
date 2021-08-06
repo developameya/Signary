@@ -12,16 +12,31 @@ enum CustomFontExtensionError: Error {
 }
 extension UIFont {
     
-    class func customFont(fontFamliy family: CustomFonts.RawValue, forTextStyle style: UIFont.TextStyle) throws -> UIFont {
+    class func customFont(fontFamliy family: Fonts, forTextStyle style: UIFont.TextStyle) -> UIFont? {
         
-        let creator = CustomFontCreator()
+        var scaledFont: UIFont?
         
-        let customFontDict = try creator.createCustomFontDictionary(of: family)
+        do {
+            let creator = FontCreator()
+            
+            let customFontDict = try creator.createCustomFontDictionary(of: family.rawValue)
 
-        guard let customFont = customFontDict[style] else { throw CustomFontExtensionError.fontNotFound }
-        
-        let metrics = UIFontMetrics(forTextStyle: style)
+            guard let customFont = customFontDict[style] else { fatalError() }
+            
+            let metrics = UIFontMetrics(forTextStyle: style)
+            
+            scaledFont = metrics.scaledFont(for: customFont)
+            
+        } catch FontCreatorError.invalidFontName {
+            
+            print("\(String(describing: self))\(#function) Error at line \(#line) | The font name is invalid.")
+            
+        } catch {
+            
+            print("\(String(describing: self))\(#function) Error at line \(#line) | Unexpected error: \(error).")
+        }
 
-        return metrics.scaledFont(for: customFont)
+        return scaledFont
     }
+    
 }
