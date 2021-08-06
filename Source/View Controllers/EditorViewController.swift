@@ -107,14 +107,9 @@ class EditorViewController: UIViewController {
     }
     
     private func setBarButtonsItems() {
+
+        let menuItems = Fonts.allCases
         
-        var menuItems = [Fonts]()
-        
-        for customFont in Fonts.allCases {
-            
-            menuItems.append(customFont)
-            
-        }
         let elements = menuElements.createActions(from: menuItems)
         
         let fontButton = UIBarButtonItem(image: .init(systemName: "textformat"), menu: UIMenu(title: "Select Font", children: elements))
@@ -273,7 +268,7 @@ extension EditorViewController: MenuElementsDelegate {
         
         switch identifier {
         
-        case .FiraSans, .OpenSans, .PTSans, .TimesNewRoman:
+        case .FiraSans, .OpenSans, .PTSans, .TimesNewRoman, .CourierNew:
         
             let textViewFont = fontController.setFont(fontFamily: identifier, forTextStyle: .body, forKey: "textViewFont") ?? .preferredFont(forTextStyle: .body)
             

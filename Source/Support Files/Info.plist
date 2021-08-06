@@ -72,6 +72,10 @@
 		<string>TimesNewRoman-Regular.ttf</string>
 		<string>TimesNewRoman-BoldItalic.ttf</string>
 		<string>TimesNewRoman-RegularItalic.ttf</string>
+		<string>CourierNew-Bold.ttf</string>
+		<string>CourierNew-BoldItalic.ttf</string>
+		<string>CourierNew-Regular.ttf</string>
+		<string>CourierNew-RegularItalic.ttf</string>
 	</array>
 </dict>
 </plist>

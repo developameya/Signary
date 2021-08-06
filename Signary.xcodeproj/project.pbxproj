@@ -11,6 +11,10 @@
 		1407B7AE26BDA17C00A20FDF /* TimesNewRoman-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1407B7AA26BDA17C00A20FDF /* TimesNewRoman-Regular.ttf */; };
 		1407B7AF26BDA17C00A20FDF /* TimesNewRoman-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1407B7AB26BDA17C00A20FDF /* TimesNewRoman-Bold.ttf */; };
 		1407B7B026BDA17C00A20FDF /* TimesNewRoman-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1407B7AC26BDA17C00A20FDF /* TimesNewRoman-BoldItalic.ttf */; };
+		1407B7BE26BDAA7700A20FDF /* CourierNew-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1407B7BA26BDAA7600A20FDF /* CourierNew-Regular.ttf */; };
+		1407B7BF26BDAA7700A20FDF /* CourierNew-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1407B7BB26BDAA7600A20FDF /* CourierNew-Bold.ttf */; };
+		1407B7C026BDAA7700A20FDF /* CourierNew-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1407B7BC26BDAA7700A20FDF /* CourierNew-RegularItalic.ttf */; };
+		1407B7C126BDAA7700A20FDF /* CourierNew-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1407B7BD26BDAA7700A20FDF /* CourierNew-BoldItalic.ttf */; };
 		1459133C267B1C2C00DC6488 /* Signary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1459133A267B1C2C00DC6488 /* Signary.xcdatamodeld */; };
 		14591342267B22CA00DC6488 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14591341267B22CA00DC6488 /* CoreDataStack.swift */; };
 		14591344267B236A00DC6488 /* ColorValueTrasnformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14591343267B236A00DC6488 /* ColorValueTrasnformer.swift */; };
@@ -64,6 +68,10 @@
 		1407B7AA26BDA17C00A20FDF /* TimesNewRoman-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TimesNewRoman-Regular.ttf"; sourceTree = "<group>"; };
 		1407B7AB26BDA17C00A20FDF /* TimesNewRoman-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TimesNewRoman-Bold.ttf"; sourceTree = "<group>"; };
 		1407B7AC26BDA17C00A20FDF /* TimesNewRoman-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TimesNewRoman-BoldItalic.ttf"; sourceTree = "<group>"; };
+		1407B7BA26BDAA7600A20FDF /* CourierNew-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CourierNew-Regular.ttf"; sourceTree = "<group>"; };
+		1407B7BB26BDAA7600A20FDF /* CourierNew-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CourierNew-Bold.ttf"; sourceTree = "<group>"; };
+		1407B7BC26BDAA7700A20FDF /* CourierNew-RegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CourierNew-RegularItalic.ttf"; sourceTree = "<group>"; };
+		1407B7BD26BDAA7700A20FDF /* CourierNew-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CourierNew-BoldItalic.ttf"; sourceTree = "<group>"; };
 		1459133B267B1C2C00DC6488 /* Signary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Signary.xcdatamodel; sourceTree = "<group>"; };
 		14591341267B22CA00DC6488 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		14591343267B236A00DC6488 /* ColorValueTrasnformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorValueTrasnformer.swift; sourceTree = "<group>"; };
@@ -125,6 +133,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1407B7B526BDAA4E00A20FDF /* Courier New */ = {
+			isa = PBXGroup;
+			children = (
+				1407B7BB26BDAA7600A20FDF /* CourierNew-Bold.ttf */,
+				1407B7BD26BDAA7700A20FDF /* CourierNew-BoldItalic.ttf */,
+				1407B7BA26BDAA7600A20FDF /* CourierNew-Regular.ttf */,
+				1407B7BC26BDAA7700A20FDF /* CourierNew-RegularItalic.ttf */,
+			);
+			path = "Courier New";
+			sourceTree = "<group>";
+		};
 		14591339267B1C0900DC6488 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +314,7 @@
 		14C3E4A426AEC1B500D7E166 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				1407B7B526BDAA4E00A20FDF /* Courier New */,
 				14C3E4C626AEEFB900D7E166 /* Times New Roman */,
 				14C3E4BA26AEE79800D7E166 /* PTSans */,
 				14C3E4B526AEE70200D7E166 /* OpenSans */,
@@ -414,17 +434,21 @@
 				146947E126724F0000274B16 /* Editor.storyboard in Resources */,
 				14C3E4A726AEC33E00D7E166 /* FiraSans-Bold.ttf in Resources */,
 				1407B7AD26BDA17C00A20FDF /* TimesNewRoman-RegularItalic.ttf in Resources */,
+				1407B7C126BDAA7700A20FDF /* CourierNew-BoldItalic.ttf in Resources */,
 				146947DB2672330900274B16 /* Trash.storyboard in Resources */,
 				1407B7AE26BDA17C00A20FDF /* TimesNewRoman-Regular.ttf in Resources */,
+				1407B7C026BDAA7700A20FDF /* CourierNew-RegularItalic.ttf in Resources */,
 				14697BC02671EC900067A2FB /* LaunchScreen.storyboard in Resources */,
 				1407B7AF26BDA17C00A20FDF /* TimesNewRoman-Bold.ttf in Resources */,
 				14697BBD2671EC900067A2FB /* Assets.xcassets in Resources */,
 				14C3E4B926AEE79200D7E166 /* PTSans-Regular.ttf in Resources */,
 				14697BBB2671EC8A0067A2FB /* Home.storyboard in Resources */,
 				148F5E57267B562200EFE9AD /* SectionHeaderView.xib in Resources */,
+				1407B7BE26BDAA7700A20FDF /* CourierNew-Regular.ttf in Resources */,
 				1407B7B026BDA17C00A20FDF /* TimesNewRoman-BoldItalic.ttf in Resources */,
 				14C3E4B326AEE6F600D7E166 /* OpenSans-Bold.ttf in Resources */,
 				14C3E4A826AEC34000D7E166 /* FiraSans-Regular.ttf in Resources */,
+				1407B7BF26BDAA7700A20FDF /* CourierNew-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
