@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum CustomFontExtensionError: Error {
+enum UIFontExtError: Error {
     case fontNotFound
 }
 extension UIFont {

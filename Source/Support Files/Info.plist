@@ -68,8 +68,10 @@
 		<string>OpenSans-Regular.ttf</string>
 		<string>PTSans-Bold.ttf</string>
 		<string>PTSans-Regular.ttf</string>
-		<string>Times New Roman-Bold.ttf</string>
-		<string>Times New Roman-Regular.ttf</string>
+		<string>TimesNewRoman-Bold.ttf</string>
+		<string>TimesNewRoman-Regular.ttf</string>
+		<string>TimesNewRoman-BoldItalic.ttf</string>
+		<string>TimesNewRoman-RegularItalic.ttf</string>
 	</array>
 </dict>
 </plist>

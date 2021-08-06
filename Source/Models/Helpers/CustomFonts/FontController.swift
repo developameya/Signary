@@ -34,7 +34,9 @@ struct FontController {
         
         var returnedDictionary: FontFormattingDictionary?
         
-        returnedDictionary = [AttrStrKey.font : UIFont.customFont(fontFamliy: family, forTextStyle: style)!, AttrStrKey.foregroundColor : UIColor(named: name)!]
+        let safeFont: UIFont = UIFont.customFont(fontFamliy: family, forTextStyle: style) ?? .preferredFont(forTextStyle: .body)
+        
+        returnedDictionary = [AttrStrKey.font : safeFont, AttrStrKey.foregroundColor : UIColor(named: name)!]
         
          
         if let safeDictionary = returnedDictionary {
