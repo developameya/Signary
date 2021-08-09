@@ -78,12 +78,18 @@ class EditorViewController: UIViewController {
         textView.font = fontController.getFont(forKey: "textViewFont") ?? .preferredFont(forTextStyle: .body)
         
         let highlightFont = fontController.getFont(forKey: "highlightFont") ?? .preferredFont(forTextStyle: .largeTitle)
-        
         textView.highlightFirstLineInTextView(font: highlightFont)
         
-        headerTypingAttributes = fontController.getFontAttributes(forKey: .header)
+        let defaultHeaderAttributes: FontFormattingDictionary = [
+            AttrStrKey.font: UIFont.preferredFont(forTextStyle: .largeTitle),
+            AttrStrKey.foregroundColor : UIColor(named: "editorTextColour")!
+        ]
+        headerTypingAttributes = fontController.getFontAttributes(forKey: .header) ?? defaultHeaderAttributes
         
-        bodyTypingAttributes = fontController.getFontAttributes(forKey: .body)
+        let defaultBodyAttributes: FontFormattingDictionary = [
+            AttrStrKey.font: UIFont.preferredFont(forTextStyle: .body), AttrStrKey.foregroundColor: UIColor(named: "editorTextColour")!
+        ]
+        bodyTypingAttributes = fontController.getFontAttributes(forKey: .body) ?? defaultBodyAttributes
     
         
         if textView.isFirstResponder {
@@ -268,14 +274,12 @@ extension EditorViewController: MenuElementsDelegate {
         
         switch identifier {
         
-        case .FiraSans, .OpenSans, .PTSans, .TimesNewRoman, .CourierNew:
+        case .SystemFont, .FiraSans, .OpenSans, .PTSans, .TimesNewRoman, .CourierNew:
         
             let textViewFont = fontController.setFont(fontFamily: identifier, forTextStyle: .body, forKey: "textViewFont") ?? .preferredFont(forTextStyle: .body)
-            
             textView.font = textViewFont
             
             let highlightFont = fontController.setFont(fontFamily: identifier, forTextStyle: .largeTitle, forKey: "highlightFont") ?? .preferredFont(forTextStyle: .largeTitle)
-            
             textView.highlightFirstLineInTextView(font: highlightFont)
                 
                 headerTypingAttributes = fontController.setFontAttributes(forKey: .header, fontFamily: identifier, forTextStyle: .largeTitle)

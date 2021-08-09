@@ -37,33 +37,54 @@ struct FontController {
         
         var returnedDictionary: FontFormattingDictionary?
         
-        let safeFont: UIFont = UIFont.customFont(fontFamliy: family, forTextStyle: style) ?? .preferredFont(forTextStyle: .body)
-        
-        returnedDictionary = [AttrStrKey.font : safeFont, AttrStrKey.foregroundColor : UIColor(named: name)!]
-        
-         
-        if let safeDictionary = returnedDictionary {
-            
-
-            defaults.setFontDefaults(forKey: key.rawValue, fontObject: safeDictionary)
+        if family == .SystemFont {
+            //IF FAMILY IS SET TO SYSTEM, RETURN NIL
+            returnedDictionary = nil
+            //SAVE PREFERENCE TO USER DEFAULTS
+            defaults.setFontDefaults(forKey: key.rawValue, fontObject: returnedDictionary)
             
         } else {
+            //ELSE RETURN THE APPROPRIATE DICTIONARY
+            let safeFont: UIFont = UIFont.customFont(fontFamliy: family, forTextStyle: style) ?? .preferredFont(forTextStyle: .body)
             
-            print("\(#function) returned dictionary not set.")
+            returnedDictionary = [AttrStrKey.font : safeFont, AttrStrKey.foregroundColor : UIColor(named: name)!]
             
+             
+            if let safeDictionary = returnedDictionary {
+                
+
+                defaults.setFontDefaults(forKey: key.rawValue, fontObject: safeDictionary)
+                
+            } else {
+                
+                print("\(#function) returned dictionary not set.")
+                
+                
+            }
         }
         
         return returnedDictionary
     }
     
-    mutating func setFont(fontFamily family: Fonts, forTextStyle style: UIFont.TextStyle, forKey key: String) -> UIFont? {
+    func setFont(fontFamily family: Fonts, forTextStyle style: UIFont.TextStyle, forKey key: String) -> UIFont? {
         
         var returnedFont: UIFont?
-                
-        returnedFont = UIFont.customFont(fontFamliy: family, forTextStyle: style)
         
-        //SAVE PREFERENCE TO USER DEFAULTS
-        defaults.setFontDefaults(forKey: key, fontObject: returnedFont)
+        
+        if family == .SystemFont {
+            //IF IDENTIFER IS SYSTEM, THEN SET RETURNED FONT TO NIL
+            returnedFont = nil
+            //SAVE PREFERENCE TO USER DEFAULTS
+            defaults.setFontDefaults(forKey: key, fontObject: returnedFont)
+        } else {
+            //ELSE RETURN THE APPROPRIATE FONT
+            returnedFont = UIFont.customFont(fontFamliy: family, forTextStyle: style)
+            //SAVE PREFERENCE TO USER DEFAULTS
+            defaults.setFontDefaults(forKey: key, fontObject: returnedFont)
+        }
+        
+        
+
 
         return returnedFont
         
