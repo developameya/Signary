@@ -74,6 +74,7 @@ class EditorViewController: UIViewController {
         
         textView.adjustsFontForContentSizeCategory = true
         
+        textView.textContainerInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         
         textView.font = fontController.getFont(forKey: "textViewFont") ?? .preferredFont(forTextStyle: .body)
         
