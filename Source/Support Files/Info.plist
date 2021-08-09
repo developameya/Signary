@@ -15,11 +15,28 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>FiraSans-Bold.ttf</string>
+		<string>FiraSans-Regular.ttf</string>
+		<string>OpenSans-Bold.ttf</string>
+		<string>OpenSans-Regular.ttf</string>
+		<string>PTSans-Bold.ttf</string>
+		<string>PTSans-Regular.ttf</string>
+		<string>TimesNewRoman-Bold.ttf</string>
+		<string>TimesNewRoman-Regular.ttf</string>
+		<string>TimesNewRoman-BoldItalic.ttf</string>
+		<string>TimesNewRoman-RegularItalic.ttf</string>
+		<string>CourierNew-Bold.ttf</string>
+		<string>CourierNew-BoldItalic.ttf</string>
+		<string>CourierNew-Regular.ttf</string>
+		<string>CourierNew-RegularItalic.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -59,23 +76,6 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>FiraSans-Bold.ttf</string>
-		<string>FiraSans-Regular.ttf</string>
-		<string>OpenSans-Bold.ttf</string>
-		<string>OpenSans-Regular.ttf</string>
-		<string>PTSans-Bold.ttf</string>
-		<string>PTSans-Regular.ttf</string>
-		<string>TimesNewRoman-Bold.ttf</string>
-		<string>TimesNewRoman-Regular.ttf</string>
-		<string>TimesNewRoman-BoldItalic.ttf</string>
-		<string>TimesNewRoman-RegularItalic.ttf</string>
-		<string>CourierNew-Bold.ttf</string>
-		<string>CourierNew-BoldItalic.ttf</string>
-		<string>CourierNew-Regular.ttf</string>
-		<string>CourierNew-RegularItalic.ttf</string>
 	</array>
 </dict>
 </plist>
