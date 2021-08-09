@@ -7,6 +7,9 @@
 
 import UIKit
 
+typealias AttrStrKey = NSAttributedString.Key
+typealias FontFormattingDictionary = [ AttrStrKey : Any]
+
 enum fontAttributes: String {
     case header, body
 }

@@ -7,9 +7,6 @@
 
 import UIKit
 
-typealias AttrStrKey = NSAttributedString.Key
-typealias FontFormattingDictionary = [ AttrStrKey : Any]
-
 extension UserDefaults {
     
     func setFontDefaults(forKey key: String, fontObject: Any?) {
