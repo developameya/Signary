@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-
+typealias AttributedString = NSMutableAttributedString
 
 class EditorViewController: UIViewController {
     //MARK:- PROPERTIES
@@ -63,8 +63,12 @@ class EditorViewController: UIViewController {
         guard let safeNote = note else {fatalError()}
         
         textView.tintColor = UIColor(named: K.accentColor)
+                
+//        textView.text = safeNote.body
         
-        textView.text = safeNote.body
+        let attributedbody = AttributedString(string: safeNote.body!)
+        
+        textView.attributedText = attributedbody
         
         textView.textColor = UIColor(named: "editorTextColour")
         
