@@ -43,6 +43,7 @@ struct MenuElementsHelper {
     /// - Parameter menuItems: Pass an array with the names of the items to be shown in the UIMenu
     /// - Returns: The method will return an array of UIElements which can be passed to UIMenu as its 'children'.
     func createActions(from menuItems: [String]) -> [UIMenuElement] {
+        
         var elements = [UIMenuElement]()
         
         for itemName in menuItems {

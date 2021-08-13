@@ -121,7 +121,14 @@ class EditorViewController: UIViewController {
 
         let menuItems = Fonts.allCases
         
-        let elements = menuElements.createActions(from: menuItems)
+        var menuItemStrings = [String]()
+        
+        for item in menuItems {
+            let string = item.rawValue
+            menuItemStrings.append(string)
+        }
+        
+        let elements = menuElements.createActions(from: menuItemStrings)
         
         let fontButton = UIBarButtonItem(image: .init(systemName: "textformat"), menu: UIMenu(title: "Select Font", children: elements))
         

@@ -12,3 +12,4 @@ import Foundation
 enum Fonts: String, CaseIterable {
     case SystemFont, FiraSans, OpenSans, PTSans, TimesNewRoman, CourierNew
 }
+
