@@ -84,7 +84,7 @@ class EditorViewController: UIViewController {
         headerTypingAttributes = fontController.getFontAttributes(forKey: .header)
         
         bodyTypingAttributes = fontController.getFontAttributes(forKey: .body)
-    
+        
         
         if textView.isFirstResponder {
             
@@ -274,18 +274,46 @@ extension EditorViewController: MenuElementsDelegate {
         switch identifier {
         
         case .FiraSans, .OpenSans, .PTSans, .TimesNewRoman:
-        
-            let textViewFont = fontController.setFont(fontFamily: identifier, forTextStyle: .body, forKey: "textViewFont") ?? .preferredFont(forTextStyle: .body)
             
-            textView.font = textViewFont
+            print(identifier.rawValue)
             
-            let highlightFont = fontController.setFont(fontFamily: identifier, forTextStyle: .largeTitle, forKey: "highlightFont") ?? .preferredFont(forTextStyle: .largeTitle)
+            let fontBold = true //change by the user
+            let fontItalic = false //changed by the user
+            let fontSize: CGFloat = 32 //dynamic
             
-            textView.highlightFirstLineInTextView(font: highlightFont)
-                
-                headerTypingAttributes = fontController.setFontAttributes(forKey: .header, fontFamily: identifier, forTextStyle: .largeTitle)
-                
-                bodyTypingAttributes = fontController.setFontAttributes(forKey: .body, fontFamily: identifier, forTextStyle: .body)
+            let fontAttributes: [UIFontDescriptor.AttributeName: Any] = [
+                UIFontDescriptor.AttributeName.family: identifier.rawValue, UIFontDescriptor.AttributeName.traits: [
+                    UIFontDescriptor.TraitKey.weight: fontBold ? UIFont.Weight.bold : UIFont.Weight.regular,
+                    UIFontDescriptor.TraitKey.slant: fontItalic ? 1.0 : 0.0
+                ]
+            ]
+            
+            let fontDescriptor = UIFontDescriptor(fontAttributes: fontAttributes)
+            
+            let font = UIFont(descriptor: fontDescriptor, size: fontSize)
+            print(font)
+            textView.font = font
+            
+        //            let textViewFont = fontController.setFont(fontFamily: identifier, forTextStyle: .body, forKey: "textViewFont") ?? .preferredFont(forTextStyle: .body)
+        //
+        //            textView.font = textViewFont
+        //
+        //            let highlightFont = fontController.setFont(fontFamily: identifier, forTextStyle: .largeTitle, forKey: "highlightFont") ?? .preferredFont(forTextStyle: .largeTitle)
+        //
+        //            textView.highlightFirstLineInTextView(font: highlightFont)
+        //
+        //                headerTypingAttributes = fontController.setFontAttributes(forKey: .header, fontFamily: identifier, forTextStyle: .largeTitle)
+        //
+        //                bodyTypingAttributes = fontController.setFontAttributes(forKey: .body, fontFamily: identifier, forTextStyle: .body)
         }
+        
+        //        let fontFamilies = ["Open Sans", "PT Sans", "Fira Sans", "NightCall Bold", "Verdana"]
+        //
+        //        let fontIndex = 4
+        
+        //
+        
+        //
+        
     }
 }
