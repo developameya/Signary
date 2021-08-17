@@ -31,15 +31,15 @@ extension UserDefaults {
         setValue(fontData, forKey: key)
     }
     
-    func getFontFormattingDictionary(forKey key: String) -> FontFormattingDictionary? {
+    func getDynamicFontDictionary(forKey key: String) -> DynamicFontDictionary? {
         
-        var returnedDict:FontFormattingDictionary?
+        var returnedDict:DynamicFontDictionary?
         
         if let safeData = data(forKey: key) {
             
             do {
                 
-                let dictionary = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(safeData) as? FontFormattingDictionary
+                let dictionary = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(safeData) as? DynamicFontDictionary
                 
                 returnedDict = dictionary
                 

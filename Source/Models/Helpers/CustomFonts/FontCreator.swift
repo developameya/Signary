@@ -18,7 +18,7 @@ enum CustomFontStyle: String {
 
 struct FontCreator{
     
-    func createCustomFontString(fontFamiliy famliy: Fonts.RawValue, fontStyle style: CustomFontStyle, italic: Bool = false) -> String {
+    func createCustomFontString(fontFamiliy famliy: CustomFonts.RawValue, fontStyle style: CustomFontStyle, italic: Bool = false) -> String {
         
         if !italic {
             switch style {
@@ -33,7 +33,7 @@ struct FontCreator{
         }
     }
     
-    func createCustomFontDictionary(of fontFamiliy: Fonts.RawValue, italic: Bool = false) throws -> [UIFont.TextStyle: UIFont] {
+    func createCustomFontDictionary(of fontFamiliy: CustomFonts.RawValue, italic: Bool = false) throws -> [UIFont.TextStyle: UIFont] {
         var customFontRegular = String()
         var customFontBold = String()
         

@@ -14,8 +14,8 @@ class EditorViewController: UIViewController {
     //MARK:- PROPERTIES
     var id: String?
     @IBOutlet weak var textView: UITextView!
-    private var headerTypingAttributes: FontFormattingDictionary?
-    private var bodyTypingAttributes: FontFormattingDictionary?
+    private var headerTypingAttributes: DynamicFontDictionary?
+    private var bodyTypingAttributes: DynamicFontDictionary?
     private var logic = Logic()
     private var notes = [Note]()
     private var menuElements = MenuElementsHelper()
@@ -63,8 +63,8 @@ class EditorViewController: UIViewController {
         guard let safeNote = note else {fatalError()}
         
         textView.tintColor = UIColor(named: K.accentColor)
-                
-//        textView.text = safeNote.body
+        
+        //        textView.text = safeNote.body
         
         let attributedbody = AttributedString(string: safeNote.body!)
         
@@ -85,17 +85,17 @@ class EditorViewController: UIViewController {
         let highlightFont = fontController.getFont(forKey: "highlightFont") ?? .preferredFont(forTextStyle: .largeTitle)
         textView.highlightFirstLineInTextView(font: highlightFont)
         
-        let defaultHeaderAttributes: FontFormattingDictionary = [
+        let defaultHeaderAttributes: DynamicFontDictionary = [
             AttrStrKey.font: UIFont.preferredFont(forTextStyle: .largeTitle),
             AttrStrKey.foregroundColor : UIColor(named: "editorTextColour")!
         ]
         headerTypingAttributes = fontController.getFontAttributes(forKey: .header) ?? defaultHeaderAttributes
         
-        let defaultBodyAttributes: FontFormattingDictionary = [
+        let defaultBodyAttributes: DynamicFontDictionary = [
             AttrStrKey.font: UIFont.preferredFont(forTextStyle: .body), AttrStrKey.foregroundColor: UIColor(named: "editorTextColour")!
         ]
         bodyTypingAttributes = fontController.getFontAttributes(forKey: .body) ?? defaultBodyAttributes
-    
+        
         
         if textView.isFirstResponder {
             
@@ -118,8 +118,8 @@ class EditorViewController: UIViewController {
     }
     
     private func setBarButtonsItems() {
-
-        let menuItems = Fonts.allCases
+        
+        let menuItems = CustomFonts.allCases
         
         let elements = menuElements.createActions(from: menuItems)
         
@@ -275,21 +275,25 @@ extension EditorViewController {
 
 extension EditorViewController: MenuElementsDelegate {
     
-    func fontsMenuTapped(_ identifier: Fonts) {
+    func fontsMenuTapped(_ identifier: CustomFonts) {
         
         switch identifier {
         
         case .SystemFont, .FiraSans, .OpenSans, .PTSans, .TimesNewRoman, .CourierNew:
-        
-            let textViewFont = fontController.setFont(fontFamily: identifier, forTextStyle: .body, forKey: "textViewFont") ?? .preferredFont(forTextStyle: .body)
-            textView.font = textViewFont
             
-            let highlightFont = fontController.setFont(fontFamily: identifier, forTextStyle: .largeTitle, forKey: "highlightFont") ?? .preferredFont(forTextStyle: .largeTitle)
-            textView.highlightFirstLineInTextView(font: highlightFont)
-                
-                headerTypingAttributes = fontController.setFontAttributes(forKey: .header, fontFamily: identifier, forTextStyle: .largeTitle)
-                
-                bodyTypingAttributes = fontController.setFontAttributes(forKey: .body, fontFamily: identifier, forTextStyle: .body)
+
+                    let textViewFont = fontController.setFont(fontFamily: identifier, forTextStyle: .body, forKey: "textViewFont") ?? .preferredFont(forTextStyle: .body)
+        
+                    textView.font = textViewFont
+        
+                    let highlightFont = fontController.setFont(fontFamily: identifier, forTextStyle: .largeTitle, forKey: "highlightFont") ?? .preferredFont(forTextStyle: .largeTitle)
+        
+                    textView.highlightFirstLineInTextView(font: highlightFont)
+        
+                        headerTypingAttributes = fontController.setFontAttributes(forKey: .header, fontFamily: identifier, forTextStyle: .largeTitle)
+        
+                        bodyTypingAttributes = fontController.setFontAttributes(forKey: .body, fontFamily: identifier, forTextStyle: .body)
         }
     }
 }
+
