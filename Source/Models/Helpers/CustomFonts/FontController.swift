@@ -7,8 +7,8 @@
 
 import UIKit
 
-typealias AttrStrKey = NSAttributedString.Key
-typealias DynamicFontDictionary = [ AttrStrKey : Any]
+public typealias AttrStrKey = NSAttributedString.Key
+public typealias DynamicFontDictionary = [ AttrStrKey : Any]
 
 enum fontAttributes: String {
     case header, body

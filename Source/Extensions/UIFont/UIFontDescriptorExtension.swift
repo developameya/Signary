@@ -7,7 +7,7 @@
 
 import UIKit
 
-typealias FontDescriptor = UIFontDescriptor
+public typealias FontDescriptor = UIFontDescriptor
 typealias TextStyle = UIFont.TextStyle
 typealias ContentSizeCategory = UIContentSizeCategory
 
@@ -163,7 +163,5 @@ extension FontDescriptor {
         let style = fontSizeTable[textStyle]!
         //RETURN A FONT DESCRIPTOR WITH FONT SIZE MATCHING THE CURRENT DYNAMIC SIZE PROVIDED BY THE SYSTEM
         return FontDescriptor(name: family, size: style[contentSize]!)
-        
-        
     }
 }
