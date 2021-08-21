@@ -24,6 +24,7 @@ class TrashInterFaceHelper {
     var doneButton: UIBarButtonItem!
     var eraseAllButton: UIBarButtonItem!
     var optionsButton: UIBarButtonItem!
+    let dataLogic = Logic()
     
     //MARK:- INIT
     init() {

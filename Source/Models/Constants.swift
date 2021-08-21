@@ -20,6 +20,12 @@ public struct K {
         static let nibName = "listViewCell"
         static let indetifier = "ReusableCell"
     }
+    /// This struct contains constant for the defaults keys used to save and retrieve userDefaults
+    struct DefaultKeys {
+        static let textViewFont = "textViewFont"
+        static let header = "header"
+        static let body = "body"
+    }
     
     /// This struct contains string identifiers for 'Segues'
     struct Segue {

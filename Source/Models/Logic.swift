@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 
+
 class Logic: DataManager {
     //MARK:- PROPERTIES
     var data = [Note]()

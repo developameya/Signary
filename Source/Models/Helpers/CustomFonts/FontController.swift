@@ -8,7 +8,7 @@
 import UIKit
 
 public typealias AttrStrKey = NSAttributedString.Key
-public typealias DynamicFontDictionary = [ AttrStrKey : Any]
+public typealias DynamicFontDictionary = [AttrStrKey : Any]
 
 enum fontAttributes: String {
     case header, body
@@ -33,7 +33,7 @@ struct FontController {
         
     }
     
-    func setFontAttributes(forKey key: fontAttributes, fontFamily family: CustomFonts, forTextStyle style: TextStyle, textColourName name: String = "editorTextColour") -> DynamicFontDictionary? {
+    func setFontAttributes(forKey key: String, fontFamily family: CustomFonts, forTextStyle style: TextStyle, textColourName name: String = K.colours.textColour) -> DynamicFontDictionary? {
         
         var returnedDictionary: DynamicFontDictionary?
         
@@ -41,19 +41,19 @@ struct FontController {
             //IF FAMILY IS SET TO SYSTEM, RETURN NIL
             returnedDictionary = nil
             //SAVE PREFERENCE TO USER DEFAULTS
-            defaults.setFontDefaults(forKey: key.rawValue, fontObject: returnedDictionary)
+            defaults.setFontDefaults(forKey: key, fontObject: returnedDictionary)
             
         } else {
             //ELSE RETURN THE APPROPRIATE DICTIONARY
-            let customFont = Font.customFont(name: family.rawValue)
-            let safeFont = Font.preferredCustom(font: customFont!, textStyle: style) ?? .preferredFont(forTextStyle: .body)
+            let customFont = Font.from(fontFamily: family.rawValue)
+            let safeFont = Font.dynamicCustom(font: customFont!, textStyle: style) ?? .preferredFont(forTextStyle: .body)
             returnedDictionary = [AttrStrKey.font : safeFont, AttrStrKey.foregroundColor : UIColor(named: name)!]
             
              
             if let safeDictionary = returnedDictionary {
                 
 
-                defaults.setFontDefaults(forKey: key.rawValue, fontObject: safeDictionary)
+                defaults.setFontDefaults(forKey: key, fontObject: safeDictionary)
                 
             } else {
                 
@@ -78,8 +78,8 @@ struct FontController {
             defaults.setFontDefaults(forKey: key, fontObject: returnedFont)
         } else {
             //ELSE RETURN THE APPROPRIATE FONT
-            let font = Font.customFont(name: family.rawValue)
-            returnedFont = Font.preferredCustom(font: font!, textStyle: style)
+            let font = Font.from(fontFamily: family.rawValue)
+            returnedFont = Font.dynamicCustom(font: font!, textStyle: style)
             //SAVE PREFERENCE TO USER DEFAULTS
             defaults.setFontDefaults(forKey: key, fontObject: returnedFont)
         }

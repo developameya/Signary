@@ -9,14 +9,27 @@ import UIKit
 import CoreData
 
 typealias AttributedString = NSMutableAttributedString
-typealias controlParameters = (systemImageName: String, control: EditorControl)
+typealias controlParameter = (systemImageName: String, control: EditorControl)
 
 class EditorViewController: UIViewController {
     //MARK:- PROPERTIES
     var id: String?
     @IBOutlet weak var textView: UITextView!
-    private var headerTypingAttributes: DynamicFontDictionary?
-    private var bodyTypingAttributes: DynamicFontDictionary?
+    
+    private var headerTypingAttributes: DynamicFontDictionary = [
+        AttrStrKey.font: Font.preferredFont(forTextStyle: .largeTitle),
+        AttrStrKey.foregroundColor : UIColor(named: K.colours.textColour)!
+    ]
+    private var bodyTypingAttributes: DynamicFontDictionary = [
+        AttrStrKey.font: Font.preferredFont(forTextStyle: .body),
+        AttrStrKey.foregroundColor: UIColor(named: K.colours.textColour)!
+    ]
+    
+    private var controls: [controlParameter] = [
+        (systemImageName: "bold", control: BoldControl()),
+        (systemImageName: "italic", control: ItalicControl())
+    ]
+    
     private var logic = Logic()
     private var notes = [Note]()
     private var menuElements = MenuElementsHelper()
@@ -24,10 +37,7 @@ class EditorViewController: UIViewController {
     private var note: Note?
     private var fontController = FontController()
     private let defaults = UserDefaults()
-    private let controls: [controlParameters] = [
-        (systemImageName: "bold", control: BoldControl()),
-        (systemImageName: "italic", control: ItalicControl())
-    ]
+
     
     //MARK:- INIT
     override func viewDidLoad() {
@@ -40,9 +50,10 @@ class EditorViewController: UIViewController {
         
         textViewUI()
         
-        setBarButtonsItems()
+        setNavigatonBarItems()
+
         
-        checkAvailableFonts()
+//        checkAvailableFonts()
         
         
     }
@@ -65,9 +76,9 @@ class EditorViewController: UIViewController {
     
     private func textViewUI() {
         
-        guard let safeNote = note else {fatalError()}
+        guard let safeNote = note else { fatalError() }
         
-        let currentFont =  fontController.getFont(forKey: "textViewFont") ?? .preferredFont(forTextStyle: .body)
+        let currentFont =  fontController.getFont(forKey: K.DefaultKeys.textViewFont) ?? .preferredFont(forTextStyle: .body)
         
         textView.tintColor = UIColor(named: K.accentColor)
         
@@ -79,7 +90,7 @@ class EditorViewController: UIViewController {
             textView.attributedText = NSAttributedString(string: "")
         }
                 
-        textView.textColor = UIColor(named: "editorTextColour")
+        textView.textColor = UIColor(named: K.colours.textColour)
         
         textView.backgroundColor = .systemBackground
         
@@ -87,27 +98,17 @@ class EditorViewController: UIViewController {
         
         textView.adjustsFontForContentSizeCategory = true
         
-        textView.inputAccessoryView = toolBarUI()
+//        textView.inputAccessoryView = toolBarUI()
         
         textView.textContainerInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         
         textView.keyboardDismissMode = .onDrag
 
-        
-        let defaultHeaderAttributes: DynamicFontDictionary = [
-            AttrStrKey.font: Font.preferredFont(forTextStyle: .largeTitle),
-            AttrStrKey.foregroundColor : UIColor(named: "editorTextColour")!
-        ]
-        headerTypingAttributes = fontController.getFontAttributes(forKey: .header) ?? defaultHeaderAttributes
+        headerTypingAttributes = fontController.getFontAttributes(forKey: .header) ?? headerTypingAttributes
 
-        textView.typingAttributes = headerTypingAttributes!
-
-        let defaultBodyAttributes: DynamicFontDictionary = [
-            AttrStrKey.font: Font.preferredFont(forTextStyle: .body),
-            AttrStrKey.foregroundColor: UIColor(named: "editorTextColour")!
-        ]
-        bodyTypingAttributes = fontController.getFontAttributes(forKey: .body) ?? defaultBodyAttributes
+        bodyTypingAttributes = fontController.getFontAttributes(forKey: .body) ?? bodyTypingAttributes
                 
+        textView.typingAttributes = headerTypingAttributes
         
         if textView.isFirstResponder {
             
@@ -129,6 +130,8 @@ class EditorViewController: UIViewController {
         }
     }
     
+    /// Create toolbar to be displayed above the keyboard.
+    /// - Returns: Returns a `UIToolBar` object with button cretaed in `makeToolbarButtons` method.
     private func toolBarUI() -> UIToolbar {
         
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
@@ -140,6 +143,7 @@ class EditorViewController: UIViewController {
         return toolBar
     }
     
+
     func makeToolbarButtons() -> [BarButton] {
         
         var buttons = [BarButton]()
@@ -155,7 +159,7 @@ class EditorViewController: UIViewController {
     }
     
     
-    private func setBarButtonsItems() {
+    private func setNavigatonBarItems() {
         
         let menuItems = CustomFonts.allCases
         
@@ -166,7 +170,13 @@ class EditorViewController: UIViewController {
         
         let trashButton = UIBarButtonItem(image: UIImage(systemName: "xmark.bin.fill"), style: .plain, target: self, action: #selector(trashButtonPressed))
         
-        navigationItem.rightBarButtonItems = [trashButton, fontButton]
+        var buttons = [trashButton, fontButton]
+        
+        for button in makeToolbarButtons() {
+            buttons.append(button)
+        }
+        
+        navigationItem.rightBarButtonItems = buttons
     }
     
     //MARK:- UI SUPPORT METHODS
@@ -182,14 +192,20 @@ class EditorViewController: UIViewController {
         let headerFontDescriptor = FontDescriptor.CustomFontDescriptor(font: font, textStyle: .largeTitle)
         
         let headerDynamicFont = Font.dynamicFont(font: Font(descriptor: headerFontDescriptor, size: 0.0))
-
-        headerTypingAttributes = [AttrStrKey.font: headerDynamicFont!]
+        
+        headerTypingAttributes = [
+            AttrStrKey.font: headerDynamicFont!,
+            AttrStrKey.foregroundColor : UIColor(named: K.colours.textColour)!
+        ]
         
         let bodyFontDescriptor = FontDescriptor.CustomFontDescriptor(font: font, textStyle: .body)
         
         let bodyDynamicFont = Font.dynamicFont(font: Font(descriptor: bodyFontDescriptor, size: 0.0))
         
-        bodyTypingAttributes = [AttrStrKey.font : bodyDynamicFont!]
+        bodyTypingAttributes = [
+            AttrStrKey.font : bodyDynamicFont!,
+            AttrStrKey.foregroundColor : UIColor(named: K.colours.textColour)!
+        ]
         
         updatePersistantStore()
     
@@ -224,11 +240,11 @@ class EditorViewController: UIViewController {
         }
     }
     
-    func updateBodyAttributes(of attributedString: NSAttributedString?, font fontToUpdate: Font) -> NSAttributedString? {
+    func updateBodyAttributes(of attributedString: NSAttributedString?, font: Font) -> NSAttributedString? {
         
         let mutableBody = attributedString?.mutableCopy() as? NSMutableAttributedString
         
-        mutableBody?.updateFontAttributeWith(font: fontToUpdate)
+        mutableBody?.updateFontAttribute(with: font)
         
         return mutableBody?.copy() as? NSAttributedString
     }
@@ -269,19 +285,16 @@ extension EditorViewController: UITextViewDelegate {
         let replaceCharacters = textAsNSString.replacingCharacters(in: range, with: text) as NSString
         
         let boldRange = replaceCharacters.range(of: "\n")
-        
-        if let safeHeaderAttributes = self.headerTypingAttributes,
-           let safeBodyAttributes = self.bodyTypingAttributes {
             
             if boldRange.location <= range.location {
                 
-                self.textView.typingAttributes = safeBodyAttributes
+                self.textView.typingAttributes = bodyTypingAttributes
                 
             } else {
                 
-                self.textView.typingAttributes = safeHeaderAttributes
+                self.textView.typingAttributes = headerTypingAttributes
             }
-        }
+        
         
         return true
     }
@@ -360,8 +373,7 @@ extension EditorViewController: MenuElementsDelegate {
         case .SystemFont, .FiraSans, .OpenSans, .PTSans, .TimesNewRoman:
             
             
-            let textViewFont = fontController.setFont(fontFamily: identifier, forTextStyle: .body, forKey: "textViewFont") ?? .preferredFont(forTextStyle: .body)
-            print(textViewFont.familyName)
+            let textViewFont = fontController.setFont(fontFamily: identifier, forTextStyle: .body, forKey: K.DefaultKeys.textViewFont) ?? .preferredFont(forTextStyle: .body)
             
             let attributedText = textView.attributedText
             
@@ -369,9 +381,9 @@ extension EditorViewController: MenuElementsDelegate {
             
             textView.attributedText = updatedAttributedText
 
-            headerTypingAttributes = fontController.setFontAttributes(forKey: .header, fontFamily: identifier, forTextStyle: .largeTitle)
+            headerTypingAttributes = fontController.setFontAttributes(forKey: K.DefaultKeys.header, fontFamily: identifier, forTextStyle: .largeTitle) ?? headerTypingAttributes
             
-            bodyTypingAttributes = fontController.setFontAttributes(forKey: .body, fontFamily: identifier, forTextStyle: .body)
+            bodyTypingAttributes = fontController.setFontAttributes(forKey: K.DefaultKeys.body, fontFamily: identifier, forTextStyle: .body) ?? bodyTypingAttributes
         }
     }
 }

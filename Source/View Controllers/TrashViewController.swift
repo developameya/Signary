@@ -17,7 +17,7 @@ class TrashViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerDelegates()
-        setNavigationItems()
+        setNavigationBarItems()
         tableViewUI()
         navigationItem.title = "Trash"
     }
@@ -45,16 +45,24 @@ class TrashViewController: UITableViewController {
         tableView.separatorStyle = .singleLine
     }
     
-    private func setNavigationItems() {
+    private func setNavigationBarItems() {
         navigationItem.leftItemsSupplementBackButton = true
         navigationItem.leftBarButtonItem = nil
-        
+
         navigationItem.setRightBarButtonItems([interface.selectButton, interface.eraseAllButton], animated: true)
     }
     
     // MARK: - TABLEVIEW DATA SOURCE
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if logic.trashData.count == 0 {
+            interface.selectButton.isEnabled = false
+            interface.eraseAllButton.isEnabled = false
+        } else {
+            interface.selectButton.isEnabled = true
+            interface.eraseAllButton.isEnabled = true
+        }
+        
         return logic.trashData.count
     }
     
@@ -139,7 +147,7 @@ extension TrashViewController: TrashInterfaceDelegate {
             // set the table to editing mode
             self.tableView.setEditing(false, animated: true)
             // change the properties of the barbuttons after clicking the 'Yes' Button
-            self.setNavigationItems()
+            self.setNavigationBarItems()
             // Call 'Erase' function with 'selection' property set to 'true' so that only selected objects are deleted permenantly
             self.logic.erase(selected: true, tableView: self.tableView)
         }
@@ -147,7 +155,7 @@ extension TrashViewController: TrashInterfaceDelegate {
             // Revert the editing mode of the table
             self.tableView.setEditing(false, animated: true)
             // Set the properties of the barbuttons when 'No' is selected
-            self.setNavigationItems()
+            self.setNavigationBarItems()
             // Dismiss the alert
             self.dismiss(animated: true, completion: nil)
         }
@@ -193,6 +201,6 @@ extension TrashViewController: TrashInterfaceDelegate {
     func doneTapped(_ helper: TrashInterFaceHelper) {
         print("From TrashViewController | \(#function) on line \(#line)")
         tableView.setEditing(false, animated: true)
-        setNavigationItems()
+        setNavigationBarItems()
     }
 }

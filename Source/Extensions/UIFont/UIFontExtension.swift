@@ -16,6 +16,7 @@ enum UIFontExtError: Error {
 }
 public extension Font {
     
+    
     var traits: FontDescriptor.SymbolicTraits {
         return fontDescriptor.symbolicTraits
     }
@@ -52,14 +53,17 @@ public extension Font {
         return updatedFont
     }
     
-    class func customFont(name: String) -> UIFont? {
+    /// Use this method to get a custom font which was bundled with the app.
+    /// - Parameter fontFamily: Pass the family name of the font.
+    /// - Returns: Returns an optional `UIFont` matching the family name and of size `0.0`.
+    class func from(fontFamily: String) -> Font? {
         
-        let descriptor = FontDescriptor(name: name, size: 0.0)
+        let descriptor = FontDescriptor(name: fontFamily, size: 0.0)
         
         return Font(descriptor: descriptor, size: 0.0)
     }
     
-    class func preferredCustom(font: Font, textStyle style: TextStyle) -> Font? {
+    class func dynamicCustom(font: Font, textStyle style: TextStyle) -> Font? {
 
         var customFont: Font?
         //CREATE A CUSTOM FONT DESCRIPTOR WITH THE CURRENT SYSTEM FONT SIZE

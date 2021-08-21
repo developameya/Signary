@@ -9,15 +9,15 @@ import Foundation
 
 extension NSMutableAttributedString {
     
-    func updateFontAttributeWith(font fontToUpdate: Font) {
+    func updateFontAttribute(with font: Font) {
         beginEditing()
         
         self.enumerateAttribute(.font, in: NSRange(location: 0, length: self.length)) { value, range, stop in
             
             if let currentFont = value as? Font,
-               let newFontDescriptor = currentFont.fontDescriptor
-                .withFamily(fontToUpdate.familyName)
-                .withSymbolicTraits(currentFont.fontDescriptor.symbolicTraits) {
+               let newFontDescriptor = font.fontDescriptor
+                .withSymbolicTraits(currentFont.fontDescriptor.symbolicTraits)?
+                .withSize(currentFont.fontDescriptor.pointSize) {
                 
                 let newFont = Font(descriptor: newFontDescriptor, size: 0)
                 
