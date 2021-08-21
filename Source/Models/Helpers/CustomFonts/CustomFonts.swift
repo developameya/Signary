@@ -15,6 +15,6 @@ enum CustomFonts: String, CaseIterable {
     case OpenSans = "Open Sans"
     case PTSans = "PT Sans"
     case TimesNewRoman = "Times New Roman"
-    case CourierNew = "Courier New"
+//    case CourierNew = "Courier New"
 }
     

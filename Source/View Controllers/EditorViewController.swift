@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 
 typealias AttributedString = NSMutableAttributedString
+typealias controlParameters = (systemImageName: String, control: EditorControl)
 
 class EditorViewController: UIViewController {
     //MARK:- PROPERTIES
@@ -23,12 +24,16 @@ class EditorViewController: UIViewController {
     private var note: Note?
     private var fontController = FontController()
     private let defaults = UserDefaults()
+    private let controls: [controlParameters] = [
+        (systemImageName: "bold", control: BoldControl()),
+        (systemImageName: "italic", control: ItalicControl())
+    ]
     
     //MARK:- INIT
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+                
         note = logic.fetchNote(withId: id!)
         
         registerDelegate()
@@ -62,14 +67,18 @@ class EditorViewController: UIViewController {
         
         guard let safeNote = note else {fatalError()}
         
+        let currentFont =  fontController.getFont(forKey: "textViewFont") ?? .preferredFont(forTextStyle: .body)
+        
         textView.tintColor = UIColor(named: K.accentColor)
         
-        //        textView.text = safeNote.body
+        textView.font = currentFont
         
-        let attributedbody = AttributedString(string: safeNote.body!)
-        
-        textView.attributedText = attributedbody
-        
+        if let safeAttributedBody = safeNote.attributedBody {
+            textView.attributedText = updateBodyAttributes(of: safeAttributedBody, font: textView.font!)
+        } else {
+            textView.attributedText = NSAttributedString(string: "")
+        }
+                
         textView.textColor = UIColor(named: "editorTextColour")
         
         textView.backgroundColor = .systemBackground
@@ -78,25 +87,27 @@ class EditorViewController: UIViewController {
         
         textView.adjustsFontForContentSizeCategory = true
         
+        textView.inputAccessoryView = toolBarUI()
+        
         textView.textContainerInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         
-        textView.font = fontController.getFont(forKey: "textViewFont") ?? .preferredFont(forTextStyle: .body)
-        
-        let highlightFont = fontController.getFont(forKey: "highlightFont") ?? .preferredFont(forTextStyle: .largeTitle)
-        textView.highlightFirstLineInTextView(font: highlightFont)
+        textView.keyboardDismissMode = .onDrag
+
         
         let defaultHeaderAttributes: DynamicFontDictionary = [
             AttrStrKey.font: Font.preferredFont(forTextStyle: .largeTitle),
             AttrStrKey.foregroundColor : UIColor(named: "editorTextColour")!
         ]
         headerTypingAttributes = fontController.getFontAttributes(forKey: .header) ?? defaultHeaderAttributes
-        
+
+        textView.typingAttributes = headerTypingAttributes!
+
         let defaultBodyAttributes: DynamicFontDictionary = [
             AttrStrKey.font: Font.preferredFont(forTextStyle: .body),
             AttrStrKey.foregroundColor: UIColor(named: "editorTextColour")!
         ]
         bodyTypingAttributes = fontController.getFontAttributes(forKey: .body) ?? defaultBodyAttributes
-        
+                
         
         if textView.isFirstResponder {
             
@@ -118,6 +129,32 @@ class EditorViewController: UIViewController {
         }
     }
     
+    private func toolBarUI() -> UIToolbar {
+        
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
+        
+        toolBar.setItems(makeToolbarButtons(), animated: true)
+        
+        toolBar.sizeToFit()
+        
+        return toolBar
+    }
+    
+    func makeToolbarButtons() -> [BarButton] {
+        
+        var buttons = [BarButton]()
+        
+        for (name, control) in controls {
+            
+            let barButton = EditorActionButton(systemImageName: name, control: control, action: #selector(runAction(sender:)))
+            
+            buttons.append(barButton)
+        }
+        
+        return buttons
+    }
+    
+    
     private func setBarButtonsItems() {
         
         let menuItems = CustomFonts.allCases
@@ -126,12 +163,37 @@ class EditorViewController: UIViewController {
         
         let fontButton = UIBarButtonItem(image: .init(systemName: "textformat"), menu: UIMenu(title: "Select Font", children: elements))
         
+        
         let trashButton = UIBarButtonItem(image: UIImage(systemName: "xmark.bin.fill"), style: .plain, target: self, action: #selector(trashButtonPressed))
         
         navigationItem.rightBarButtonItems = [trashButton, fontButton]
     }
     
     //MARK:- UI SUPPORT METHODS
+    
+    @objc func runAction(sender: EditorActionButton) {
+        
+         sender.control.perform(on: textView)
+        
+        let typingFontAttributes = textView.typingAttributes
+        
+        let font: UIFont = typingFontAttributes[.font] as! UIFont
+        
+        let headerFontDescriptor = FontDescriptor.CustomFontDescriptor(font: font, textStyle: .largeTitle)
+        
+        let headerDynamicFont = Font.dynamicFont(font: Font(descriptor: headerFontDescriptor, size: 0.0))
+
+        headerTypingAttributes = [AttrStrKey.font: headerDynamicFont!]
+        
+        let bodyFontDescriptor = FontDescriptor.CustomFontDescriptor(font: font, textStyle: .body)
+        
+        let bodyDynamicFont = Font.dynamicFont(font: Font(descriptor: bodyFontDescriptor, size: 0.0))
+        
+        bodyTypingAttributes = [AttrStrKey.font : bodyDynamicFont!]
+        
+        updatePersistantStore()
+    
+    }
     
     @objc private func trashButtonPressed() {
         
@@ -150,16 +212,25 @@ class EditorViewController: UIViewController {
         
         present(alert, animated: true, completion: nil)
     }
-}
-
-func checkAvailableFonts() {
     
-    for family in UIFont.familyNames.sorted() {
+    func checkAvailableFonts() {
         
-        let names = UIFont.fontNames(forFamilyName: family)
+        for family in UIFont.familyNames.sorted() {
+            
+            let names = UIFont.fontNames(forFamilyName: family)
+            
+            print("Family: \(family) Font names: \(names)")
+            
+        }
+    }
+    
+    func updateBodyAttributes(of attributedString: NSAttributedString?, font fontToUpdate: Font) -> NSAttributedString? {
         
-        print("Family: \(family) Font names: \(names)")
+        let mutableBody = attributedString?.mutableCopy() as? NSMutableAttributedString
         
+        mutableBody?.updateFontAttributeWith(font: fontToUpdate)
+        
+        return mutableBody?.copy() as? NSAttributedString
     }
 }
 
@@ -170,17 +241,7 @@ extension EditorViewController: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         
-        guard let safeNote = note else { fatalError("\(#function) Error at line \(#line) | invalid note object or note is nil.") }
-        
-        safeNote.body = textView.text
-        
-        safeNote.dateModified = Date()
-        
-        safeNote.title = textView.text.lines[0]
-        
-        note = safeNote
-        
-        logic.save()
+        updatePersistantStore()
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -229,6 +290,22 @@ extension EditorViewController: UITextViewDelegate {
 //MARK:- DATA MANIPULATION METHODS
 
 extension EditorViewController {
+    
+    func updatePersistantStore() {
+        guard let safeNote = note else { fatalError("\(#function) Error at line \(#line) | invalid note object or note is nil.") }
+        
+        safeNote.body = textView.text
+        
+        safeNote.attributedBody = textView.attributedText
+                
+        safeNote.dateModified = Date()
+        
+        safeNote.title = textView.text.lines[0]
+        
+        note = safeNote
+        
+        logic.save()
+    }
     
     func ifClear() {
         
@@ -280,17 +357,18 @@ extension EditorViewController: MenuElementsDelegate {
         
         switch identifier {
         
-        case .SystemFont, .FiraSans, .OpenSans, .PTSans, .TimesNewRoman, .CourierNew:
+        case .SystemFont, .FiraSans, .OpenSans, .PTSans, .TimesNewRoman:
             
             
             let textViewFont = fontController.setFont(fontFamily: identifier, forTextStyle: .body, forKey: "textViewFont") ?? .preferredFont(forTextStyle: .body)
+            print(textViewFont.familyName)
             
-            textView.font = textViewFont
+            let attributedText = textView.attributedText
             
-            let highlightFont = fontController.setFont(fontFamily: identifier, forTextStyle: .largeTitle, forKey: "highlightFont") ?? .preferredFont(forTextStyle: .largeTitle)
+            let updatedAttributedText = updateBodyAttributes(of: attributedText, font: textViewFont)
             
-            textView.highlightFirstLineInTextView(font: highlightFont)
-            
+            textView.attributedText = updatedAttributedText
+
             headerTypingAttributes = fontController.setFontAttributes(forKey: .header, fontFamily: identifier, forTextStyle: .largeTitle)
             
             bodyTypingAttributes = fontController.setFontAttributes(forKey: .body, fontFamily: identifier, forTextStyle: .body)

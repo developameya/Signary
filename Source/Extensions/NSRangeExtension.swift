@@ -8,7 +8,6 @@
 import Foundation
 
 public extension NSRange {
-    
     /// Range with 0 location and length
     static var zero: NSRange {
         return NSRange(location: 0, length: 0)

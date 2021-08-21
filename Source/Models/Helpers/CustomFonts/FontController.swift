@@ -45,8 +45,8 @@ struct FontController {
             
         } else {
             //ELSE RETURN THE APPROPRIATE DICTIONARY
-            let safeFont: Font = Font.preferredCustom(fontFamily: family.rawValue, textStyle: style) ?? .preferredFont(forTextStyle: .body)
-            
+            let customFont = Font.customFont(name: family.rawValue)
+            let safeFont = Font.preferredCustom(font: customFont!, textStyle: style) ?? .preferredFont(forTextStyle: .body)
             returnedDictionary = [AttrStrKey.font : safeFont, AttrStrKey.foregroundColor : UIColor(named: name)!]
             
              
@@ -78,16 +78,12 @@ struct FontController {
             defaults.setFontDefaults(forKey: key, fontObject: returnedFont)
         } else {
             //ELSE RETURN THE APPROPRIATE FONT
-            returnedFont = Font.preferredCustom(fontFamily: family.rawValue, textStyle: style)
+            let font = Font.customFont(name: family.rawValue)
+            returnedFont = Font.preferredCustom(font: font!, textStyle: style)
             //SAVE PREFERENCE TO USER DEFAULTS
             defaults.setFontDefaults(forKey: key, fontObject: returnedFont)
         }
-        
-        
-
-
         return returnedFont
-        
     }
     
     func getFont(forKey key: String) -> Font? {
@@ -98,5 +94,4 @@ struct FontController {
         
         return returnedFont
     }
-    
 }

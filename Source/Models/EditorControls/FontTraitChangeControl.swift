@@ -6,10 +6,11 @@
 //
 
 import UIKit
-
+/// Editor control that toggles given font trait to the selected range in the Editor.
 public class FontTraitChangeControl: EditorControl {
     public var name: ControlName
     public let trait: FontDescriptor.SymbolicTraits
+    public var typingAttributes: [DynamicFontDictionary]?
     
     public init(name: ControlName, trait: FontDescriptor.SymbolicTraits) {
         self.name = name
@@ -20,7 +21,8 @@ public class FontTraitChangeControl: EditorControl {
         let selectedText = editor.selectedText
         if editor.isEmpty || editor.selectedRange == .zero || selectedText.length == 0 {
             guard let font = editor.typingAttributes[.font] as? UIFont else { return }
-            editor.typingAttributes[.font] = font.toggle(trait: trait)
+            let toggledFont = font.toggle(trait: trait)
+            editor.typingAttributes[.font] = toggledFont
             return
         }
         //GET THE FONT OF THE SELECTED TEXT
@@ -32,9 +34,5 @@ public class FontTraitChangeControl: EditorControl {
                 editor.addAttribute(.font, value: fontToApply, at: range)
             }
         }
-        
-        
     }
-    
-    
 }

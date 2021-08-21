@@ -24,10 +24,16 @@
 	<array>
 		<string>FiraSans-Bold.ttf</string>
 		<string>FiraSans-Regular.ttf</string>
+		<string>FiraSans-BoldItalic.ttf</string>
+		<string>FiraSans-Italic.ttf</string>
 		<string>OpenSans-Bold.ttf</string>
 		<string>OpenSans-Regular.ttf</string>
+		<string>OpenSans-BoldItalic.ttf</string>
+		<string>OpenSans-Italic.ttf</string>
 		<string>PTSans-Bold.ttf</string>
 		<string>PTSans-Regular.ttf</string>
+		<string>PTSans-BoldItalic.ttf</string>
+		<string>PTSans-Italic.ttf</string>
 		<string>TimesNewRoman-Bold.ttf</string>
 		<string>TimesNewRoman-Regular.ttf</string>
 		<string>TimesNewRoman-BoldItalic.ttf</string>

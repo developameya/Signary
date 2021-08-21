@@ -15,16 +15,16 @@
 		1407B7BF26BDAA7700A20FDF /* CourierNew-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1407B7BB26BDAA7600A20FDF /* CourierNew-Bold.ttf */; };
 		1407B7C026BDAA7700A20FDF /* CourierNew-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1407B7BC26BDAA7700A20FDF /* CourierNew-RegularItalic.ttf */; };
 		1407B7C126BDAA7700A20FDF /* CourierNew-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1407B7BD26BDAA7700A20FDF /* CourierNew-BoldItalic.ttf */; };
+		1428895026CD532100865B78 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1428894F26CD532100865B78 /* Note+CoreDataProperties.swift */; };
 		1459133C267B1C2C00DC6488 /* Signary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1459133A267B1C2C00DC6488 /* Signary.xcdatamodeld */; };
 		14591342267B22CA00DC6488 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14591341267B22CA00DC6488 /* CoreDataStack.swift */; };
 		14591344267B236A00DC6488 /* ColorValueTrasnformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14591343267B236A00DC6488 /* ColorValueTrasnformer.swift */; };
-		14591347267B23B700DC6488 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14591345267B23B700DC6488 /* Note+CoreDataClass.swift */; };
-		14591348267B23B700DC6488 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14591346267B23B700DC6488 /* Note+CoreDataProperties.swift */; };
 		1459134A267B24D400DC6488 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14591349267B24D400DC6488 /* DataManager.swift */; };
 		1459134C267B264D00DC6488 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459134B267B264D00DC6488 /* Logic.swift */; };
 		1459134E267B269A00DC6488 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459134D267B269A00DC6488 /* TypeAliases.swift */; };
 		145C353B26789EF200D88C54 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C353A26789EF200D88C54 /* UIColorExtension.swift */; };
 		145C353D2678BF8200D88C54 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C353C2678BF8200D88C54 /* UITextViewExtension.swift */; };
+		146320D626CD50E1008CC28E /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146320D426CD50E1008CC28E /* Note+CoreDataClass.swift */; };
 		146708EF26B8059B00F17177 /* FontController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146708EE26B8059B00F17177 /* FontController.swift */; };
 		146947D926720EC900274B16 /* HomeInterfaceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146947D826720EC900274B16 /* HomeInterfaceHelper.swift */; };
 		146947DB2672330900274B16 /* Trash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 146947DA2672330900274B16 /* Trash.storyboard */; };
@@ -45,10 +45,20 @@
 		146A2F2F26BBF8C400C5E1D3 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146A2F2E26BBF8C400C5E1D3 /* UserDefaultsExtension.swift */; };
 		146F0F7826A710DA004E5634 /* MenuElementsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F0F7726A710DA004E5634 /* MenuElementsHelper.swift */; };
 		146F0F7C26A729C4004E5634 /* FontCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F0F7B26A729C4004E5634 /* FontCreator.swift */; };
+		1484842D26CE80D70075F2A3 /* NSMutableAttributedStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1484842C26CE80D70075F2A3 /* NSMutableAttributedStringExtension.swift */; };
 		148E487426CB978B00599548 /* EditorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148E487326CB978B00599548 /* EditorControl.swift */; };
 		148E487626CB9A9400599548 /* ControlName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148E487526CB9A9400599548 /* ControlName.swift */; };
 		148E487826CBA61900599548 /* FontTraitChangeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148E487726CBA61900599548 /* FontTraitChangeControl.swift */; };
 		148E487B26CBC34700599548 /* NSRangeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148E487A26CBC34700599548 /* NSRangeExtension.swift */; };
+		148E487D26CCEFF500599548 /* EditorActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148E487C26CCEFF500599548 /* EditorActionButton.swift */; };
+		148E487F26CD1B7200599548 /* BoldControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148E487E26CD1B7200599548 /* BoldControl.swift */; };
+		148E488126CD47E000599548 /* ItalicControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148E488026CD47E000599548 /* ItalicControl.swift */; };
+		148E488426CD491900599548 /* PTSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 148E488226CD491900599548 /* PTSans-BoldItalic.ttf */; };
+		148E488526CD491900599548 /* PTSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 148E488326CD491900599548 /* PTSans-Italic.ttf */; };
+		148E488826CD496000599548 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 148E488626CD496000599548 /* OpenSans-Italic.ttf */; };
+		148E488926CD496000599548 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 148E488726CD496000599548 /* OpenSans-BoldItalic.ttf */; };
+		148E488C26CD49C200599548 /* FiraSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 148E488A26CD49C200599548 /* FiraSans-BoldItalic.ttf */; };
+		148E488D26CD49C200599548 /* FiraSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 148E488B26CD49C200599548 /* FiraSans-Italic.ttf */; };
 		148F570326A9A6B500936A18 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F570226A9A6B500936A18 /* UIFontExtension.swift */; };
 		148F5E52267B29B200EFE9AD /* TableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F5E51267B29B200EFE9AD /* TableSection.swift */; };
 		148F5E54267B335100EFE9AD /* listViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148F5E53267B335100EFE9AD /* listViewCell.xib */; };
@@ -78,16 +88,16 @@
 		1407B7BB26BDAA7600A20FDF /* CourierNew-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CourierNew-Bold.ttf"; sourceTree = "<group>"; };
 		1407B7BC26BDAA7700A20FDF /* CourierNew-RegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CourierNew-RegularItalic.ttf"; sourceTree = "<group>"; };
 		1407B7BD26BDAA7700A20FDF /* CourierNew-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CourierNew-BoldItalic.ttf"; sourceTree = "<group>"; };
+		1428894F26CD532100865B78 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1459133B267B1C2C00DC6488 /* Signary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Signary.xcdatamodel; sourceTree = "<group>"; };
 		14591341267B22CA00DC6488 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		14591343267B236A00DC6488 /* ColorValueTrasnformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorValueTrasnformer.swift; sourceTree = "<group>"; };
-		14591345267B23B700DC6488 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
-		14591346267B23B700DC6488 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		14591349267B24D400DC6488 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		1459134B267B264D00DC6488 /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
 		1459134D267B269A00DC6488 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		145C353A26789EF200D88C54 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		145C353C2678BF8200D88C54 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
+		146320D426CD50E1008CC28E /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		146708EE26B8059B00F17177 /* FontController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontController.swift; sourceTree = "<group>"; };
 		146947D826720EC900274B16 /* HomeInterfaceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInterfaceHelper.swift; sourceTree = "<group>"; };
 		146947DA2672330900274B16 /* Trash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Trash.storyboard; sourceTree = "<group>"; };
@@ -110,10 +120,20 @@
 		146A2F2E26BBF8C400C5E1D3 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		146F0F7726A710DA004E5634 /* MenuElementsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuElementsHelper.swift; sourceTree = "<group>"; };
 		146F0F7B26A729C4004E5634 /* FontCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontCreator.swift; sourceTree = "<group>"; };
+		1484842C26CE80D70075F2A3 /* NSMutableAttributedStringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExtension.swift; sourceTree = "<group>"; };
 		148E487326CB978B00599548 /* EditorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorControl.swift; sourceTree = "<group>"; };
 		148E487526CB9A9400599548 /* ControlName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlName.swift; sourceTree = "<group>"; };
 		148E487726CBA61900599548 /* FontTraitChangeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTraitChangeControl.swift; sourceTree = "<group>"; };
 		148E487A26CBC34700599548 /* NSRangeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSRangeExtension.swift; sourceTree = "<group>"; };
+		148E487C26CCEFF500599548 /* EditorActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorActionButton.swift; sourceTree = "<group>"; };
+		148E487E26CD1B7200599548 /* BoldControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldControl.swift; sourceTree = "<group>"; };
+		148E488026CD47E000599548 /* ItalicControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItalicControl.swift; sourceTree = "<group>"; };
+		148E488226CD491900599548 /* PTSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		148E488326CD491900599548 /* PTSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSans-Italic.ttf"; sourceTree = "<group>"; };
+		148E488626CD496000599548 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		148E488726CD496000599548 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		148E488A26CD49C200599548 /* FiraSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		148E488B26CD49C200599548 /* FiraSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-Italic.ttf"; sourceTree = "<group>"; };
 		148F570226A9A6B500936A18 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		148F5E51267B29B200EFE9AD /* TableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSection.swift; sourceTree = "<group>"; };
 		148F5E53267B335100EFE9AD /* listViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = listViewCell.xib; sourceTree = "<group>"; };
@@ -159,11 +179,11 @@
 		14591339267B1C0900DC6488 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				146320D426CD50E1008CC28E /* Note+CoreDataClass.swift */,
+				1428894F26CD532100865B78 /* Note+CoreDataProperties.swift */,
 				1459133A267B1C2C00DC6488 /* Signary.xcdatamodeld */,
 				14591341267B22CA00DC6488 /* CoreDataStack.swift */,
 				14591343267B236A00DC6488 /* ColorValueTrasnformer.swift */,
-				14591345267B23B700DC6488 /* Note+CoreDataClass.swift */,
-				14591346267B23B700DC6488 /* Note+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -179,6 +199,7 @@
 				14C3E4A926AED31300D7E166 /* ArrayExtension.swift */,
 				146A2F2E26BBF8C400C5E1D3 /* UserDefaultsExtension.swift */,
 				148E487A26CBC34700599548 /* NSRangeExtension.swift */,
+				1484842C26CE80D70075F2A3 /* NSMutableAttributedStringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -191,6 +212,7 @@
 				146947DE267245FF00274B16 /* TrashInterfaceHelper.swift */,
 				1459134D267B269A00DC6488 /* TypeAliases.swift */,
 				148F5E51267B29B200EFE9AD /* TableSection.swift */,
+				148E487C26CCEFF500599548 /* EditorActionButton.swift */,
 				14C3E4AE26AEE44400D7E166 /* CustomFonts */,
 			);
 			path = Helpers;
@@ -322,6 +344,8 @@
 				148E487326CB978B00599548 /* EditorControl.swift */,
 				148E487526CB9A9400599548 /* ControlName.swift */,
 				148E487726CBA61900599548 /* FontTraitChangeControl.swift */,
+				148E487E26CD1B7200599548 /* BoldControl.swift */,
+				148E488026CD47E000599548 /* ItalicControl.swift */,
 			);
 			path = EditorControls;
 			sourceTree = "<group>";
@@ -369,6 +393,8 @@
 		14C3E4B026AEE6D000D7E166 /* FiraSans */ = {
 			isa = PBXGroup;
 			children = (
+				148E488A26CD49C200599548 /* FiraSans-BoldItalic.ttf */,
+				148E488B26CD49C200599548 /* FiraSans-Italic.ttf */,
 				14C3E4A626AEC21300D7E166 /* FiraSans-Bold.ttf */,
 				14C3E4A526AEC21300D7E166 /* FiraSans-Regular.ttf */,
 			);
@@ -378,6 +404,8 @@
 		14C3E4B526AEE70200D7E166 /* OpenSans */ = {
 			isa = PBXGroup;
 			children = (
+				148E488726CD496000599548 /* OpenSans-BoldItalic.ttf */,
+				148E488626CD496000599548 /* OpenSans-Italic.ttf */,
 				14C3E4B126AEE6F600D7E166 /* OpenSans-Bold.ttf */,
 				14C3E4B226AEE6F600D7E166 /* OpenSans-Regular.ttf */,
 			);
@@ -387,6 +415,8 @@
 		14C3E4BA26AEE79800D7E166 /* PTSans */ = {
 			isa = PBXGroup;
 			children = (
+				148E488226CD491900599548 /* PTSans-BoldItalic.ttf */,
+				148E488326CD491900599548 /* PTSans-Italic.ttf */,
 				14C3E4B626AEE79200D7E166 /* PTSans-Bold.ttf */,
 				14C3E4B726AEE79200D7E166 /* PTSans-Regular.ttf */,
 			);
@@ -467,15 +497,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				148E488526CD491900599548 /* PTSans-Italic.ttf in Resources */,
 				148F5E54267B335100EFE9AD /* listViewCell.xib in Resources */,
 				14C3E4B426AEE6F600D7E166 /* OpenSans-Regular.ttf in Resources */,
 				14C3E4B826AEE79200D7E166 /* PTSans-Bold.ttf in Resources */,
 				146947E126724F0000274B16 /* Editor.storyboard in Resources */,
+				148E488426CD491900599548 /* PTSans-BoldItalic.ttf in Resources */,
 				14C3E4A726AEC33E00D7E166 /* FiraSans-Bold.ttf in Resources */,
 				1407B7AD26BDA17C00A20FDF /* TimesNewRoman-RegularItalic.ttf in Resources */,
 				1407B7C126BDAA7700A20FDF /* CourierNew-BoldItalic.ttf in Resources */,
+				148E488D26CD49C200599548 /* FiraSans-Italic.ttf in Resources */,
+				148E488826CD496000599548 /* OpenSans-Italic.ttf in Resources */,
 				146947DB2672330900274B16 /* Trash.storyboard in Resources */,
 				1407B7AE26BDA17C00A20FDF /* TimesNewRoman-Regular.ttf in Resources */,
+				148E488C26CD49C200599548 /* FiraSans-BoldItalic.ttf in Resources */,
 				1407B7C026BDAA7700A20FDF /* CourierNew-RegularItalic.ttf in Resources */,
 				14697BC02671EC900067A2FB /* LaunchScreen.storyboard in Resources */,
 				1407B7AF26BDA17C00A20FDF /* TimesNewRoman-Bold.ttf in Resources */,
@@ -488,6 +523,7 @@
 				14C3E4B326AEE6F600D7E166 /* OpenSans-Bold.ttf in Resources */,
 				14C3E4A826AEC34000D7E166 /* FiraSans-Regular.ttf in Resources */,
 				1407B7BF26BDAA7700A20FDF /* CourierNew-Bold.ttf in Resources */,
+				148E488926CD496000599548 /* OpenSans-BoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,13 +543,17 @@
 				145C353D2678BF8200D88C54 /* UITextViewExtension.swift in Sources */,
 				14697BD9267208940067A2FB /* Constants.swift in Sources */,
 				148F5E5B267B569900EFE9AD /* UIViewExtension.swift in Sources */,
+				1428895026CD532100865B78 /* Note+CoreDataProperties.swift in Sources */,
 				14697BDF267209750067A2FB /* TestNotesModel.swift in Sources */,
 				14697BD82672071E0067A2FB /* listViewCell.swift in Sources */,
 				146A2F2F26BBF8C400C5E1D3 /* UserDefaultsExtension.swift in Sources */,
+				148E488126CD47E000599548 /* ItalicControl.swift in Sources */,
 				146F0F7C26A729C4004E5634 /* FontCreator.swift in Sources */,
 				146708EF26B8059B00F17177 /* FontController.swift in Sources */,
+				148E487F26CD1B7200599548 /* BoldControl.swift in Sources */,
 				148E487626CB9A9400599548 /* ControlName.swift in Sources */,
 				14697BB42671EC8A0067A2FB /* AppDelegate.swift in Sources */,
+				148E487D26CCEFF500599548 /* EditorActionButton.swift in Sources */,
 				148F5E59267B563C00EFE9AD /* SectionHeaderView.swift in Sources */,
 				1459134C267B264D00DC6488 /* Logic.swift in Sources */,
 				146947D926720EC900274B16 /* HomeInterfaceHelper.swift in Sources */,
@@ -524,16 +564,16 @@
 				148F5E5D267B58C300EFE9AD /* HomeViewSectionHeader.swift in Sources */,
 				148E487426CB978B00599548 /* EditorControl.swift in Sources */,
 				14697BE0267209780067A2FB /* NotesData.swift in Sources */,
-				14591348267B23B700DC6488 /* Note+CoreDataProperties.swift in Sources */,
 				14697BB62671EC8A0067A2FB /* SceneDelegate.swift in Sources */,
 				148E487B26CBC34700599548 /* NSRangeExtension.swift in Sources */,
+				1484842D26CE80D70075F2A3 /* NSMutableAttributedStringExtension.swift in Sources */,
 				14C3E4AC26AEE43200D7E166 /* CustomFonts.swift in Sources */,
 				1459134E267B269A00DC6488 /* TypeAliases.swift in Sources */,
 				14697BCE267201690067A2FB /* HomeViewController.swift in Sources */,
 				14591344267B236A00DC6488 /* ColorValueTrasnformer.swift in Sources */,
-				14591347267B23B700DC6488 /* Note+CoreDataClass.swift in Sources */,
 				145C353B26789EF200D88C54 /* UIColorExtension.swift in Sources */,
 				148F5E5F267B60BF00EFE9AD /* StringExtension.swift in Sources */,
+				146320D626CD50E1008CC28E /* Note+CoreDataClass.swift in Sources */,
 				146947DF267245FF00274B16 /* TrashInterfaceHelper.swift in Sources */,
 				148E487826CBA61900599548 /* FontTraitChangeControl.swift in Sources */,
 			);

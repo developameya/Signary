@@ -156,12 +156,26 @@ extension FontDescriptor {
         ]
     ]
     
-    final class func preferredDescriptor(textStyle: TextStyle, fontFamily family: String) -> FontDescriptor {
+    final class func preferredDescriptor(font: Font, textStyle: TextStyle) -> FontDescriptor {
         //GET THE CURRENT FONT SIZE SET BY THE SYSTEM
         let contentSize = UIApplication.shared.preferredContentSizeCategory
         //GET THE ARRAY VALUE FOR THE SELECTED TEXTSTYLE
         let style = fontSizeTable[textStyle]!
         //RETURN A FONT DESCRIPTOR WITH FONT SIZE MATCHING THE CURRENT DYNAMIC SIZE PROVIDED BY THE SYSTEM
-        return FontDescriptor(name: family, size: style[contentSize]!)
+        return FontDescriptor(name: font.familyName, size: style[contentSize]!)
+    }
+    
+    final class func CustomFontDescriptor(font: Font, textStyle style: TextStyle) -> FontDescriptor {
+        //GET THE SIZE OF THE FONT FOR THE GIVEN TEXT STYLE
+        let systemFontDescriptor = self.preferredDescriptor(font: font, textStyle: style)
+        //GET THE FONT DESCRIPTOR OF THE CURRENT FONT
+        let fontDescriptor = font.fontDescriptor
+        //CREATE ATTRIBUTES WITH SPECIFYING FONT SIZE
+        let fontAttributes: [descriptorAttribute: Any] = [
+            descriptorAttribute.size: systemFontDescriptor.pointSize,
+        ]
+        //CREATE A NEW FONT DESCRIPTOR WITH FONT ATTRIBUTES CREATED ABOVE
+        let returnedDescriptor = fontDescriptor.addingAttributes(fontAttributes)
+        return returnedDescriptor
     }
 }
