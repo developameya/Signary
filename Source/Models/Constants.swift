@@ -11,7 +11,6 @@ import Foundation
 /// Use this struct to find constants for commonly used Strings
 public struct K {
 
-    static let accentColor = "Accent Colour"
     static let sectionHeaderIdentifier = "SectionHeaderView"
     static let appTitle = "Signary"
     
@@ -51,11 +50,5 @@ public struct K {
         static let dateModified = "dateModified"
         static let title = "title"
     }
-    
-    struct colours {
-        static let background = "TableBackground"
-        static let textColour = "editorTextColour"
-    }
-    
 }
 

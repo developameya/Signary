@@ -33,7 +33,7 @@ struct FontController {
         
     }
     
-    func setFontAttributes(forKey key: String, fontFamily family: CustomFonts, forTextStyle style: TextStyle, textColourName name: String = K.colours.textColour) -> DynamicFontDictionary? {
+    func setFontAttributes(forKey key: String, fontFamily family: CustomFonts, forTextStyle style: TextStyle, textColour: Colour = Colour.appText) -> DynamicFontDictionary? {
         
         var returnedDictionary: DynamicFontDictionary?
         
@@ -47,7 +47,7 @@ struct FontController {
             //ELSE RETURN THE APPROPRIATE DICTIONARY
             let customFont = Font.from(fontFamily: family.rawValue)
             let safeFont = Font.dynamicCustom(font: customFont!, textStyle: style) ?? .preferredFont(forTextStyle: .body)
-            returnedDictionary = [AttrStrKey.font : safeFont, AttrStrKey.foregroundColor : UIColor(named: name)!]
+            returnedDictionary = [AttrStrKey.font : safeFont, AttrStrKey.foregroundColor : textColour]
             
              
             if let safeDictionary = returnedDictionary {

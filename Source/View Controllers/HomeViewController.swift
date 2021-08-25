@@ -61,7 +61,7 @@ class HomeViewController: UITableViewController {
         
         //CHANGE THE SEPARATOR BETWEEN TWO CELLS TO SINGLELINE
         tableView.separatorStyle = .singleLine
-        tableView.backgroundColor = UIColor(named: K.colours.background)
+        tableView.backgroundColor = UIColor.appBackground
         //SET THE HEIGHT OF THE ROW IN TABLEVIEW EQUAL TO THE THE CUSTOM CELL
         tableView.rowHeight = 125
         //ALLOW SELECTION OF MULTIPLE CELLS WHILE TABLEVIEW IS IN EDITING MODE
@@ -90,7 +90,7 @@ class HomeViewController: UITableViewController {
     private func NavigationBarUI() {
         setNavigationItems()
         navigationItem.title = K.appTitle
-        navigationController?.navigationBar.tintColor = UIColor(named: K.accentColor)
+        navigationController?.navigationBar.tintColor = UIColor.appTint
         navigationController?.navigationBar.prefersLargeTitles = true
         let defaultAppearance = UINavigationBarAppearance()
         defaultAppearance.configureWithTransparentBackground()
