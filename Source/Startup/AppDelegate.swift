@@ -35,8 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //MARK:- COREDATA STACK
     
-    private lazy var persistanContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Signary")
+    private lazy var persistanContainer: NSPersistentCloudKitContainer = {
+        let container = NSPersistentCloudKitContainer(name: "Signary")
         container.loadPersistentStores { storeDescription, error in
             if let error = error as NSError? {
                 print("Unresolved error \(error), \(error.userInfo)")
