@@ -33,7 +33,7 @@ struct FontCreator{
         }
     }
     
-    func createCustomFontDictionary(of fontFamiliy: CustomFonts.RawValue, italic: Bool = false) throws -> [UIFont.TextStyle: UIFont] {
+    func createCustomFontDictionary(of fontFamiliy: CustomFonts.RawValue, italic: Bool = false) throws -> [Font.TextStyle: Font] {
         var customFontRegular = String()
         var customFontBold = String()
         
@@ -45,17 +45,17 @@ struct FontCreator{
             customFontBold = createCustomFontString(fontFamiliy: fontFamiliy, fontStyle: .Bold, italic: true)
         }
         
-        guard let largeTitleFont = UIFont(name: customFontRegular, size: 34),
-              let titleOneFont = UIFont(name: customFontRegular, size: 28),
-              let titleTwoFont = UIFont(name: customFontRegular, size: 22),
-              let titleThreeFont = UIFont(name: customFontRegular, size: 20),
-              let bodyFont = UIFont(name: customFontRegular, size: 17),
-              let calloutFont = UIFont(name: customFontRegular, size: 16),
-              let subheadlineFont =  UIFont(name: customFontRegular, size: 15),
-              let footNoteFont = UIFont(name: customFontRegular, size: 13),
-              let captionOneFont = UIFont(name: customFontRegular, size: 12),
-              let captionTwoFont =  UIFont(name: customFontRegular, size: 11),
-              let headlineFont = UIFont(name: customFontBold, size: 17)
+        guard let largeTitleFont = Font(name: customFontRegular, size: 34),
+              let titleOneFont = Font(name: customFontRegular, size: 28),
+              let titleTwoFont = Font(name: customFontRegular, size: 22),
+              let titleThreeFont = Font(name: customFontRegular, size: 20),
+              let bodyFont = Font(name: customFontRegular, size: 17),
+              let calloutFont = Font(name: customFontRegular, size: 16),
+              let subheadlineFont =  Font(name: customFontRegular, size: 15),
+              let footNoteFont = Font(name: customFontRegular, size: 13),
+              let captionOneFont = Font(name: customFontRegular, size: 12),
+              let captionTwoFont =  Font(name: customFontRegular, size: 11),
+              let headlineFont = Font(name: customFontBold, size: 17)
         else {
             
            throw FontCreatorError.invalidFontName
@@ -63,7 +63,7 @@ struct FontCreator{
         }
         
         
-        let customFonts: [UIFont.TextStyle: UIFont] = [
+        let customFonts: [Font.TextStyle: Font] = [
             .largeTitle: largeTitleFont,
             .title1: titleOneFont,
             .title2: titleTwoFont,

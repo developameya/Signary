@@ -7,6 +7,8 @@
 
 import UIKit
 
+typealias Action = UIAction
+typealias Menu = UIMenu
 //MARK:- PROTOCOL
 protocol TrashInterfaceDelegate {
     
@@ -20,10 +22,10 @@ protocol TrashInterfaceDelegate {
 class TrashInterFaceHelper {
     //MARK:- PROPERTIES
     var delegate: TrashInterfaceDelegate?
-    var selectButton: UIBarButtonItem!
-    var doneButton: UIBarButtonItem!
-    var eraseAllButton: UIBarButtonItem!
-    var optionsButton: UIBarButtonItem!
+    var selectButton: BarButton!
+    var doneButton: BarButton!
+    var eraseAllButton: BarButton!
+    var optionsButton: BarButton!
     let dataLogic = Logic()
     
     //MARK:- INIT
@@ -32,34 +34,34 @@ class TrashInterFaceHelper {
     }
     
     private func registerButtons() {
-        selectButton = UIBarButtonItem(title: "Select", style: .plain, target: self, action: #selector(selectPressed))
-        doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(donePressed))
-        eraseAllButton = UIBarButtonItem(image: .init(systemName: "trash.slash.fill"), style: .plain, target: self, action: #selector(eraseAllPressed))
+        selectButton = BarButton(title: "Select", style: .plain, target: self, action: #selector(selectPressed))
+        doneButton = BarButton(barButtonSystemItem: .done, target: self, action: #selector(donePressed))
+        eraseAllButton = BarButton(image: .init(systemName: "trash.slash.fill"), style: .plain, target: self, action: #selector(eraseAllPressed))
         
-        let restoreAction = UIAction(title:"Restore", image:.init(systemName: "arrowshape.turn.up.backward.fill")) { _ in
+        let restoreAction = Action(title:"Restore", image:.init(systemName: "arrowshape.turn.up.backward.fill")) { _ in
             print("Restore pressed")
             self.delegate?.restoreTapped(self)
             
         }
-        let eraseAction = UIAction(title:"Erase", image:.init(systemName: "xmark.bin.fill"), attributes: .destructive) { _ in
+        let eraseAction = Action(title:"Erase", image:.init(systemName: "xmark.bin.fill"), attributes: .destructive) { _ in
             print("erase pressed")
             self.delegate?.eraseTapped(self)
         }
 
         let menuElements = [restoreAction, eraseAction]
-        optionsButton = UIBarButtonItem(image: .init(systemName: "ellipsis.circle"), menu: UIMenu(title: "Options", children: menuElements))
+        optionsButton = BarButton(image: .init(systemName: "ellipsis.circle"), menu: Menu(title: "Options", children: menuElements))
     }
     
     //MARK:- BUTTON INTERACTION METHODS
-    @objc func selectPressed(_ sender: UIBarButtonItem!) {
+    @objc func selectPressed(_ sender: BarButton!) {
         delegate?.selectTapped(self)
     }
     
-    @objc func donePressed(_ sender: UIBarButtonItem!) {
+    @objc func donePressed(_ sender: BarButton!) {
         delegate?.doneTapped(self)
     }
     
-    @objc func eraseAllPressed(_ sender: UIBarButtonItem!) {
+    @objc func eraseAllPressed(_ sender: BarButton!) {
         delegate?.eraseAllTapped(self)
     }
 }

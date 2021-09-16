@@ -16,7 +16,7 @@ final class ColorValueTransformer: NSSecureUnarchiveFromDataTransformer {
 
     // 2. Make sure `UIColor` is in the allowed class list.
     override static var allowedTopLevelClasses: [AnyClass] {
-        return [UIColor.self]
+        return [Colour.self]
     }
 
     /// Registers the transformer.

@@ -33,7 +33,7 @@ struct FontController {
         
     }
     
-    func setFontAttributes(forKey key: String, fontFamily family: CustomFonts, forTextStyle style: TextStyle, textColour: Colour = Colour.appText) -> DynamicFontDictionary? {
+    func setFontAttributes(forKey key: String, fontFamily family: CustomFonts, forTextStyle style: TextStyle, textColour: Colour = Colour.appTextColour) -> DynamicFontDictionary? {
         
         var returnedDictionary: DynamicFontDictionary?
         

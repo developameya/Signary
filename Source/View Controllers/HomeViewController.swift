@@ -8,14 +8,25 @@
 import UIKit
 import CoreData
 
-class HomeViewController: UITableViewController {
+typealias cellConstants = K.Cell
+typealias segueConstants = K.Segue
+typealias TableViewController = UITableViewController
+typealias SearchController = UISearchController
+typealias NavigationBarAppearance = UINavigationBarAppearance
+typealias AlertController = UIAlertController
+typealias AlertAction = UIAlertAction
+typealias StoryboardSegue = UIStoryboardSegue
+typealias SwipeActionsConfiguration = UISwipeActionsConfiguration
+typealias ContextualAction = UIContextualAction
+
+class HomeViewController: TableViewController {
     //MARK:- PROPERTIES
     private var logic = Logic()
     private var cellData = Note()
-    private let searchController = UISearchController(searchResultsController: nil)
+    private let searchController = SearchController(searchResultsController: nil)
     private let interface = HomeInterfaceHelper()
     private var menuElements = MenuElementsHelper()
-    private var cellColour: UIColor?
+    private var cellColour: Colour?
     private var isCollapsed: Bool?
     let sectionHeaderHeight: CGFloat = 34
     var currentSection:Int?
@@ -61,7 +72,7 @@ class HomeViewController: UITableViewController {
         
         //CHANGE THE SEPARATOR BETWEEN TWO CELLS TO SINGLELINE
         tableView.separatorStyle = .singleLine
-        tableView.backgroundColor = UIColor.appBackground
+        tableView.backgroundColor = UIColor.appBackgroundColour
         //SET THE HEIGHT OF THE ROW IN TABLEVIEW EQUAL TO THE THE CUSTOM CELL
         tableView.rowHeight = 125
         //ALLOW SELECTION OF MULTIPLE CELLS WHILE TABLEVIEW IS IN EDITING MODE
@@ -90,9 +101,9 @@ class HomeViewController: UITableViewController {
     private func NavigationBarUI() {
         setNavigationItems()
         navigationItem.title = K.appTitle
-        navigationController?.navigationBar.tintColor = UIColor.appTint
+        navigationController?.navigationBar.tintColor = UIColor.appTintColour
         navigationController?.navigationBar.prefersLargeTitles = true
-        let defaultAppearance = UINavigationBarAppearance()
+        let defaultAppearance = NavigationBarAppearance()
         defaultAppearance.configureWithTransparentBackground()
         navigationController?.navigationBar.scrollEdgeAppearance = defaultAppearance
         
@@ -100,27 +111,27 @@ class HomeViewController: UITableViewController {
     
     private func sortUI() {
         //1. CREATE AN ALERT FOR SORT BY
-        let alert = UIAlertController(title: "Sort By...", message: nil, preferredStyle: .actionSheet)
+        let alert = AlertController(title: "Sort By...", message: nil, preferredStyle: .actionSheet)
         //2.CREATE DATE CREATED BUTTON
-        let dateCreated = UIAlertAction(title: "Date Created", style: .default) { (action) in
+        let dateCreated = AlertAction(title: "Date Created", style: .default) { (action) in
             self.logic.dataSort(query: K.SortBy.dateCreated, asceding: false)
             self.tableView.reloadData()
             self.dismiss(animated: true, completion: nil)
         }
         //2.CREATE DATE MODIFIED BUTTON
-        let dateModified = UIAlertAction(title: "Date Modified", style: .default) { (action) in
+        let dateModified = AlertAction(title: "Date Modified", style: .default) { (action) in
             self.logic.dataSort(query: K.SortBy.dateModified, asceding: false)
             self.tableView.reloadData()
             self.dismiss(animated: true, completion: nil)
         }
         //2.CREATE SORT BY NAME  BUTTON
-        let sortName = UIAlertAction(title: "Title", style: .default) { (action) in
+        let sortName = AlertAction(title: "Title", style: .default) { (action) in
             self.logic.dataSort(query: K.SortBy.title, asceding: true)
             self.tableView.reloadData()
             self.dismiss(animated: true, completion: nil)
         }
         //3.CREATE CANCEL BUTTON
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelButton = AlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         //4.ADD ALL THE BUTTONS TO THE ALERT
         alert.addAction(sortName)
@@ -136,7 +147,7 @@ class HomeViewController: UITableViewController {
         
         let menuItems = ["Sort":"arrow.up.arrow.down", "Trash":"xmark.bin.fill"]
         let elements = menuElements.createActionsWithSymbols(from: menuItems)
-        let moreButton = UIBarButtonItem(image: .init(systemName: "ellipsis.circle"), menu: UIMenu(title: "Options",children: elements))
+        let moreButton = BarButton(image: .init(systemName: "ellipsis.circle"), menu: Menu(title: "Options",children: elements))
         
         navigationItem.setRightBarButtonItems([interface.addButton, interface.selectButton], animated: true)
         navigationItem.setLeftBarButtonItems([moreButton], animated: true)
@@ -148,7 +159,7 @@ class HomeViewController: UITableViewController {
 //MARK:- NAVIGATION METHODS
 extension HomeViewController {
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: StoryboardSegue, sender: Any?) {
         
         switch segue.identifier {
         case segueConstants.newEditor:
@@ -168,31 +179,31 @@ extension HomeViewController {
 // MARK: - TABLEVIEW DELEGATE METHODS
 
 extension HomeViewController {
-    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    override func tableView(_ tableView: TableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> SwipeActionsConfiguration? {
         
         //WHEN USER SWIPES THE CELL TO THE LEFT, DO THE FOLLWING
         //1. CREATE THE DELETE BUTTON
-        let deleteAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
+        let deleteAction = ContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
             //CALL THE 'moveOneToTrash' FUNCTION AND PASS THE INDEXPATH OF THE CURRENT CELL
-            self.logic.moveOneToTrash(indexPath: indexPath, tableView: tableView)
+            self.logic.moveOneToTrash(at: indexPath, tableView: tableView)
             
         }
         
-        let pinAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
+        let pinAction = ContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
             // CHANGE PIN STATUS OF THE NOTE
             self.logic.setPin(indexPath: indexPath, tableView: tableView, state: self.isCollapsed!)
         }
         
         //2.SET THE IMAGE OF THE BUTTON TO 'trash'
-        deleteAction.image = UIImage(systemName: "trash")
+        deleteAction.image = Image(systemName: "trash")
         
         if let tableSection = TableSection(rawValue: indexPath.section) {
             switch tableSection {
             case .unpinned:
-                pinAction.image = UIImage(systemName: "pin.fill")
+                pinAction.image = Image(systemName: "pin.fill")
                 pinAction.title = "Pin"
             case .pinned:
-                pinAction.image = UIImage(systemName: "pin.slash.fill")
+                pinAction.image = Image(systemName: "pin.slash.fill")
                 pinAction.title = "Unpin"
             default:
                 break
@@ -202,16 +213,16 @@ extension HomeViewController {
         deleteAction.backgroundColor = .systemRed
         pinAction.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
         //4.ADD THIS BUTTON TO THE ARRAY WHICH IS SHOWN AT THE TRAIL
-        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, pinAction])
+        let configuration = SwipeActionsConfiguration(actions: [deleteAction, pinAction])
         //5.RETURN THE ARRAY OF BUTTONS
         return configuration
     }
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    override func tableView(_ tableView: TableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: TableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.isEditing {
             //PASS THE NUMBER OF SELECTED ROWS TO THE GLOBAL 'SELECTEDROWS' OBJECT
             logic.selectedRows = tableView.indexPathsForSelectedRows
@@ -228,7 +239,7 @@ extension HomeViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: TableView, didDeselectRowAt indexPath: IndexPath) {
         if tableView.isEditing {
             //2. PASS THE NUMBER OF SELECTED ROWS TO THE GLOBAL 'SELECTEDROWS' OBJECT
             logic.selectedRows = tableView.indexPathsForSelectedRows
@@ -244,12 +255,12 @@ extension HomeViewController {
 // MARK: - TABLEVIEW DATA SOURCE METHODS
 extension HomeViewController {
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: TableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = HomeViewSectionHeader()
         return header.view(self, tableView, section, isCollapsed!)
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: TableView, heightForHeaderInSection section: Int) -> CGFloat {
         //1. PASS THE CURRENT NUMBER OF SECTION FOR RAWVALUE OF 'TABLESECITON' ENUM.
         //2. SET THE RETURNED CASE OF THE TABLESECTION TO 'TABLESECTION' CONSTANT
         //3. PASS THIS 'TABLESECTION' CONSTANT AS VALUE TO THE 'COMBINEDDATA' ARRAY
@@ -261,11 +272,11 @@ extension HomeViewController {
         return 0
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: TableView) -> Int {
         return TableSection.total.rawValue
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: TableView, numberOfRowsInSection section: Int) -> Int {
         //SET THE NUMBER OF ROWS IN SECTION
         //1. PASS THE CURRENT NUMBER OF SECTION FOR RAWVALUE OF 'TABLESECITON' ENUM.
         //2. SET THE RETURNED CASE OF THE TABLESECTION TO 'TABLESECTION' CONSTANT
@@ -285,7 +296,7 @@ extension HomeViewController {
         return 0
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: TableView, cellForRowAt indexPath: IndexPath) -> TableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellConstants.indetifier, for: indexPath) as! listViewCell
         if let tableSection = TableSection(rawValue: indexPath.section), let data = logic.combinedData[tableSection]?[indexPath.row] {
             cellData = data
@@ -298,7 +309,7 @@ extension HomeViewController {
         cell.dateLabel.text = logic.dateFormatter.string(from: cellData.dateCreated!)
         //SET THE COLOUR OF THE COLOURBAR
         if cellData.color != nil {
-            cellColour = cellData.color as? UIColor
+            cellColour = cellData.color as? Colour
             cell.colourBar.backgroundColor = cellColour
         } else {
             cellColour = .random()

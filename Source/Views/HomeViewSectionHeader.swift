@@ -14,8 +14,8 @@ public class HomeViewSectionHeader {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: K.sectionHeaderIdentifier) as! SectionHeaderView
         header.delegate = target
         header.label.font = UIFont.boldSystemFont(ofSize: 22)
-        header.label.textColor = Colour.appText
-        header.button.tintColor = Colour.appText
+        header.label.textColor = Colour.appTextColour
+        header.button.tintColor = Colour.appTextColour
         
         if let safeTableSection = TableSection(rawValue: section) {
             switch safeTableSection {

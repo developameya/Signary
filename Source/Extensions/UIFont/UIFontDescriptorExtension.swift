@@ -170,7 +170,7 @@ extension FontDescriptor {
         let systemFontDescriptor = self.preferredDescriptor(font: font, textStyle: style)
         //GET THE FONT DESCRIPTOR OF THE CURRENT FONT
         let fontDescriptor = font.fontDescriptor
-        //CREATE ATTRIBUTES WITH SPECIFYING FONT SIZE
+        //CREATE ATTRIBUTES WITH SPECIFIC FONT SIZE
         let fontAttributes: [descriptorAttribute: Any] = [
             descriptorAttribute.size: systemFontDescriptor.pointSize,
         ]

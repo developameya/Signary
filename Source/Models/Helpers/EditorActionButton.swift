@@ -8,6 +8,8 @@
 import UIKit
 
 public typealias BarButton = UIBarButtonItem
+public typealias Image = UIImage
+public typealias Coder = NSCoder
 
 public class EditorActionButton: BarButton {
     let control: EditorControl
@@ -15,12 +17,12 @@ public class EditorActionButton: BarButton {
     init(systemImageName: String, control: EditorControl, action: Selector?) {
         self.control = control
         super.init()
-        image = UIImage(systemName: systemImageName)
+        image = Image(systemName: systemImageName)
         self.action = action
     }
     
     
-    required init?(coder: NSCoder) {
+    required init?(coder: Coder) {
         fatalError("init(coder:) has not been implemented")
     }
     

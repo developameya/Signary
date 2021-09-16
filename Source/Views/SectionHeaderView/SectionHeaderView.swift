@@ -7,18 +7,22 @@
 
 import UIKit
 
+typealias TableViewHeaderFooterView = UITableViewHeaderFooterView
+typealias Label = UILabel
+typealias Button = UIButton
+
 protocol SectionHeaderViewDelegate {
     func toggleSection(_ header: SectionHeaderView)
     
     func toggleHeaderRotation(_ header: SectionHeaderView)
 }
 
-class SectionHeaderView: UITableViewHeaderFooterView {
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var button: UIButton!
+class SectionHeaderView: TableViewHeaderFooterView {
+    @IBOutlet weak var label: Label!
+    @IBOutlet weak var button: Button!
     var delegate: SectionHeaderViewDelegate?
     
-    @IBAction func buttonPressed(_ sender: UIButton) {
+    @IBAction func buttonPressed(_ sender: Button) {
         delegate?.toggleSection(self)
         delegate?.toggleHeaderRotation(self)
     }

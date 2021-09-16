@@ -97,7 +97,7 @@ extension TrashViewController {
         // Create 'Restore' action to be shown while cell is swiped from the trail
         let restoreAction = UIContextualAction(style: .destructive, title: "Restore") { (_, _, CompeletionHandler) in
             // When restore is tapped do the following
-            self.logic.restore(multipleItems: false, indexPath: indexPath, tableView: tableView)
+            self.logic.restoreIndividual(indexPath: indexPath, tableView: tableView)
             CompeletionHandler(true)
             
         }
@@ -135,7 +135,7 @@ extension TrashViewController {
 extension TrashViewController: TrashInterfaceDelegate {
     func restoreTapped(_ helper: TrashInterFaceHelper) {
         print("From TrashViewController | \(#function) on line \(#line)")
-        logic.restore(multipleItems: true, tableView: tableView)
+        logic.restoreMany(tableView: tableView)
     }
     
     func eraseTapped(_ helper: TrashInterFaceHelper) {

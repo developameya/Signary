@@ -8,13 +8,18 @@
 import UIKit
 import CoreData
 
+typealias ManagedObjectContext = NSManagedObjectContext
+typealias Application = UIApplication
+typealias FetchRequest = NSFetchRequest
+typealias SortDescriptor = NSSortDescriptor
+
 class DataManager {
     //MARK:- PROPERTIES
-    var managedContext: NSManagedObjectContext?
+    var managedContext: ManagedObjectContext?
     
     //MARK:- INIT
     init() {
-        managedContext = (UIApplication.shared.delegate as! AppDelegate).managedContext
+        managedContext = (Application.shared.delegate as! AppDelegate).managedContext
     }
    
     /// The save function will be called to save the data stored in cotext to the coreData persistant data store.
@@ -32,7 +37,7 @@ class DataManager {
     ///   - noteArray: Specify the array property to which the requested data must be loaded to.
     ///   - wantTrash:  Specify the boolean true if trash marked notes are to be loaded in the array.
     
-    func loadList (with request: NSFetchRequest<Note> = Note.fetchRequest(),loadto array: inout [Note], wantTrash: Bool? = false) {
+    func loadList (with request: FetchRequest<Note> = Note.fetchRequest(),loadto array: inout [Note], wantTrash: Bool? = false) {
         // use 'inout' for parameters which need to be mutable within the function
         do {
             array = try managedContext!.fetch(request)
@@ -56,9 +61,9 @@ class DataManager {
     ///   - check: Write 'true' if the data must be sorted by ascending order
     ///   - request: Pass in request object of type NSRequest, if a specfic data is to be reuqired from the presistant store, for example, request sent from a search field.
     ///   - array: Specify the array property to which the requested data must be loaded to.
-    func sort (query: String, ascending check: Bool, request: NSFetchRequest<Note> = Note.fetchRequest(), array: inout [Note]) {
+    func sort (query: String, ascending check: Bool, request: FetchRequest<Note> = Note.fetchRequest(), array: inout [Note]) {
         
-        request.sortDescriptors = [NSSortDescriptor(key: query, ascending: check)]
+        request.sortDescriptors = [SortDescriptor(key: query, ascending: check)]
         
         loadList(with: request, loadto: &array)
     }

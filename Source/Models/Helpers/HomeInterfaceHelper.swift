@@ -18,10 +18,10 @@ protocol HomeInterfaceHelperDelegate {
 class HomeInterfaceHelper {
     //MARK:- PROPERTIES
     var delegate: HomeInterfaceHelperDelegate?
-    var addButton: UIBarButtonItem!
-    var selectButton: UIBarButtonItem!
-    var trashbutton: UIBarButtonItem!
-    var donebutton: UIBarButtonItem!
+    var addButton: BarButton!
+    var selectButton: BarButton!
+    var trashbutton: BarButton!
+    var donebutton: BarButton!
     
     
     //MARK:- INIT
@@ -41,19 +41,19 @@ class HomeInterfaceHelper {
     }
     
     //MARK:- BUTTON INTERACTION METHODS
-    @objc func addButtonPressed(sender:UIBarButtonItem!) {
+    @objc func addButtonPressed(sender:BarButton!) {
         delegate?.addTapped(self)
     }
     
-    @objc func selectButtonPressed(sender:UIBarButtonItem!) {
+    @objc func selectButtonPressed(sender:BarButton!) {
         delegate?.selectTapped(self)
     }
     
-    @objc func trashPressed(sender:UIBarButtonItem!) {
+    @objc func trashPressed(sender:BarButton!) {
         delegate?.trashTapped(self)
     }
     
-    @objc func doneButtonPressed(sender:UIBarButtonItem!) {
+    @objc func doneButtonPressed(sender:BarButton!) {
         delegate?.doneTapped(self)
     }
 }

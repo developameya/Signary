@@ -8,6 +8,9 @@
 import UIKit
 import CoreData
 
+typealias sections = [TableSection : [Note]]
+typealias TableView = UITableView
+typealias Predicate = NSPredicate
 
 class Logic: DataManager {
     //MARK:- PROPERTIES
@@ -48,7 +51,7 @@ class Logic: DataManager {
         save()
     }
     
-    func sortSearch(query: String, ascending: Bool, request: NSFetchRequest<Note>) {
+    func sortSearch(query: String, ascending: Bool, request: FetchRequest<Note>) {
         sort(query: query, ascending: ascending, request: request, array: &data)
         buildSections()
     }
@@ -58,7 +61,7 @@ class Logic: DataManager {
 extension Logic {
     
     //MARK: TRASH METHODS
-    func moveOneToTrash(indexPath: IndexPath, tableView: UITableView) {
+    func moveOneToTrash(at indexPath: IndexPath, tableView: TableView) {
         
         if let thisTableSection = TableSection(rawValue: indexPath.section), let data = combinedData[thisTableSection] {
             switch thisTableSection {
@@ -78,7 +81,6 @@ extension Logic {
                 tableView.endUpdates()
                 
             case .unpinned:
-                print("unpinned")
                 //SET THE PIN STATUS OF THE OBJECT
                 data[indexPath.row].isTrashed = true
                 data[indexPath.row].dateModified = Date()
@@ -93,12 +95,12 @@ extension Logic {
                 //END THE TABLEVIEW UPDATE BLOCK
                 tableView.endUpdates()
             case .total:
-                print("default")
+                break
             }
         }
     }
     
-    func moveManyToTrash(tableView: UITableView) {
+    func moveManyToTrash(tableView: TableView) {
         //1. GET THE INDEXPATH FOR SELECTED ROWS
         if let safeRows = selectedRows {
             //2. INTIATE A VARIABLE AS NOTE OBJECT
@@ -141,11 +143,9 @@ extension Logic {
         selectedRows = nil
     }
     
-    //MARK: RESTORE METHOD
-     func restore(multipleItems: Bool, indexPath: IndexPath? = nil,tableView: UITableView) {
+    //MARK: RESTORE METHODs
+     func restoreMany(tableView: TableView) {
         
-        switch multipleItems {
-        case true :
             if let safeSelectedRows = selectedRows {
                 var note = Note()
                 
@@ -161,23 +161,24 @@ extension Logic {
                 tableView.endUpdates()
             }
             selectedRows = nil
-            
-        case false:
-            if let safeIndexPath = indexPath {
-                //1. Note at current indexPath is set to not be in trash
-                trashData[safeIndexPath.row].isTrashed = false
-                //2. Remove the note from current noteArray
-                trashData.remove(at: safeIndexPath.row)
-                //3. Delete the row from the tableView
-                tableView.deleteRows(at: [safeIndexPath], with: .automatic)
-                //4. Save the context
-                save()
-            }
+        
+    }
+    
+   func restoreIndividual(indexPath: IndexPath?, tableView: TableView) {
+        if let safeIndexPath = indexPath {
+            //1. Note at current indexPath is set to not be in trash
+            trashData[safeIndexPath.row].isTrashed = false
+            //2. Remove the note from current noteArray
+            trashData.remove(at: safeIndexPath.row)
+            //3. Delete the row from the tableView
+            tableView.deleteRows(at: [safeIndexPath], with: .automatic)
+            //4. Save the context
+            save()
         }
     }
     
     //MARK: PIN METHOD
-    func setPin(indexPath: IndexPath, tableView: UITableView,state isCollapsed: Bool) {
+    func setPin(indexPath: IndexPath, tableView: TableView,state isCollapsed: Bool) {
         
         if let thisTableSection = TableSection(rawValue: indexPath.section), let data = combinedData[thisTableSection] {
             switch thisTableSection {
@@ -250,7 +251,7 @@ extension Logic {
                 tableView.endUpdates()
                 
             default:
-                print("default case")
+                break
             }
         }
     }
@@ -259,7 +260,7 @@ extension Logic {
 //MARK:- DATA MANIPULATION METHODS
 extension Logic {
     
-    func erase(selected:Bool, tableView: UITableView) {
+    func erase(selected:Bool, tableView: TableView) {
         
         switch selected {
         
@@ -297,8 +298,8 @@ extension Logic {
 extension Logic {
     
     func fetchNote(withId id: String) -> Note {
-        let request:NSFetchRequest<Note> = Note.fetchRequest()
-        let predicate = NSPredicate(format: "%K == %@", #keyPath(Note.uuid), id as CVarArg)
+        let request:FetchRequest<Note> = Note.fetchRequest()
+        let predicate = Predicate(format: "%K == %@", #keyPath(Note.uuid), id as CVarArg)
         request.predicate = predicate
         var notes: [Note]?
         do {
@@ -310,7 +311,7 @@ extension Logic {
         return safeNote
     }
     
-    func selectedNote(tableView: UITableView) -> String {
+    func selectedNote(tableView: TableView) -> String {
         
         if let selectedIndex = tableView.indexPathForSelectedRow, let thisTableSection = TableSection(rawValue: selectedIndex.section), let data = combinedData[thisTableSection] {
             switch thisTableSection {
@@ -319,7 +320,7 @@ extension Logic {
             case .pinned:
                 id = data[selectedIndex.row].uuid!
             default:
-                print("default case")
+                break
             }
         }
         guard let safeID = id else {fatalError()}

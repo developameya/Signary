@@ -18,11 +18,11 @@ class EditorViewController: UIViewController {
     
     private var headerTypingAttributes: DynamicFontDictionary = [
         AttrStrKey.font: Font.preferredFont(forTextStyle: .largeTitle),
-        AttrStrKey.foregroundColor : UIColor.appText
+        AttrStrKey.foregroundColor : UIColor.appTextColour
     ]
     private var bodyTypingAttributes: DynamicFontDictionary = [
         AttrStrKey.font: Font.preferredFont(forTextStyle: .body),
-        AttrStrKey.foregroundColor: UIColor.appText
+        AttrStrKey.foregroundColor: UIColor.appTextColour
     ]
     
     private var controls: [controlParameter] = [
@@ -80,7 +80,7 @@ class EditorViewController: UIViewController {
         
         let currentFont =  fontController.getFont(forKey: K.DefaultKeys.textViewFont) ?? .preferredFont(forTextStyle: .body)
         
-        textView.tintColor = Colour.appTint
+        textView.tintColor = Colour.appTintColour
         
         textView.font = currentFont
         
@@ -90,7 +90,7 @@ class EditorViewController: UIViewController {
             textView.attributedText = NSAttributedString(string: "")
         }
                 
-        textView.textColor = Colour.appText
+        textView.textColor = Colour.appTextColour
         
         textView.backgroundColor = .systemBackground
         
@@ -195,7 +195,7 @@ class EditorViewController: UIViewController {
         
         headerTypingAttributes = [
             AttrStrKey.font: headerDynamicFont!,
-            AttrStrKey.foregroundColor : Colour.appText
+            AttrStrKey.foregroundColor : Colour.appTextColour
         ]
         
         let bodyFontDescriptor = FontDescriptor.CustomFontDescriptor(font: font, textStyle: .body)
@@ -204,7 +204,7 @@ class EditorViewController: UIViewController {
         
         bodyTypingAttributes = [
             AttrStrKey.font : bodyDynamicFont!,
-            AttrStrKey.foregroundColor : Colour.appText
+            AttrStrKey.foregroundColor : Colour.appTextColour
         ]
         
         updatePersistantStore()
